@@ -8,6 +8,7 @@ import {
   updateProfile,
   forgotPassword,
   resetPassword,
+  verifyEmail,
 } from '../controllers/auth.controller';
 import { authenticateToken } from '../middleware/auth.middleware';
 
@@ -19,6 +20,9 @@ router.post('/refresh', refresh);
 router.post('/logout', logout);
 router.post('/forgot-password', forgotPassword);
 router.post('/reset-password', resetPassword);
+
+// Email verification (GET link from email)
+router.get('/verify-email', verifyEmail as any);
 
 // Protected profile routes
 router.get('/profile', authenticateToken as any, getProfile as any);

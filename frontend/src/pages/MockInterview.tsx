@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { 
-  Video, 
   Timer, 
   Mic, 
   MicOff, 
@@ -9,11 +8,10 @@ import {
   XOctagon, 
   SkipForward, 
   CheckCircle,
-  HelpCircle,
-  FileCheck,
-  TrendingUp,
   Volume2,
-  AlertCircle
+  AlertCircle,
+  Radio,
+  MessageSquare
 } from 'lucide-react';
 import { GlassCard } from '../components/GlassCard';
 import { Button } from '../components/Button';
@@ -37,6 +35,9 @@ export const MockInterview: React.FC = () => {
 
   // Voice recording state
   const [isRecording, setIsRecording] = useState(false);
+  const [interimTranscript, setInterimTranscript] = useState('');
+  const [micPermission, setMicPermission] = useState<'unknown' | 'granted' | 'denied'>('unknown');
+  const [speechSupported, setSpeechSupported] = useState(true);
   const recognitionRef = useRef<any>(null);
 
   // Timer state
@@ -87,63 +88,104 @@ export const MockInterview: React.FC = () => {
     };
   }, [currentIdx, interview, report, completing]);
 
-  // Speech recognition setup
+  // Mic permission check on mount
   useEffect(() => {
-    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (SpeechRecognition) {
-      const rec = new SpeechRecognition();
-      rec.continuous = true;
-      rec.interimResults = true;
-      rec.lang = 'en-US';
-
-      rec.onresult = (event: any) => {
-        let interimTranscript = '';
-        let finalTranscript = '';
-
-        for (let i = event.resultIndex; i < event.results.length; ++i) {
-          if (event.results[i].isFinal) {
-            finalTranscript += event.results[i][0].transcript;
-          } else {
-            interimTranscript += event.results[i][0].transcript;
-          }
-        }
-
-        if (finalTranscript) {
-          setUserAnswer((prev) => prev + (prev ? ' ' : '') + finalTranscript);
-        }
-      };
-
-      rec.onerror = (e: any) => {
-        console.error('Speech recognition error:', e.error);
-        setIsRecording(false);
-      };
-
-      rec.onend = () => {
-        setIsRecording(false);
-      };
-
-      recognitionRef.current = rec;
+    if (navigator.permissions) {
+      navigator.permissions.query({ name: 'microphone' as PermissionName }).then((result) => {
+        setMicPermission(result.state === 'granted' ? 'granted' : result.state === 'denied' ? 'denied' : 'unknown');
+        result.onchange = () => {
+          setMicPermission(result.state === 'granted' ? 'granted' : result.state === 'denied' ? 'denied' : 'unknown');
+        };
+      }).catch(() => {});
     }
   }, []);
 
-  const toggleRecording = () => {
-    if (!recognitionRef.current) {
-      showToast('Speech Recognition is not supported by your browser.', 'error');
+  // Speech recognition setup
+  useEffect(() => {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      setSpeechSupported(false);
+      return;
+    }
+
+    const rec = new SpeechRecognition();
+    rec.continuous = true;
+    rec.interimResults = true;
+    rec.lang = 'en-US';
+
+    rec.onresult = (event: any) => {
+      let interim = '';
+      let final = '';
+
+      for (let i = event.resultIndex; i < event.results.length; ++i) {
+        if (event.results[i].isFinal) {
+          final += event.results[i][0].transcript;
+        } else {
+          interim += event.results[i][0].transcript;
+        }
+      }
+
+      if (final) {
+        setUserAnswer((prev) => prev + (prev ? ' ' : '') + final);
+        setInterimTranscript('');
+      } else {
+        setInterimTranscript(interim);
+      }
+    };
+
+    rec.onerror = (e: any) => {
+      if (e.error === 'not-allowed') {
+        setMicPermission('denied');
+        showToast('Microphone access denied. Please allow mic access in browser settings.', 'error');
+      } else {
+        console.error('Speech recognition error:', e.error);
+      }
+      setIsRecording(false);
+      setInterimTranscript('');
+    };
+
+    rec.onend = () => {
+      setIsRecording(false);
+      setInterimTranscript('');
+    };
+
+    recognitionRef.current = rec;
+  }, []);
+
+  const toggleRecording = async () => {
+    if (!speechSupported) {
+      showToast('Speech recognition is not supported in this browser. Use Chrome for best results.', 'error');
       return;
     }
 
     if (isRecording) {
-      recognitionRef.current.stop();
+      recognitionRef.current?.stop();
       setIsRecording(false);
+      setInterimTranscript('');
     } else {
+      // Request mic permission explicitly
       try {
-        recognitionRef.current.start();
+        await navigator.mediaDevices.getUserMedia({ audio: true });
+        setMicPermission('granted');
+        recognitionRef.current?.start();
         setIsRecording(true);
-        showToast('Microphone active. Start speaking...', 'info');
+        showToast('🎙️ Microphone active — start speaking!', 'info');
       } catch (err) {
-        console.error(err);
+        setMicPermission('denied');
+        showToast('Microphone access denied. Please allow mic in browser settings.', 'error');
       }
     }
+  };
+
+  // Text-to-Speech: read question aloud
+  const readQuestionAloud = (text: string) => {
+    if (!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.rate = 0.9;
+    utter.pitch = 1;
+    utter.lang = 'en-US';
+    window.speechSynthesis.speak(utter);
   };
 
   const formatTimer = (sec: number) => {
@@ -499,13 +541,30 @@ export const MockInterview: React.FC = () => {
 
           {/* Recording panel */}
           <GlassCard className="space-y-4">
+            {/* Mic permission warning */}
+            {micPermission === 'denied' && (
+              <div className="flex items-center gap-3 p-3 rounded-xl border border-amber-500/30 bg-amber-950/10 text-xs text-amber-300">
+                <AlertCircle className="h-4 w-4 text-amber-400 shrink-0" />
+                <span>Microphone access is blocked. Go to browser settings → Site Settings → Microphone → Allow, then refresh this page.</span>
+              </div>
+            )}
+            {!speechSupported && (
+              <div className="flex items-center gap-3 p-3 rounded-xl border border-orange-500/30 bg-orange-950/10 text-xs text-orange-300">
+                <AlertCircle className="h-4 w-4 shrink-0" />
+                <span>Speech recognition is not supported in this browser. Please use <strong>Google Chrome</strong> for the voice interview feature. You can still type your answers below.</span>
+              </div>
+            )}
+
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
               <div className="flex items-center flex-wrap gap-3">
-                <span className="text-[10px] uppercase font-bold text-gray-400">Your Answer Transcript</span>
+                <span className="text-[10px] uppercase font-bold text-gray-400 flex items-center gap-1.5">
+                  <MessageSquare className="h-3.5 w-3.5" /> Your Answer Transcript
+                </span>
                 {isRecording ? (
-                  <span className="px-2 py-0.5 rounded-full bg-red-600/10 border border-red-500/30 text-[9px] font-bold text-red-400 flex items-center gap-1.5 animate-pulse">
-                    <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
-                    Live Recording...
+                  <span className="px-2 py-0.5 rounded-full bg-red-600/10 border border-red-500/30 text-[9px] font-bold text-red-400 flex items-center gap-1.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
+                    <Radio className="h-3 w-3 animate-pulse" />
+                    Live Recording
                   </span>
                 ) : (
                   <span className="px-2 py-0.5 rounded-full bg-dark-bg border border-dark-border text-[9px] font-bold text-gray-500 flex items-center gap-1.5">
@@ -517,26 +576,78 @@ export const MockInterview: React.FC = () => {
                   {userAnswer.trim().split(/\s+/).filter(Boolean).length} Words
                 </span>
               </div>
-              <button
-                onClick={toggleRecording}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl border font-bold text-xs transition-colors ${
-                  isRecording
-                    ? 'bg-red-600 hover:bg-red-500 border-red-500 text-white animate-pulse shadow-[0_0_15px_rgba(220,38,38,0.5)]'
-                    : 'bg-primary-500/10 hover:bg-primary-500/20 border-primary-500/30 text-primary-400'
-                }`}
-              >
-                {isRecording ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
-                <span>{isRecording ? 'Mute Mic' : 'Start Speaking'}</span>
-              </button>
+
+              <div className="flex items-center gap-2">
+                {/* TTS read-aloud button */}
+                {'speechSynthesis' in window && (
+                  <button
+                    onClick={() => readQuestionAloud(activeQuestion?.text || '')}
+                    title="Read question aloud"
+                    className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-dark-border hover:border-gray-500 text-gray-500 hover:text-gray-300 text-xs font-bold transition-all"
+                  >
+                    <Volume2 className="h-3.5 w-3.5" />
+                    <span className="hidden sm:inline">Read Aloud</span>
+                  </button>
+                )}
+
+                {/* Mic toggle button */}
+                <button
+                  onClick={toggleRecording}
+                  disabled={micPermission === 'denied'}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl border font-bold text-xs transition-all ${
+                    isRecording
+                      ? 'bg-red-600 hover:bg-red-500 border-red-500 text-white shadow-[0_0_20px_rgba(220,38,38,0.4)]'
+                      : micPermission === 'denied'
+                      ? 'bg-dark-bg border-dark-border text-gray-600 cursor-not-allowed opacity-50'
+                      : 'bg-primary-500/10 hover:bg-primary-500/20 border-primary-500/30 text-primary-400'
+                  }`}
+                >
+                  {isRecording ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
+                  <span>{isRecording ? 'Stop Mic' : 'Start Speaking'}</span>
+                </button>
+              </div>
             </div>
+
+            {/* Live interim transcript bubble */}
+            {isRecording && interimTranscript && (
+              <div className="px-4 py-3 rounded-xl border border-primary-500/30 bg-primary-950/10 text-xs text-gray-400 italic leading-relaxed">
+                <span className="text-primary-400 font-bold not-italic">🎙️ Listening: </span>
+                {interimTranscript}
+                <span className="animate-pulse text-primary-400">|</span>
+              </div>
+            )}
+
+            {/* Waveform bars animation when recording */}
+            {isRecording && (
+              <div className="flex items-center justify-center gap-1 py-2">
+                {[...Array(12)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="bg-primary-500/70 rounded-full w-1"
+                    style={{
+                      height: `${8 + Math.random() * 20}px`,
+                      animationName: 'waveBar',
+                      animationDuration: `${0.4 + (i % 4) * 0.15}s`,
+                      animationTimingFunction: 'ease-in-out',
+                      animationIterationCount: 'infinite',
+                      animationDirection: 'alternate',
+                    }}
+                  />
+                ))}
+              </div>
+            )}
 
             <textarea
               value={userAnswer}
               onChange={(e) => setUserAnswer(e.target.value)}
-              rows={8}
-              placeholder="Record your transcript using speech recognition, or write your answer directly inside this console..."
+              rows={7}
+              placeholder="🎙️ Click 'Start Speaking' to use voice input, or type your answer here directly..."
               className="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-3 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-primary-500 transition-colors leading-relaxed"
             />
+
+            <p className="text-[10px] text-gray-600 text-center">
+              Voice input uses your browser's built-in speech recognition (works best in Chrome). You can also type or edit your answer manually.
+            </p>
           </GlassCard>
 
           {/* Console Action buttons */}
