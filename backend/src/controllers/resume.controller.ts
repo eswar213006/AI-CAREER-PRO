@@ -1,15 +1,17 @@
 import { Response } from 'express';
 import fs from 'fs';
-import pdfParse from 'pdf-parse';
+import { PDFParse } from 'pdf-parse';
 import { AuthenticatedRequest } from '../middleware/auth.middleware';
 import { dbService } from '../utils/dbService';
 import { generateAIResponse } from '../config/ai';
 
 // Quick keyword scanner to extract resume content from raw PDF file
 const scanResumeKeywords = async (filePath: string): Promise<string[]> => {
+  let parser: PDFParse | null = null;
   try {
     const fileBuffer = fs.readFileSync(filePath);
-    const pdfData = await pdfParse(fileBuffer);
+    parser = new PDFParse({ data: fileBuffer });
+    const pdfData = await parser.getText();
     const content = pdfData.text.toLowerCase();
     
     const keywordsList = [
@@ -33,6 +35,10 @@ const scanResumeKeywords = async (filePath: string): Promise<string[]> => {
   } catch (error) {
     console.error('Error scanning file keywords:', error);
     return [];
+  } finally {
+    if (parser) {
+      await parser.destroy();
+    }
   }
 };
 

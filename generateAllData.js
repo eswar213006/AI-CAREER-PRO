@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const dataDir = path.join(__dirname, 'backend', 'src', 'data');
+const dataDir = path.join(__dirname, 'backend', 'data');
 
 // ─── APTITUDE QUESTIONS ───
 const aptitude = {
