@@ -1,0 +1,265 @@
+[
+  {
+    "_id": "1781376005579_sv6u9bv",
+    "createdAt": "2026-06-13T18:40:05.579Z",
+    "updatedAt": "2026-06-13T18:42:44.352Z",
+    "userId": "1781375945093_gw2bqqu",
+    "jobRole": "Software Engineer",
+    "experienceLevel": "Fresher",
+    "difficulty": "Easy",
+    "interviewType": "Technical",
+    "company": "General",
+    "status": "completed",
+    "questions": [
+      {
+        "id": "q1",
+        "text": "Explain the difference between a Process and a Thread in Operating Systems. How do they communicate?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "Answer was too brief. Expand on technical concepts and provide structured examples.",
+        "score": 4
+      },
+      {
+        "id": "q2",
+        "text": "Given a binary tree, how do you find the lowest common ancestor (LCA) of two given nodes? What is the complexity?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "Answer was too brief. Expand on technical concepts and provide structured examples.",
+        "score": 4
+      },
+      {
+        "id": "q3",
+        "text": "What is the difference between TCP and UDP? Explain the three-way handshake in TCP.",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "Answer was too brief. Expand on technical concepts and provide structured examples.",
+        "score": 4
+      },
+      {
+        "id": "q4",
+        "text": "Explain the difference between normalization and denormalization in DBMS. When would you use denormalization?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "Answer was too brief. Expand on technical concepts and provide structured examples.",
+        "score": 4
+      },
+      {
+        "id": "q5",
+        "text": "How would you design a rate limiter for a public API? What algorithms (like Token Bucket) would you apply?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "Answer was too brief. Expand on technical concepts and provide structured examples.",
+        "score": 4
+      }
+    ],
+    "score": {
+      "technical": 45,
+      "communication": 97,
+      "confidence": 92,
+      "overall": 77
+    },
+    "voiceReport": {
+      "speakingSpeedWpm": 0,
+      "fillerWordCount": 0,
+      "fillerWordsDetected": [],
+      "pronunciationScore": 95,
+      "confidenceScore": 92,
+      "reportSummary": "Speaking pace is 0 WPM (Slow). Used 0 filler words. Pronunciation score: 95%, confidence score: 92%."
+    },
+    "aiDetailedFeedback": {
+      "strengths": [
+        "Strong command of fundamental terminology and core paradigms.",
+        "Presented solutions methodically and maintained a professional tone."
+      ],
+      "weaknesses": [
+        "Answers are brief. Standard technical interviews expect deeper explanations.",
+        "Could state more direct project metrics."
+      ],
+      "tips": [
+        "Practice speaking with a structural framework like STAR (Situation, Task, Action, Result) for HR, and diagram-first for Tech.",
+        "Reduce talking speed slightly to allow time for thought, decreasing the occurrence of filler sounds like \"um\" or \"like\".",
+        "Review weak topics in the preparation hub before starting your next mock."
+      ]
+    }
+  },
+  {
+    "_id": "1781376515580_dxetey3",
+    "createdAt": "2026-06-13T18:48:35.580Z",
+    "updatedAt": "2026-06-13T18:48:52.059Z",
+    "userId": "1781375945093_gw2bqqu",
+    "jobRole": "Software Engineer",
+    "experienceLevel": "Fresher",
+    "difficulty": "Medium",
+    "interviewType": "Technical",
+    "company": "General",
+    "status": "completed",
+    "questions": [
+      {
+        "id": "q1",
+        "text": "Explain the difference between a Process and a Thread in Operating Systems. How do they communicate?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "Answer was too brief. Expand on technical concepts and provide structured examples.",
+        "score": 4
+      },
+      {
+        "id": "q2",
+        "text": "Given a binary tree, how do you find the lowest common ancestor (LCA) of two given nodes? What is the complexity?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "Answer was too brief. Expand on technical concepts and provide structured examples.",
+        "score": 4
+      },
+      {
+        "id": "q3",
+        "text": "What is the difference between TCP and UDP? Explain the three-way handshake in TCP.",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "Answer was too brief. Expand on technical concepts and provide structured examples.",
+        "score": 4
+      },
+      {
+        "id": "q4",
+        "text": "Explain the difference between normalization and denormalization in DBMS. When would you use denormalization?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "Answer was too brief. Expand on technical concepts and provide structured examples.",
+        "score": 4
+      },
+      {
+        "id": "q5",
+        "text": "How would you design a rate limiter for a public API? What algorithms (like Token Bucket) would you apply?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "Answer was too brief. Expand on technical concepts and provide structured examples.",
+        "score": 4
+      }
+    ],
+    "score": {
+      "technical": 45,
+      "communication": 97,
+      "confidence": 92,
+      "overall": 77
+    },
+    "voiceReport": {
+      "speakingSpeedWpm": 0,
+      "fillerWordCount": 0,
+      "fillerWordsDetected": [],
+      "pronunciationScore": 95,
+      "confidenceScore": 92,
+      "reportSummary": "Speaking pace is 0 WPM (Slow). Used 0 filler words. Pronunciation score: 95%, confidence score: 92%."
+    },
+    "aiDetailedFeedback": {
+      "strengths": [
+        "Strong command of fundamental terminology and core paradigms.",
+        "Presented solutions methodically and maintained a professional tone."
+      ],
+      "weaknesses": [
+        "Answers are brief. Standard technical interviews expect deeper explanations.",
+        "Could state more direct project metrics."
+      ],
+      "tips": [
+        "Practice speaking with a structural framework like STAR (Situation, Task, Action, Result) for HR, and diagram-first for Tech.",
+        "Reduce talking speed slightly to allow time for thought, decreasing the occurrence of filler sounds like \"um\" or \"like\".",
+        "Review weak topics in the preparation hub before starting your next mock."
+      ]
+    }
+  },
+  {
+    "_id": "1781379245265_2vgtrqf",
+    "createdAt": "2026-06-13T19:34:05.265Z",
+    "updatedAt": "2026-06-13T19:34:18.586Z",
+    "userId": "1781379119733_ang86cz",
+    "jobRole": "Software Engineer",
+    "experienceLevel": "Fresher",
+    "difficulty": "Hard",
+    "interviewType": "Technical",
+    "company": "General",
+    "status": "completed",
+    "questions": [
+      {
+        "id": "q1",
+        "text": "Explain the difference between a Process and a Thread in Operating Systems. How do they communicate?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q2",
+        "text": "Given a binary tree, how do you find the lowest common ancestor (LCA) of two given nodes? What is the complexity?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q3",
+        "text": "What is the difference between TCP and UDP? Explain the three-way handshake in TCP.",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q4",
+        "text": "Explain the difference between normalization and denormalization in DBMS. When would you use denormalization?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q5",
+        "text": "How would you design a rate limiter for a public API? What algorithms (like Token Bucket) would you apply?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      }
+    ],
+    "score": {
+      "technical": 0,
+      "communication": 0,
+      "confidence": 0,
+      "overall": 0
+    },
+    "voiceReport": {
+      "speakingSpeedWpm": 0,
+      "fillerWordCount": 0,
+      "fillerWordsDetected": [],
+      "pronunciationScore": 0,
+      "confidenceScore": 0,
+      "reportSummary": "Speaking pace is 0 WPM (Slow). Used 0 filler words. Pronunciation score: 0%, confidence score: 0%."
+    },
+    "aiDetailedFeedback": {
+      "strengths": [
+        "No significant strengths observed due to lack of detailed responses."
+      ],
+      "weaknesses": [
+        "Answers are far too brief or completely missing. Technical interviews require deep, structured explanations.",
+        "Could state more direct project metrics."
+      ],
+      "tips": [
+        "Practice speaking with a structural framework like STAR (Situation, Task, Action, Result).",
+        "Never skip a question completely—always state your assumptions or explain a brute-force approach.",
+        "Review weak topics in the preparation hub before starting your next mock."
+      ]
+    }
+  }
+]

@@ -1,0 +1,492 @@
+{
+  "OOP & Java": [
+    {
+      "id": "oop1",
+      "question": "Which OOP concept is also known as \"Data Hiding\"?",
+      "options": [
+        "Encapsulation",
+        "Inheritance",
+        "Polymorphism",
+        "Abstraction"
+      ],
+      "answer": 0,
+      "explanation": "Encapsulation bundles data and methods, restricting direct access — hence data hiding."
+    },
+    {
+      "id": "oop2",
+      "question": "What is the output of: System.out.println(10 + 20 + \"30\");",
+      "options": [
+        "\"3030\"",
+        "\"1020\"",
+        "\"102030\"",
+        "60"
+      ],
+      "answer": 0,
+      "explanation": "Left to right: 10+20=30, then 30+\"30\" = \"3030\"."
+    },
+    {
+      "id": "oop3",
+      "question": "Which keyword prevents method overriding in Java?",
+      "options": [
+        "final",
+        "static",
+        "private",
+        "abstract"
+      ],
+      "answer": 0,
+      "explanation": "A final method cannot be overridden by subclasses."
+    },
+    {
+      "id": "oop4",
+      "question": "What is the default value of a boolean variable in Java?",
+      "options": [
+        "false",
+        "true",
+        "0",
+        "null"
+      ],
+      "answer": 0,
+      "explanation": "Default value of boolean is false."
+    },
+    {
+      "id": "oop5",
+      "question": "Which collection class maintains insertion order?",
+      "options": [
+        "LinkedList",
+        "HashSet",
+        "TreeSet",
+        "HashMap"
+      ],
+      "answer": 0,
+      "explanation": "LinkedList maintains insertion order."
+    },
+    {
+      "id": "oop6",
+      "question": "What is method overloading?",
+      "options": [
+        "Same method name, different parameters",
+        "Same method name, same parameters",
+        "Different method name, same return type",
+        "Overriding parent method"
+      ],
+      "answer": 0,
+      "explanation": "Overloading = same name but different number/type of parameters."
+    },
+    {
+      "id": "oop7",
+      "question": "Which interface does ArrayList implement?",
+      "options": [
+        "List",
+        "Set",
+        "Map",
+        "Queue"
+      ],
+      "answer": 0,
+      "explanation": "ArrayList implements the List interface."
+    },
+    {
+      "id": "oop8",
+      "question": "What is a constructor?",
+      "options": [
+        "Method called automatically when object is created",
+        "Method that returns a value",
+        "Static method of a class",
+        "Method that cannot be overloaded"
+      ],
+      "answer": 0,
+      "explanation": "Constructors initialize objects automatically on creation."
+    }
+  ],
+  "DBMS & SQL": [
+    {
+      "id": "db1",
+      "question": "Which SQL command is used to remove a table from a database?",
+      "options": [
+        "DROP TABLE",
+        "DELETE TABLE",
+        "REMOVE TABLE",
+        "TRUNCATE TABLE"
+      ],
+      "answer": 0,
+      "explanation": "DROP TABLE removes the entire table structure and data."
+    },
+    {
+      "id": "db2",
+      "question": "What is the difference between DELETE and TRUNCATE?",
+      "options": [
+        "DELETE is DML, TRUNCATE is DDL; DELETE can be rolled back",
+        "TRUNCATE is DML; DELETE is DDL",
+        "Both are the same",
+        "DELETE drops the table"
+      ],
+      "answer": 0,
+      "explanation": "DELETE is DML (can be rolled back), TRUNCATE is DDL (cannot be rolled back)."
+    },
+    {
+      "id": "db3",
+      "question": "Which SQL clause is used to filter groups?",
+      "options": [
+        "HAVING",
+        "WHERE",
+        "GROUP BY",
+        "ORDER BY"
+      ],
+      "answer": 0,
+      "explanation": "HAVING filters records after GROUP BY aggregation."
+    },
+    {
+      "id": "db4",
+      "question": "What does ACID stand for?",
+      "options": [
+        "Atomicity, Consistency, Isolation, Durability",
+        "Access, Control, Integrity, Data",
+        "Atomic, Consistent, Integrated, Durable",
+        "None"
+      ],
+      "answer": 0,
+      "explanation": "ACID properties ensure database transaction reliability."
+    },
+    {
+      "id": "db5",
+      "question": "What is a PRIMARY KEY?",
+      "options": [
+        "Unique identifier for a record that cannot be NULL",
+        "Any column with unique values",
+        "A foreign key reference",
+        "A default constraint"
+      ],
+      "answer": 0,
+      "explanation": "PRIMARY KEY uniquely identifies each row and cannot be NULL."
+    },
+    {
+      "id": "db6",
+      "question": "What is normalization?",
+      "options": [
+        "Process of organizing data to reduce redundancy",
+        "Process of adding redundancy for backup",
+        "Adding indexes to tables",
+        "Encrypting database tables"
+      ],
+      "answer": 0,
+      "explanation": "Normalization reduces data redundancy and improves data integrity."
+    },
+    {
+      "id": "db7",
+      "question": "Which JOIN returns all records from both tables even if no match?",
+      "options": [
+        "FULL OUTER JOIN",
+        "INNER JOIN",
+        "LEFT JOIN",
+        "RIGHT JOIN"
+      ],
+      "answer": 0,
+      "explanation": "FULL OUTER JOIN returns all rows from both tables."
+    },
+    {
+      "id": "db8",
+      "question": "What is an index in a database?",
+      "options": [
+        "Data structure that improves speed of retrieval",
+        "Backup of a table",
+        "Foreign key reference",
+        "A constraint type"
+      ],
+      "answer": 0,
+      "explanation": "Indexes speed up read queries at the cost of write overhead."
+    }
+  ],
+  "Operating Systems": [
+    {
+      "id": "os1",
+      "question": "What is a deadlock?",
+      "options": [
+        "A state where two processes wait for each other indefinitely",
+        "When a process uses 100% CPU",
+        "When memory is full",
+        "A type of scheduling"
+      ],
+      "answer": 0,
+      "explanation": "Deadlock: circular wait where processes block each other."
+    },
+    {
+      "id": "os2",
+      "question": "What is virtual memory?",
+      "options": [
+        "Disk space used to extend RAM",
+        "Fast CPU cache",
+        "GPU memory",
+        "ROM memory"
+      ],
+      "answer": 0,
+      "explanation": "Virtual memory uses disk space as an extension of RAM."
+    },
+    {
+      "id": "os3",
+      "question": "Which scheduling algorithm can cause starvation?",
+      "options": [
+        "Priority Scheduling",
+        "Round Robin",
+        "FCFS",
+        "SJF (non-preemptive)"
+      ],
+      "answer": 0,
+      "explanation": "Priority Scheduling can starve low-priority processes indefinitely."
+    },
+    {
+      "id": "os4",
+      "question": "What is the purpose of semaphores?",
+      "options": [
+        "Synchronization between processes",
+        "Memory allocation",
+        "File management",
+        "CPU scheduling"
+      ],
+      "answer": 0,
+      "explanation": "Semaphores coordinate access to shared resources."
+    },
+    {
+      "id": "os5",
+      "question": "What is thrashing?",
+      "options": [
+        "Excessive paging causing performance degradation",
+        "CPU overheating",
+        "Memory overflow error",
+        "Disk fragmentation"
+      ],
+      "answer": 0,
+      "explanation": "Thrashing: system spends more time swapping pages than executing."
+    },
+    {
+      "id": "os6",
+      "question": "What is a process vs a thread?",
+      "options": [
+        "Process = independent program, Thread = lightweight unit within process",
+        "Thread = independent program, Process = unit within thread",
+        "Both are the same",
+        "Process is faster than thread"
+      ],
+      "answer": 0,
+      "explanation": "Threads share memory within a process; processes are isolated."
+    },
+    {
+      "id": "os7",
+      "question": "Which page replacement algorithm is optimal?",
+      "options": [
+        "Optimal (OPT) Algorithm",
+        "FIFO",
+        "LRU",
+        "LFU"
+      ],
+      "answer": 0,
+      "explanation": "OPT replaces the page not used for the longest time in future."
+    },
+    {
+      "id": "os8",
+      "question": "What is the difference between preemptive and non-preemptive scheduling?",
+      "options": [
+        "Preemptive can interrupt running process; non-preemptive cannot",
+        "Non-preemptive is faster",
+        "Preemptive uses priority; non-preemptive uses time quantum",
+        "No difference"
+      ],
+      "answer": 0,
+      "explanation": "Preemptive OS can forcibly take CPU away from a process."
+    }
+  ],
+  "Computer Networks": [
+    {
+      "id": "cn1",
+      "question": "What does DNS stand for and what does it do?",
+      "options": [
+        "Domain Name System — translates domain names to IP addresses",
+        "Data Network Service",
+        "Dynamic Name Server",
+        "Distributed Node System"
+      ],
+      "answer": 0,
+      "explanation": "DNS resolves human-readable domain names to IP addresses."
+    },
+    {
+      "id": "cn2",
+      "question": "What is the difference between TCP and UDP?",
+      "options": [
+        "TCP is reliable/connection-oriented; UDP is faster/connectionless",
+        "UDP is reliable; TCP is not",
+        "Both are the same",
+        "TCP is faster"
+      ],
+      "answer": 0,
+      "explanation": "TCP ensures delivery with acknowledgements. UDP is faster but unreliable."
+    },
+    {
+      "id": "cn3",
+      "question": "Which layer does IP operate at in the OSI model?",
+      "options": [
+        "Network Layer (Layer 3)",
+        "Transport Layer (Layer 4)",
+        "Data Link Layer (Layer 2)",
+        "Application Layer (Layer 7)"
+      ],
+      "answer": 0,
+      "explanation": "IP operates at Layer 3 — the Network Layer."
+    },
+    {
+      "id": "cn4",
+      "question": "What is a subnet mask?",
+      "options": [
+        "Identifies which part of IP is network vs host",
+        "A firewall rule",
+        "MAC address filter",
+        "DNS record type"
+      ],
+      "answer": 0,
+      "explanation": "Subnet mask divides IP address into network and host portions."
+    },
+    {
+      "id": "cn5",
+      "question": "What is the purpose of HTTP and HTTPS?",
+      "options": [
+        "Protocol for web communication; HTTPS adds SSL encryption",
+        "Same protocol",
+        "HTTP is faster than HTTPS",
+        "HTTPS is for FTP transfers"
+      ],
+      "answer": 0,
+      "explanation": "HTTPS uses TLS/SSL to encrypt data in transit."
+    },
+    {
+      "id": "cn6",
+      "question": "What is a MAC address?",
+      "options": [
+        "Unique hardware identifier assigned to a network interface",
+        "IP address type",
+        "A routing protocol",
+        "A firewall address"
+      ],
+      "answer": 0,
+      "explanation": "MAC addresses are Layer 2 physical addresses burned into network cards."
+    },
+    {
+      "id": "cn7",
+      "question": "What does ARP do?",
+      "options": [
+        "Resolves IP address to MAC address",
+        "Resolves MAC to IP",
+        "Routes packets",
+        "Assigns IP addresses"
+      ],
+      "answer": 0,
+      "explanation": "ARP (Address Resolution Protocol) maps IP → MAC addresses."
+    },
+    {
+      "id": "cn8",
+      "question": "What is a firewall?",
+      "options": [
+        "Network security system that monitors and controls incoming/outgoing traffic",
+        "A type of virus",
+        "An encryption algorithm",
+        "A database backup system"
+      ],
+      "answer": 0,
+      "explanation": "Firewalls filter traffic based on predefined security rules."
+    }
+  ],
+  "Data Structures": [
+    {
+      "id": "ds1",
+      "question": "What is the time complexity of binary search?",
+      "options": [
+        "O(log n)",
+        "O(n)",
+        "O(n²)",
+        "O(1)"
+      ],
+      "answer": 0,
+      "explanation": "Binary search halves search space each step: O(log n)."
+    },
+    {
+      "id": "ds2",
+      "question": "Which data structure uses LIFO principle?",
+      "options": [
+        "Stack",
+        "Queue",
+        "Linked List",
+        "Heap"
+      ],
+      "answer": 0,
+      "explanation": "Stack: Last In, First Out."
+    },
+    {
+      "id": "ds3",
+      "question": "What is the time complexity of inserting into a Hash Map on average?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n log n)"
+      ],
+      "answer": 0,
+      "explanation": "HashMap uses hashing for O(1) average insertion."
+    },
+    {
+      "id": "ds4",
+      "question": "What is a balanced binary search tree?",
+      "options": [
+        "BST where height difference of left/right subtrees is at most 1",
+        "Any BST",
+        "A BST with no leaves",
+        "A BST with all nodes having 2 children"
+      ],
+      "answer": 0,
+      "explanation": "AVL trees and Red-Black trees maintain balance for O(log n) ops."
+    },
+    {
+      "id": "ds5",
+      "question": "What is the worst case time complexity of Quick Sort?",
+      "options": [
+        "O(n²)",
+        "O(n log n)",
+        "O(n)",
+        "O(log n)"
+      ],
+      "answer": 0,
+      "explanation": "Quick sort worst case is O(n²) when pivot is always min/max."
+    },
+    {
+      "id": "ds6",
+      "question": "Which data structure is best for implementing BFS?",
+      "options": [
+        "Queue",
+        "Stack",
+        "Heap",
+        "Array"
+      ],
+      "answer": 0,
+      "explanation": "BFS uses Queue (FIFO) to process nodes level by level."
+    },
+    {
+      "id": "ds7",
+      "question": "What is dynamic programming?",
+      "options": [
+        "Breaking complex problems into overlapping subproblems and storing results",
+        "A programming language",
+        "A sorting technique",
+        "A graph traversal algorithm"
+      ],
+      "answer": 0,
+      "explanation": "DP = memoization/tabulation to avoid redundant computations."
+    },
+    {
+      "id": "ds8",
+      "question": "What is a Trie data structure used for?",
+      "options": [
+        "Efficient string searching and prefix matching",
+        "Sorting numbers",
+        "Graph traversal",
+        "Heap operations"
+      ],
+      "answer": 0,
+      "explanation": "Tries efficiently store strings for prefix/autocomplete searches."
+    }
+  ]
+}

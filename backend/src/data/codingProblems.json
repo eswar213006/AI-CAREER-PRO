@@ -1,0 +1,1210 @@
+[
+  {
+    "id": "two-sum",
+    "title": "Two Sum",
+    "difficulty": "Easy",
+    "category": "Array",
+    "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.\nYou can return the answer in any order.",
+    "inputFormat": "nums = [2, 7, 11, 15], target = 9",
+    "outputFormat": "[0, 1]",
+    "testCases": [
+      {
+        "input": "[[2, 7, 11, 15], 9]",
+        "expected": "[0, 1]"
+      },
+      {
+        "input": "[[3, 2, 4], 6]",
+        "expected": "[1, 2]"
+      },
+      {
+        "input": "[[3, 3], 6]",
+        "expected": "[0, 1]"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function twoSum(nums, target) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        // Write your code here\n        return new int[]{};\n    }\n}",
+      "python": "def two_sum(nums, target):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "reverse-linked-list",
+    "title": "Reverse Linked List",
+    "difficulty": "Easy",
+    "category": "LinkedList",
+    "description": "Given the head of a singly linked list, reverse the list, and return its reversed list.",
+    "inputFormat": "head = [1,2,3,4,5]",
+    "outputFormat": "[5,4,3,2,1]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3, 4, 5]]",
+        "expected": "[5, 4, 3, 2, 1]"
+      },
+      {
+        "input": "[[1, 2]]",
+        "expected": "[2, 1]"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function reverseList(head) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public ListNode reverseList(ListNode head) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def reverse_list(head):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "longest-substring",
+    "title": "Longest Substring Without Repeating Characters",
+    "difficulty": "Medium",
+    "category": "String",
+    "description": "Given a string s, find the length of the longest substring without repeating characters.",
+    "inputFormat": "s = \"abcabcbb\"",
+    "outputFormat": "3",
+    "testCases": [
+      {
+        "input": "[\"abcabcbb\"]",
+        "expected": "3"
+      },
+      {
+        "input": "[\"bbbbb\"]",
+        "expected": "1"
+      },
+      {
+        "input": "[\"pwwkew\"]",
+        "expected": "3"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function lengthOfLongestSubstring(s) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        // Write your code here\n        return 0;\n    }\n}",
+      "python": "def length_of_longest_substring(s):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-4",
+    "title": "Dynamic Programming Challenge 4",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem4(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem4(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_4(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-5",
+    "title": "Graph Challenge 5",
+    "difficulty": "Hard",
+    "category": "Graph",
+    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem5(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem5(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_5(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-6",
+    "title": "Array Challenge 6",
+    "difficulty": "Easy",
+    "category": "Array",
+    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem6(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem6(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_6(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-7",
+    "title": "String Challenge 7",
+    "difficulty": "Medium",
+    "category": "String",
+    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem7(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem7(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_7(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-8",
+    "title": "LinkedList Challenge 8",
+    "difficulty": "Easy",
+    "category": "LinkedList",
+    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem8(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem8(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_8(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-9",
+    "title": "Tree Challenge 9",
+    "difficulty": "Hard",
+    "category": "Tree",
+    "description": "Solve the following algorithmic challenge related to Tree. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem9(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem9(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_9(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-10",
+    "title": "Dynamic Programming Challenge 10",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem10(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem10(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_10(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-11",
+    "title": "Graph Challenge 11",
+    "difficulty": "Hard",
+    "category": "Graph",
+    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem11(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem11(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_11(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-12",
+    "title": "Array Challenge 12",
+    "difficulty": "Easy",
+    "category": "Array",
+    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem12(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem12(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_12(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-13",
+    "title": "String Challenge 13",
+    "difficulty": "Medium",
+    "category": "String",
+    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem13(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem13(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_13(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-14",
+    "title": "LinkedList Challenge 14",
+    "difficulty": "Easy",
+    "category": "LinkedList",
+    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem14(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem14(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_14(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-15",
+    "title": "Tree Challenge 15",
+    "difficulty": "Hard",
+    "category": "Tree",
+    "description": "Solve the following algorithmic challenge related to Tree. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem15(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem15(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_15(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-16",
+    "title": "Dynamic Programming Challenge 16",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem16(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem16(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_16(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-17",
+    "title": "Graph Challenge 17",
+    "difficulty": "Hard",
+    "category": "Graph",
+    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem17(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem17(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_17(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-18",
+    "title": "Array Challenge 18",
+    "difficulty": "Easy",
+    "category": "Array",
+    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem18(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem18(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_18(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-19",
+    "title": "String Challenge 19",
+    "difficulty": "Medium",
+    "category": "String",
+    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem19(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem19(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_19(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-20",
+    "title": "LinkedList Challenge 20",
+    "difficulty": "Easy",
+    "category": "LinkedList",
+    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem20(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem20(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_20(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-21",
+    "title": "Tree Challenge 21",
+    "difficulty": "Hard",
+    "category": "Tree",
+    "description": "Solve the following algorithmic challenge related to Tree. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem21(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem21(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_21(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-22",
+    "title": "Dynamic Programming Challenge 22",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem22(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem22(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_22(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-23",
+    "title": "Graph Challenge 23",
+    "difficulty": "Hard",
+    "category": "Graph",
+    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem23(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem23(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_23(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-24",
+    "title": "Array Challenge 24",
+    "difficulty": "Easy",
+    "category": "Array",
+    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem24(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem24(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_24(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-25",
+    "title": "String Challenge 25",
+    "difficulty": "Medium",
+    "category": "String",
+    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem25(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem25(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_25(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-26",
+    "title": "LinkedList Challenge 26",
+    "difficulty": "Easy",
+    "category": "LinkedList",
+    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem26(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem26(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_26(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-27",
+    "title": "Tree Challenge 27",
+    "difficulty": "Hard",
+    "category": "Tree",
+    "description": "Solve the following algorithmic challenge related to Tree. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem27(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem27(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_27(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-28",
+    "title": "Dynamic Programming Challenge 28",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem28(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem28(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_28(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-29",
+    "title": "Graph Challenge 29",
+    "difficulty": "Hard",
+    "category": "Graph",
+    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem29(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem29(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_29(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-30",
+    "title": "Array Challenge 30",
+    "difficulty": "Easy",
+    "category": "Array",
+    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem30(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem30(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_30(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-31",
+    "title": "String Challenge 31",
+    "difficulty": "Medium",
+    "category": "String",
+    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem31(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem31(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_31(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-32",
+    "title": "LinkedList Challenge 32",
+    "difficulty": "Easy",
+    "category": "LinkedList",
+    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem32(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem32(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_32(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-33",
+    "title": "Tree Challenge 33",
+    "difficulty": "Hard",
+    "category": "Tree",
+    "description": "Solve the following algorithmic challenge related to Tree. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem33(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem33(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_33(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-34",
+    "title": "Dynamic Programming Challenge 34",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem34(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem34(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_34(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-35",
+    "title": "Graph Challenge 35",
+    "difficulty": "Hard",
+    "category": "Graph",
+    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem35(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem35(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_35(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-36",
+    "title": "Array Challenge 36",
+    "difficulty": "Easy",
+    "category": "Array",
+    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem36(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem36(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_36(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-37",
+    "title": "String Challenge 37",
+    "difficulty": "Medium",
+    "category": "String",
+    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem37(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem37(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_37(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-38",
+    "title": "LinkedList Challenge 38",
+    "difficulty": "Easy",
+    "category": "LinkedList",
+    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem38(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem38(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_38(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-39",
+    "title": "Tree Challenge 39",
+    "difficulty": "Hard",
+    "category": "Tree",
+    "description": "Solve the following algorithmic challenge related to Tree. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem39(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem39(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_39(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-40",
+    "title": "Dynamic Programming Challenge 40",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem40(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem40(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_40(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-41",
+    "title": "Graph Challenge 41",
+    "difficulty": "Hard",
+    "category": "Graph",
+    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem41(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem41(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_41(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-42",
+    "title": "Array Challenge 42",
+    "difficulty": "Easy",
+    "category": "Array",
+    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem42(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem42(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_42(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-43",
+    "title": "String Challenge 43",
+    "difficulty": "Medium",
+    "category": "String",
+    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem43(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem43(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_43(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-44",
+    "title": "LinkedList Challenge 44",
+    "difficulty": "Easy",
+    "category": "LinkedList",
+    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem44(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem44(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_44(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-45",
+    "title": "Tree Challenge 45",
+    "difficulty": "Hard",
+    "category": "Tree",
+    "description": "Solve the following algorithmic challenge related to Tree. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem45(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem45(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_45(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-46",
+    "title": "Dynamic Programming Challenge 46",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem46(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem46(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_46(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-47",
+    "title": "Graph Challenge 47",
+    "difficulty": "Hard",
+    "category": "Graph",
+    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem47(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem47(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_47(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-48",
+    "title": "Array Challenge 48",
+    "difficulty": "Easy",
+    "category": "Array",
+    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem48(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem48(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_48(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-49",
+    "title": "String Challenge 49",
+    "difficulty": "Medium",
+    "category": "String",
+    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem49(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem49(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_49(input):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "problem-50",
+    "title": "LinkedList Challenge 50",
+    "difficulty": "Easy",
+    "category": "LinkedList",
+    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
+    "inputFormat": "input = [data]",
+    "outputFormat": "[result]",
+    "testCases": [
+      {
+        "input": "[[1, 2, 3]]",
+        "expected": "mocked_output"
+      },
+      {
+        "input": "[[4, 5, 6]]",
+        "expected": "mocked_output"
+      }
+    ],
+    "defaultTemplates": {
+      "javascript": "function solveProblem50(input) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public Object solveProblem50(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def solve_problem_50(input):\n    # Write your code here\n    pass"
+    }
+  }
+]

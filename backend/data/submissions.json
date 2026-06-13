@@ -1,0 +1,29 @@
+[
+  {
+    "_id": "1781376191616_vae0tj6",
+    "createdAt": "2026-06-13T18:43:11.617Z",
+    "updatedAt": "2026-06-13T18:43:11.617Z",
+    "userId": "1781375945093_gw2bqqu",
+    "problemId": "two-sum",
+    "title": "Two Sum",
+    "code": "function twoSum(nums, target) {\n    // Write your code here\n    \n}",
+    "language": "javascript",
+    "status": "Compile Error",
+    "testCasesPassed": 0,
+    "totalTestCases": 3,
+    "executionTimeMs": 15,
+    "correctnessScore": 0,
+    "aiReview": {
+      "timeComplexity": "O(N) with Hash Map",
+      "spaceComplexity": "O(N) for Hash Map storage",
+      "optimizationSuggestions": [
+        "Ensure proper input validation checks for empty arrays or null values.",
+        "Avoid redundant object creations within loop iterations to conserve heap allocations."
+      ],
+      "codeSmells": [
+        "None detected."
+      ],
+      "refactoredCode": "function twoSum(nums, target) {\n    const map = new Map();\n    for (let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n        if (map.has(complement)) {\n            return [map.get(complement), i];\n        }\n        map.set(nums[i], i);\n    }\n    return [];\n}"
+    }
+  }
+]

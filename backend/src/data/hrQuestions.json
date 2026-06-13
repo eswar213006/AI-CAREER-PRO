@@ -1,0 +1,146 @@
+[
+  {
+    "id": "hr1",
+    "category": "Introduction",
+    "question": "Tell me about yourself.",
+    "keyPoints": [
+      "Start with your name, college, and branch",
+      "Mention your technical skills and projects briefly",
+      "State your career goals aligned with the role",
+      "Keep it to 60-90 seconds",
+      "End with why you are excited about this opportunity"
+    ]
+  },
+  {
+    "id": "hr2",
+    "category": "Motivation",
+    "question": "Why do you want to work for our company?",
+    "keyPoints": [
+      "Research the company's products, culture, and values beforehand",
+      "Connect their mission with your career goals",
+      "Mention specific projects or initiatives at the company that excite you",
+      "Show that you've done your homework — mention recent news or achievements",
+      "Avoid generic answers like \"you are a big company\""
+    ]
+  },
+  {
+    "id": "hr3",
+    "category": "Strengths",
+    "question": "What is your greatest strength?",
+    "keyPoints": [
+      "Choose a strength relevant to the job role (e.g., problem-solving, fast learning)",
+      "Back it up with a specific example or project",
+      "Quantify the result if possible (e.g., improved performance by X%)",
+      "Show self-awareness — not just listing qualities",
+      "Connect how this strength will benefit the team"
+    ]
+  },
+  {
+    "id": "hr4",
+    "category": "Weaknesses",
+    "question": "What is your greatest weakness?",
+    "keyPoints": [
+      "Choose a real weakness — not a fake one like \"I work too hard\"",
+      "Frame it as something you are actively improving",
+      "Give a specific example of steps taken to overcome it",
+      "Show growth mindset — \"I am working on X by doing Y\"",
+      "Do not choose a weakness critical to the core job function"
+    ]
+  },
+  {
+    "id": "hr5",
+    "category": "Teamwork",
+    "question": "Describe a situation where you had a conflict with a team member. How did you handle it?",
+    "keyPoints": [
+      "Use the STAR method (Situation, Task, Action, Result)",
+      "Focus on the resolution, not the conflict itself",
+      "Show empathy and communication skills",
+      "Highlight what you learned from the experience",
+      "Demonstrate that you prioritize team success over personal ego"
+    ]
+  },
+  {
+    "id": "hr6",
+    "category": "Goals",
+    "question": "Where do you see yourself in 5 years?",
+    "keyPoints": [
+      "Align your goals with realistic growth at this company",
+      "Show ambition without sounding like you plan to leave soon",
+      "Mention skill development goals (leadership, technical depth, etc.)",
+      "Connect to the company's growth trajectory",
+      "Focus on contributing value, not just personal advancement"
+    ]
+  },
+  {
+    "id": "hr7",
+    "category": "Failure",
+    "question": "Tell me about a time you failed. What did you learn from it?",
+    "keyPoints": [
+      "Be honest — pick a real failure, not a trivial one",
+      "Avoid blaming others — take personal responsibility",
+      "Explain what specifically went wrong and why",
+      "Detail the concrete steps you took to recover and improve",
+      "End on a positive note about the lessons learned"
+    ]
+  },
+  {
+    "id": "hr8",
+    "category": "Pressure",
+    "question": "How do you handle stress and pressure?",
+    "keyPoints": [
+      "Give a specific example of a high-pressure situation you managed",
+      "Mention your coping strategies (prioritization, breaking tasks, etc.)",
+      "Show that you stay productive and focused under deadlines",
+      "Avoid saying \"I don't get stressed\" — that is not believable",
+      "Demonstrate emotional maturity and self-awareness"
+    ]
+  },
+  {
+    "id": "hr9",
+    "category": "Salary",
+    "question": "What are your salary expectations?",
+    "keyPoints": [
+      "Research industry standards for freshers in the role beforehand",
+      "Give a range rather than a fixed number",
+      "Say you are open to the company's standard package for the role",
+      "Mention you value growth and learning opportunity first",
+      "If pressed, state the range: \"Based on my research, X to Y seems fair\""
+    ]
+  },
+  {
+    "id": "hr10",
+    "category": "Closing",
+    "question": "Do you have any questions for us?",
+    "keyPoints": [
+      "Always have 2-3 questions prepared — never say \"no\"",
+      "Ask about team culture, growth opportunities, onboarding",
+      "Ask about technologies the team uses or upcoming projects",
+      "Avoid asking about salary/leaves in this question",
+      "Good example: \"What does success look like for this role in the first 6 months?\""
+    ]
+  },
+  {
+    "id": "hr11",
+    "category": "Motivation",
+    "question": "Why should we hire you?",
+    "keyPoints": [
+      "Summarize your top 3 relevant skills/experiences",
+      "Connect your skills directly to the job description requirements",
+      "Mention your enthusiasm and quick learning ability",
+      "Back up claims with brief, specific examples",
+      "End with confidence: \"I am confident I can contribute immediately\""
+    ]
+  },
+  {
+    "id": "hr12",
+    "category": "Background",
+    "question": "Why did you choose your engineering branch?",
+    "keyPoints": [
+      "Show genuine interest, not just marks-driven choice",
+      "Connect your branch learnings to your career interest",
+      "Mention specific subjects or projects that ignited your passion",
+      "Be authentic — interviewers appreciate honesty",
+      "Relate it to how it prepared you for this role"
+    ]
+  }
+]

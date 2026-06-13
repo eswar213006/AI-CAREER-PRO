@@ -1,0 +1,199 @@
+[
+  {
+    "id": "tcs",
+    "name": "TCS (Tata Consultancy Services)",
+    "logo": "🏢",
+    "type": "Mass Recruiter",
+    "difficulty": "Easy-Medium",
+    "ctc": "3.5 - 7 LPA (Fresher)",
+    "rounds": [
+      "TCS NQT Online Test",
+      "Technical Interview",
+      "HR Interview"
+    ],
+    "roundDetails": {
+      "TCS NQT Online Test": "Numerical Ability (26 Q / 40 min), Verbal Ability (24 Q / 30 min), Reasoning Ability (30 Q / 50 min), Programming Logic (10 Q / 15 min), Coding (1-2 questions / 60 min)",
+      "Technical Interview": "Focus on DBMS, OS, CN basics, C/C++/Java OOP, Projects you've done, DSA basics",
+      "HR Interview": "Behavioral questions, relocation willingness, team adaptation, communication"
+    },
+    "keyTopics": [
+      "Aptitude (Speed, Time, Probability)",
+      "Verbal (Grammar, RC)",
+      "C/Java basics",
+      "DBMS SQL queries",
+      "Basic OOP concepts"
+    ],
+    "tips": [
+      "Practice NQT mock tests from official TCS iON portal",
+      "Focus on accuracy over speed",
+      "Prepare 2-3 projects from college work",
+      "Be clear on your resume tech stack",
+      "TCS NQT score determines Prime/Digital/BPS stream"
+    ]
+  },
+  {
+    "id": "infosys",
+    "name": "Infosys",
+    "logo": "💼",
+    "type": "Mass Recruiter",
+    "difficulty": "Easy-Medium",
+    "ctc": "3.6 - 8 LPA",
+    "rounds": [
+      "Reasoning Ability Test",
+      "Verbal Ability Test",
+      "Pseudocode Test",
+      "Puzzle Solving",
+      "HR Interview"
+    ],
+    "roundDetails": {
+      "Reasoning Ability Test": "15 questions in 25 minutes — logical reasoning, seating arrangements, blood relations",
+      "Verbal Ability Test": "20 questions in 20 minutes — reading comprehension, grammar, sentence correction",
+      "Pseudocode Test": "5 questions in 10 minutes — reading code and predicting output",
+      "Puzzle Solving": "4 puzzles in 10 minutes",
+      "HR Interview": "Communication assessment, project discussion, culture fit"
+    },
+    "keyTopics": [
+      "Logical Reasoning",
+      "Grammar & RC",
+      "Basic Programming Logic",
+      "Puzzles"
+    ],
+    "tips": [
+      "No coding round typically for Systems Engineer role",
+      "Infosys Specialist Programmer needs coding (1 medium problem)",
+      "Verbal skills are heavily weighted",
+      "Practice InfyTQ platform mock tests",
+      "Communication matters most in HR"
+    ]
+  },
+  {
+    "id": "wipro",
+    "name": "Wipro",
+    "logo": "🔵",
+    "type": "Mass Recruiter",
+    "difficulty": "Medium",
+    "ctc": "3.5 - 6.5 LPA",
+    "rounds": [
+      "Aptitude Test (AMCAT)",
+      "Written Communication Test",
+      "Technical Interview",
+      "HR Interview"
+    ],
+    "roundDetails": {
+      "Aptitude Test": "Quantitative (16 Q / 16 min), Logical (14 Q / 14 min), Verbal (22 Q / 18 min), Coding (2 Q / 60 min)",
+      "Written Communication": "Essay writing on a given topic, assessed for grammar and clarity",
+      "Technical Interview": "OOP, DBMS, DSA, Project discussion, 1-2 coding questions",
+      "HR Interview": "Behavioral, work ethic, relocation, commitment"
+    },
+    "keyTopics": [
+      "AMCAT Aptitude syllabus",
+      "C/C++/Java OOP",
+      "SQL Queries",
+      "Basic coding problems"
+    ],
+    "tips": [
+      "AMCAT scores significantly impact shortlisting",
+      "Write practice essays for Written Communication test",
+      "Prepare STAR-based answers for HR",
+      "Know your projects end-to-end",
+      "Wipro Elite NTH requires higher AMCAT score"
+    ]
+  },
+  {
+    "id": "amazon",
+    "name": "Amazon",
+    "logo": "📦",
+    "type": "Product Company",
+    "difficulty": "Hard",
+    "ctc": "18 - 45 LPA",
+    "rounds": [
+      "Online Assessment (OA)",
+      "Technical Phone Screen",
+      "Virtual Onsite (4-5 rounds)"
+    ],
+    "roundDetails": {
+      "Online Assessment": "2 coding problems (Medium-Hard LeetCode level), Behavioral Assessment (Amazon Leadership Principles), Work Style questionnaire",
+      "Technical Phone Screen": "1-2 coding problems + discussion of approach, time/space complexity analysis",
+      "Virtual Onsite": "4-5 back-to-back rounds: 2-3 coding rounds, 1 system design (for SDE2+), 1-2 behavioral (LP) rounds"
+    },
+    "keyTopics": [
+      "LeetCode Medium-Hard",
+      "Dynamic Programming",
+      "Graphs, Trees, Recursion",
+      "System Design (senior)",
+      "Amazon Leadership Principles (16 LPs)"
+    ],
+    "tips": [
+      "Master ALL 16 Amazon Leadership Principles with STAR stories",
+      "Solve 150+ LeetCode problems (focus on Medium)",
+      "Practice Think-out-loud while coding",
+      "Know time & space complexity for every solution",
+      "Amazon values problem-solving over memorizing algorithms"
+    ]
+  },
+  {
+    "id": "google",
+    "name": "Google",
+    "logo": "🔍",
+    "type": "Product Company (FAANG)",
+    "difficulty": "Very Hard",
+    "ctc": "30 - 80 LPA",
+    "rounds": [
+      "Recruiter Screen",
+      "Technical Phone Screen (1-2)",
+      "Onsite Loop (5-6 rounds)"
+    ],
+    "roundDetails": {
+      "Recruiter Screen": "Resume review, role fit discussion, basic background questions",
+      "Technical Phone Screen": "45-60 min: 1-2 coding problems on shared editor. Focus on correctness and optimization.",
+      "Onsite Loop": "5-6 rounds: 4 coding rounds + 1 Googleyness/behavioral + 1 system design (senior). Each 45 min."
+    },
+    "keyTopics": [
+      "LeetCode Hard",
+      "Advanced Graphs (Dijkstra, Topological Sort)",
+      "Segment Trees, Tries",
+      "System Design at scale",
+      "Distributed Systems concepts"
+    ],
+    "tips": [
+      "Google asks fundamentals, not tricks — know WHY your algorithm works",
+      "Communicate your thought process constantly",
+      "Study \"Cracking the Coding Interview\" and LeetCode Top 150",
+      "For System Design: Practice designing URL Shortener, Twitter Feed, YouTube",
+      "Expect 3-6 month preparation for competitive candidates"
+    ]
+  },
+  {
+    "id": "accenture",
+    "name": "Accenture",
+    "logo": "🌐",
+    "type": "Mass Recruiter (IT Services)",
+    "difficulty": "Easy",
+    "ctc": "4 - 6.5 LPA",
+    "rounds": [
+      "Cognitive & Technical Assessment",
+      "Coding Test",
+      "Communication Assessment",
+      "HR Interview"
+    ],
+    "roundDetails": {
+      "Cognitive & Technical Assessment": "Abstract reasoning, attention to detail, technical fundamentals (50 Q / 65 min)",
+      "Coding Test": "2 coding questions in 45 min (Easy-Medium level), Python/Java/C++",
+      "Communication Assessment": "AI-powered spoken English evaluation (reading and impromptu speaking)",
+      "HR Interview": "Background, adaptability, work ethic, role preferences"
+    },
+    "keyTopics": [
+      "Abstract & Logical Reasoning",
+      "Basic Python/Java syntax",
+      "Array and String problems",
+      "Spoken English fluency"
+    ],
+    "tips": [
+      "Communication assessment is AI-graded — speak clearly and confidently",
+      "Coding difficulty is relatively low — focus on correctness",
+      "Be prepared for \"night shift / rotational shift\" questions",
+      "Accenture ASE vs Packaged App Associate roles have different tracks",
+      "Very high volume — focus on clearing all rounds systematically"
+    ]
+  }
+]

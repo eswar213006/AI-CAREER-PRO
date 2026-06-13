@@ -1,0 +1,20 @@
+{
+  "javascript": [
+    {
+      "id": "js1",
+      "question": "Which method adds an element to the end of an array?",
+      "options": ["push()", "pop()", "shift()", "unshift()"],
+      "answer": 0,
+      "explanation": "push() adds to the end."
+    }
+  ],
+  "python": [
+    {
+      "id": "py1",
+      "question": "What is the output of len([1,2,3])?",
+      "options": ["2", "3", "4", "Error"],
+      "answer": 1,
+      "explanation": "len returns number of elements."
+    }
+  ]
+}

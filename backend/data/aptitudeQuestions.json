@@ -1,0 +1,14 @@
+[
+  {
+    "category": "Quantitative",
+    "questions": [
+      { "id": "a1", "type": "numerical", "question": "What is 7 + 5?", "options": [], "answer": 12 }
+    ]
+  },
+  {
+    "category": "Logical",
+    "questions": [
+      { "id": "a2", "type": "verbal", "question": "Find the synonym of 'quick'.", "options": ["slow", "fast", "late"], "answer": 1 }
+    ]
+  }
+]

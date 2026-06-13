@@ -1,0 +1,90 @@
+[
+  {
+    "_id": "1781375945093_gw2bqqu",
+    "createdAt": "2026-06-13T18:39:05.093Z",
+    "updatedAt": "2026-06-13T18:48:52.062Z",
+    "email": "eswar@gmail.com",
+    "password": "$2a$10$29S0DNdccgl1k3cB0bDwu.TIF.o4KKG3TUWQ7cFIymixIw2RxZEcu",
+    "isVerified": true,
+    "verificationToken": "bw99ewktkaq",
+    "role": "student",
+    "profile": {
+      "name": "eswar",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Fresher",
+      "targetCompanies": [],
+      "resumeUrl": "/uploads/resume-1781375979091-665545888.pdf"
+    },
+    "stats": {
+      "xp": 100,
+      "currentStreak": 1,
+      "longestStreak": 1,
+      "lastActiveDate": "2026-06-13",
+      "codingChallengesCompleted": 0,
+      "totalInterviewsTaken": 0,
+      "readinessScore": 72,
+      "atsScore": 48
+    },
+    "achievements": [
+      {
+        "id": "welcome",
+        "title": "Welcome aboard!",
+        "description": "Created your AI CareerPrep Pro account successfully.",
+        "unlockedAt": "2026-06-13T18:39:05.092Z",
+        "icon": "🎉"
+      }
+    ],
+    "dailyChallenges": [
+      {
+        "date": "2026-06-13",
+        "challengeId": "first_login",
+        "completed": true,
+        "completedAt": "2026-06-13T18:39:05.092Z"
+      }
+    ]
+  },
+  {
+    "_id": "1781379119733_ang86cz",
+    "createdAt": "2026-06-13T19:31:59.733Z",
+    "updatedAt": "2026-06-13T19:34:18.590Z",
+    "email": "es@gmail.com",
+    "password": "$2a$10$wv9bebr31bqZD3bkXkrsE.f785/Ez0c6aILQ4a9OL.16ydQ5WuY8W",
+    "isVerified": true,
+    "verificationToken": "bepgg6qlgno",
+    "role": "student",
+    "profile": {
+      "name": "eswar",
+      "targetRole": "QA Engineer",
+      "experienceLevel": "Fresher",
+      "targetCompanies": [],
+      "resumeUrl": "/uploads/resume-1781379175472-395456520.pdf"
+    },
+    "stats": {
+      "xp": 100,
+      "currentStreak": 1,
+      "longestStreak": 1,
+      "lastActiveDate": "2026-06-13",
+      "codingChallengesCompleted": 0,
+      "totalInterviewsTaken": 0,
+      "readinessScore": 25,
+      "atsScore": 40
+    },
+    "achievements": [
+      {
+        "id": "welcome",
+        "title": "Welcome aboard!",
+        "description": "Created your AI CareerPrep Pro account successfully.",
+        "unlockedAt": "2026-06-13T19:31:59.732Z",
+        "icon": "🎉"
+      }
+    ],
+    "dailyChallenges": [
+      {
+        "date": "2026-06-13",
+        "challengeId": "first_login",
+        "completed": true,
+        "completedAt": "2026-06-13T19:31:59.732Z"
+      }
+    ]
+  }
+]
