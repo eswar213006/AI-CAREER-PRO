@@ -68,6 +68,7 @@ export const ResumeAnalyzer: React.FC = () => {
   const [experienceLevel, setExperienceLevel] = useState('Fresher (0-1 years)');
   const [techStack, setTechStack] = useState(COMMON_STACKS['Software Engineer']);
   const [projectSummaries, setProjectSummaries] = useState('');
+  const [builderPdfFile, setBuilderPdfFile] = useState<File | null>(null);
   const [generating, setGenerating] = useState(false);
   const [generatedMarkdown, setGeneratedMarkdown] = useState('');
   const [copied, setCopied] = useState(false);
@@ -117,11 +118,16 @@ export const ResumeAnalyzer: React.FC = () => {
     setGenerating(true);
     setGeneratedMarkdown('');
     try {
-      const response = await api.post('/resume/generate', {
-        targetRole: builderRole,
-        experienceLevel,
-        techStack,
-        projectSummaries
+      const formData = new FormData();
+      formData.append('targetRole', builderRole);
+      formData.append('experienceLevel', experienceLevel);
+      formData.append('techStack', techStack);
+      formData.append('projectSummaries', projectSummaries);
+      if (builderPdfFile) {
+        formData.append('resume', builderPdfFile);
+      }
+      const response = await api.post('/resume/generate', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
       });
       setGeneratedMarkdown(response.data.markdown || '');
       showToast('AI Resume generated successfully! +30 XP earned.', 'success');
@@ -430,6 +436,34 @@ export const ResumeAnalyzer: React.FC = () => {
                   placeholder="e.g. Built a food delivery app with React and Node.js; Used Redis for caching; Reduced load time by 50%..."
                   className="w-full bg-dark-bg border border-dark-border rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-accent-purple resize-none"
                 />
+              </div>
+
+              <div>
+                <label className="block text-[10px] uppercase font-bold text-gray-400 mb-1">
+                  Upload Existing Resume (Optional)
+                </label>
+                <p className="text-[9px] text-gray-600 mb-1.5">Upload your PDF so AI uses your real name & context.</p>
+                <div className="border border-dashed border-dark-border rounded-xl p-4 hover:bg-dark-hover/30 hover:border-accent-purple/40 transition-colors relative flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="file"
+                    accept=".pdf"
+                    onChange={(e) => {
+                      if (e.target.files && e.target.files[0]) setBuilderPdfFile(e.target.files[0]);
+                    }}
+                    className="absolute inset-0 opacity-0 cursor-pointer"
+                  />
+                  <FileUp className="h-5 w-5 text-accent-purple shrink-0" />
+                  <div className="min-w-0">
+                    {builderPdfFile ? (
+                      <>
+                        <p className="text-xs font-bold text-white truncate">{builderPdfFile.name}</p>
+                        <p className="text-[9px] text-gray-500">{(builderPdfFile.size / 1024).toFixed(0)} KB • PDF</p>
+                      </>
+                    ) : (
+                      <p className="text-[10px] text-gray-500">Click to upload PDF (optional)</p>
+                    )}
+                  </div>
+                </div>
               </div>
 
               <button

@@ -5,7 +5,7 @@
     "logo": "🏢",
     "type": "Mass Recruiter",
     "difficulty": "Easy-Medium",
-    "ctc": "3.5 - 7 LPA (Fresher)",
+    "package": "3.5 - 7 LPA (Fresher)",
     "rounds": [
       "TCS NQT Online Test",
       "Technical Interview",
@@ -16,7 +16,7 @@
       "Technical Interview": "Focus on DBMS, OS, CN basics, C/C++/Java OOP, Projects you've done, DSA basics",
       "HR Interview": "Behavioral questions, relocation willingness, team adaptation, communication"
     },
-    "keyTopics": [
+    "focusAreas": [
       "Aptitude (Speed, Time, Probability)",
       "Verbal (Grammar, RC)",
       "C/Java basics",
@@ -37,7 +37,7 @@
     "logo": "💼",
     "type": "Mass Recruiter",
     "difficulty": "Easy-Medium",
-    "ctc": "3.6 - 8 LPA",
+    "package": "3.6 - 8 LPA",
     "rounds": [
       "Reasoning Ability Test",
       "Verbal Ability Test",
@@ -52,7 +52,7 @@
       "Puzzle Solving": "4 puzzles in 10 minutes",
       "HR Interview": "Communication assessment, project discussion, culture fit"
     },
-    "keyTopics": [
+    "focusAreas": [
       "Logical Reasoning",
       "Grammar & RC",
       "Basic Programming Logic",
@@ -72,7 +72,7 @@
     "logo": "🔵",
     "type": "Mass Recruiter",
     "difficulty": "Medium",
-    "ctc": "3.5 - 6.5 LPA",
+    "package": "3.5 - 6.5 LPA",
     "rounds": [
       "Aptitude Test (AMCAT)",
       "Written Communication Test",
@@ -85,7 +85,7 @@
       "Technical Interview": "OOP, DBMS, DSA, Project discussion, 1-2 coding questions",
       "HR Interview": "Behavioral, work ethic, relocation, commitment"
     },
-    "keyTopics": [
+    "focusAreas": [
       "AMCAT Aptitude syllabus",
       "C/C++/Java OOP",
       "SQL Queries",
@@ -105,7 +105,7 @@
     "logo": "📦",
     "type": "Product Company",
     "difficulty": "Hard",
-    "ctc": "18 - 45 LPA",
+    "package": "18 - 45 LPA",
     "rounds": [
       "Online Assessment (OA)",
       "Technical Phone Screen",
@@ -116,7 +116,7 @@
       "Technical Phone Screen": "1-2 coding problems + discussion of approach, time/space complexity analysis",
       "Virtual Onsite": "4-5 back-to-back rounds: 2-3 coding rounds, 1 system design (for SDE2+), 1-2 behavioral (LP) rounds"
     },
-    "keyTopics": [
+    "focusAreas": [
       "LeetCode Medium-Hard",
       "Dynamic Programming",
       "Graphs, Trees, Recursion",
@@ -137,7 +137,7 @@
     "logo": "🔍",
     "type": "Product Company (FAANG)",
     "difficulty": "Very Hard",
-    "ctc": "30 - 80 LPA",
+    "package": "30 - 80 LPA",
     "rounds": [
       "Recruiter Screen",
       "Technical Phone Screen (1-2)",
@@ -148,7 +148,7 @@
       "Technical Phone Screen": "45-60 min: 1-2 coding problems on shared editor. Focus on correctness and optimization.",
       "Onsite Loop": "5-6 rounds: 4 coding rounds + 1 Googleyness/behavioral + 1 system design (senior). Each 45 min."
     },
-    "keyTopics": [
+    "focusAreas": [
       "LeetCode Hard",
       "Advanced Graphs (Dijkstra, Topological Sort)",
       "Segment Trees, Tries",
@@ -158,7 +158,7 @@
     "tips": [
       "Google asks fundamentals, not tricks — know WHY your algorithm works",
       "Communicate your thought process constantly",
-      "Study \"Cracking the Coding Interview\" and LeetCode Top 150",
+      "Study 'Cracking the Coding Interview' and LeetCode Top 150",
       "For System Design: Practice designing URL Shortener, Twitter Feed, YouTube",
       "Expect 3-6 month preparation for competitive candidates"
     ]
@@ -169,7 +169,7 @@
     "logo": "🌐",
     "type": "Mass Recruiter (IT Services)",
     "difficulty": "Easy",
-    "ctc": "4 - 6.5 LPA",
+    "package": "4 - 6.5 LPA",
     "rounds": [
       "Cognitive & Technical Assessment",
       "Coding Test",
@@ -182,7 +182,7 @@
       "Communication Assessment": "AI-powered spoken English evaluation (reading and impromptu speaking)",
       "HR Interview": "Background, adaptability, work ethic, role preferences"
     },
-    "keyTopics": [
+    "focusAreas": [
       "Abstract & Logical Reasoning",
       "Basic Python/Java syntax",
       "Array and String problems",
@@ -191,9 +191,72 @@
     "tips": [
       "Communication assessment is AI-graded — speak clearly and confidently",
       "Coding difficulty is relatively low — focus on correctness",
-      "Be prepared for \"night shift / rotational shift\" questions",
+      "Be prepared for 'night shift / rotational shift' questions",
       "Accenture ASE vs Packaged App Associate roles have different tracks",
       "Very high volume — focus on clearing all rounds systematically"
+    ]
+  },
+  {
+    "id": "microsoft",
+    "name": "Microsoft",
+    "logo": "🪟",
+    "type": "Product Company (MAANG)",
+    "difficulty": "Very Hard",
+    "package": "25 - 60 LPA",
+    "rounds": [
+      "Online Assessment",
+      "Technical Interviews (3-4)",
+      "As-Appropriate (AA) Interview"
+    ],
+    "roundDetails": {
+      "Online Assessment": "2 coding questions (Medium level), 30-45 min",
+      "Technical Interviews": "Each round: 1-2 coding problems + behavioral questions. Focus on code quality and edge cases.",
+      "AA Interview": "Senior engineer evaluates overall fit, culture alignment, and decision-making ability"
+    },
+    "focusAreas": [
+      "Data Structures & Algorithms",
+      "Object-Oriented Design",
+      "System Design Basics",
+      "Behavioral (STAR method)",
+      "C++, C#, or Java proficiency"
+    ],
+    "tips": [
+      "Microsoft values clean, readable, and well-structured code over speed",
+      "Always clarify requirements before coding",
+      "Discuss trade-offs in your design decisions",
+      "STAR method is essential for behavioral rounds",
+      "Growth Mindset is a core Microsoft value — demonstrate it"
+    ]
+  },
+  {
+    "id": "cognizant",
+    "name": "Cognizant (CTS)",
+    "logo": "⚡",
+    "type": "Mass Recruiter",
+    "difficulty": "Easy",
+    "package": "3.5 - 5 LPA",
+    "rounds": [
+      "GenC Online Test (Aptitude + Coding)",
+      "Technical Interview",
+      "HR Interview"
+    ],
+    "roundDetails": {
+      "GenC Online Test": "Quantitative, Reasoning, Verbal, Automata (coding) — 2.5 hours total",
+      "Technical Interview": "OOPS, DBMS, basic DSA, project discussion",
+      "HR Interview": "Background, relocation, team fit"
+    },
+    "focusAreas": [
+      "Basic C/C++/Java",
+      "SQL fundamentals",
+      "Logical reasoning",
+      "1-2 easy coding problems"
+    ],
+    "tips": [
+      "GenC Next has higher package and requires stronger coding skills",
+      "Time management is key in the Automata (coding) section",
+      "Projects are heavily discussed — prepare 2 projects well",
+      "Verbal communication is tested in HR — practice English",
+      "Cognizant often conducts off-campus drives — apply broadly"
     ]
   }
 ]

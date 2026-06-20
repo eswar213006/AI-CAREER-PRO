@@ -4,22 +4,13 @@
     "title": "Two Sum",
     "difficulty": "Easy",
     "category": "Array",
-    "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.\nYou can return the answer in any order.",
+    "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order.",
     "inputFormat": "nums = [2, 7, 11, 15], target = 9",
     "outputFormat": "[0, 1]",
     "testCases": [
-      {
-        "input": "[[2, 7, 11, 15], 9]",
-        "expected": "[0, 1]"
-      },
-      {
-        "input": "[[3, 2, 4], 6]",
-        "expected": "[1, 2]"
-      },
-      {
-        "input": "[[3, 3], 6]",
-        "expected": "[0, 1]"
-      }
+      { "input": "[[2, 7, 11, 15], 9]", "expected": "[0, 1]" },
+      { "input": "[[3, 2, 4], 6]", "expected": "[1, 2]" },
+      { "input": "[[3, 3], 6]", "expected": "[0, 1]" }
     ],
     "defaultTemplates": {
       "javascript": "function twoSum(nums, target) {\n    // Write your code here\n    \n}",
@@ -32,18 +23,12 @@
     "title": "Reverse Linked List",
     "difficulty": "Easy",
     "category": "LinkedList",
-    "description": "Given the head of a singly linked list, reverse the list, and return its reversed list.",
-    "inputFormat": "head = [1,2,3,4,5]",
-    "outputFormat": "[5,4,3,2,1]",
+    "description": "Given the head of a singly linked list, reverse the list, and return the reversed list. The reversal must be done in-place without allocating extra memory for a new list.",
+    "inputFormat": "head = [1, 2, 3, 4, 5]",
+    "outputFormat": "[5, 4, 3, 2, 1]",
     "testCases": [
-      {
-        "input": "[[1, 2, 3, 4, 5]]",
-        "expected": "[5, 4, 3, 2, 1]"
-      },
-      {
-        "input": "[[1, 2]]",
-        "expected": "[2, 1]"
-      }
+      { "input": "[[1, 2, 3, 4, 5]]", "expected": "[5, 4, 3, 2, 1]" },
+      { "input": "[[1, 2]]", "expected": "[2, 1]" }
     ],
     "defaultTemplates": {
       "javascript": "function reverseList(head) {\n    // Write your code here\n    \n}",
@@ -56,22 +41,13 @@
     "title": "Longest Substring Without Repeating Characters",
     "difficulty": "Medium",
     "category": "String",
-    "description": "Given a string s, find the length of the longest substring without repeating characters.",
+    "description": "Given a string s, find the length of the longest substring without repeating characters. Use a sliding window approach for optimal O(n) time complexity.",
     "inputFormat": "s = \"abcabcbb\"",
     "outputFormat": "3",
     "testCases": [
-      {
-        "input": "[\"abcabcbb\"]",
-        "expected": "3"
-      },
-      {
-        "input": "[\"bbbbb\"]",
-        "expected": "1"
-      },
-      {
-        "input": "[\"pwwkew\"]",
-        "expected": "3"
-      }
+      { "input": "[\"abcabcbb\"]", "expected": "3" },
+      { "input": "[\"bbbbb\"]", "expected": "1" },
+      { "input": "[\"pwwkew\"]", "expected": "3" }
     ],
     "defaultTemplates": {
       "javascript": "function lengthOfLongestSubstring(s) {\n    // Write your code here\n    \n}",
@@ -80,1131 +56,944 @@
     }
   },
   {
-    "id": "problem-4",
-    "title": "Dynamic Programming Challenge 4",
-    "difficulty": "Medium",
-    "category": "Dynamic Programming",
-    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
+    "id": "valid-parentheses",
+    "title": "Valid Parentheses",
+    "difficulty": "Easy",
+    "category": "String",
+    "description": "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. A string is valid if every open bracket is closed by the same type of bracket in the correct order.",
+    "inputFormat": "s = \"()[]{}\"",
+    "outputFormat": "true",
     "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
+      { "input": "[\"()[]{}\"]", "expected": "true" },
+      { "input": "[\"(]\"]", "expected": "false" },
+      { "input": "[\"([)]\"]", "expected": "false" }
     ],
     "defaultTemplates": {
-      "javascript": "function solveProblem4(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem4(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_4(input):\n    # Write your code here\n    pass"
+      "javascript": "function isValid(s) {\n    // Write your code here\n    \n}",
+      "java": "public class Solution {\n    public boolean isValid(String s) {\n        // Write your code here\n        return false;\n    }\n}",
+      "python": "def is_valid(s):\n    # Write your code here\n    pass"
     }
   },
   {
-    "id": "problem-5",
-    "title": "Graph Challenge 5",
-    "difficulty": "Hard",
-    "category": "Graph",
-    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem5(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem5(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_5(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-6",
-    "title": "Array Challenge 6",
+    "id": "merge-sorted-arrays",
+    "title": "Merge Sorted Array",
     "difficulty": "Easy",
     "category": "Array",
-    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
+    "description": "You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively. Merge nums2 into nums1 as one sorted array in-place.",
+    "inputFormat": "nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3",
+    "outputFormat": "[1, 2, 2, 3, 5, 6]",
     "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
+      { "input": "[[1,2,3,0,0,0], 3, [2,5,6], 3]", "expected": "[1,2,2,3,5,6]" },
+      { "input": "[[1], 1, [], 0]", "expected": "[1]" }
     ],
     "defaultTemplates": {
-      "javascript": "function solveProblem6(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem6(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_6(input):\n    # Write your code here\n    pass"
+      "javascript": "function merge(nums1, m, nums2, n) {\n    // Merge in-place\n    \n}",
+      "java": "public class Solution {\n    public void merge(int[] nums1, int m, int[] nums2, int n) {\n        // Write your code here\n    }\n}",
+      "python": "def merge(nums1, m, nums2, n):\n    # Write your code here\n    pass"
     }
   },
   {
-    "id": "problem-7",
-    "title": "String Challenge 7",
+    "id": "max-subarray",
+    "title": "Maximum Subarray (Kadane's Algorithm)",
     "difficulty": "Medium",
-    "category": "String",
-    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
+    "category": "Dynamic Programming",
+    "description": "Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum. This is the classic application of Kadane's Algorithm — a must-know for placement interviews.",
+    "inputFormat": "nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]",
+    "outputFormat": "6",
     "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
+      { "input": "[[-2,1,-3,4,-1,2,1,-5,4]]", "expected": "6" },
+      { "input": "[[1]]", "expected": "1" },
+      { "input": "[[5,4,-1,7,8]]", "expected": "23" }
     ],
     "defaultTemplates": {
-      "javascript": "function solveProblem7(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem7(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_7(input):\n    # Write your code here\n    pass"
+      "javascript": "function maxSubArray(nums) {\n    // Implement Kadane's Algorithm\n    \n}",
+      "java": "public class Solution {\n    public int maxSubArray(int[] nums) {\n        // Write your code here\n        return 0;\n    }\n}",
+      "python": "def max_sub_array(nums):\n    # Write your code here\n    pass"
     }
   },
   {
-    "id": "problem-8",
-    "title": "LinkedList Challenge 8",
+    "id": "climbing-stairs",
+    "title": "Climbing Stairs",
+    "difficulty": "Easy",
+    "category": "Dynamic Programming",
+    "description": "You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top? This is equivalent to computing the (n+1)th Fibonacci number.",
+    "inputFormat": "n = 5",
+    "outputFormat": "8",
+    "testCases": [
+      { "input": "[2]", "expected": "2" },
+      { "input": "[3]", "expected": "3" },
+      { "input": "[5]", "expected": "8" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function climbStairs(n) {\n    // Use DP or Fibonacci approach\n    \n}",
+      "java": "public class Solution {\n    public int climbStairs(int n) {\n        // Write your code here\n        return 0;\n    }\n}",
+      "python": "def climb_stairs(n):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "binary-search",
+    "title": "Binary Search",
+    "difficulty": "Easy",
+    "category": "Array",
+    "description": "Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, return its index. Otherwise, return -1. Your algorithm must run in O(log n) time.",
+    "inputFormat": "nums = [-1,0,3,5,9,12], target = 9",
+    "outputFormat": "4",
+    "testCases": [
+      { "input": "[[-1,0,3,5,9,12], 9]", "expected": "4" },
+      { "input": "[[-1,0,3,5,9,12], 2]", "expected": "-1" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function search(nums, target) {\n    // Implement binary search — O(log n)\n    \n}",
+      "java": "public class Solution {\n    public int search(int[] nums, int target) {\n        // Write your code here\n        return -1;\n    }\n}",
+      "python": "def search(nums, target):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "invert-binary-tree",
+    "title": "Invert Binary Tree",
+    "difficulty": "Easy",
+    "category": "Tree",
+    "description": "Given the root of a binary tree, invert the tree (mirror it), and return its root. You can solve this recursively or iteratively using a queue (BFS). Both approaches are acceptable.",
+    "inputFormat": "root = [4,2,7,1,3,6,9]",
+    "outputFormat": "[4,7,2,9,6,3,1]",
+    "testCases": [
+      { "input": "[[4,2,7,1,3,6,9]]", "expected": "[4,7,2,9,6,3,1]" },
+      { "input": "[[2,1,3]]", "expected": "[2,3,1]" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function invertTree(root) {\n    // Recursively swap left and right subtrees\n    \n}",
+      "java": "public class Solution {\n    public TreeNode invertTree(TreeNode root) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def invert_tree(root):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "bfs-level-order",
+    "title": "Binary Tree Level Order Traversal",
+    "difficulty": "Medium",
+    "category": "Tree",
+    "description": "Given the root of a binary tree, return the level order traversal of its nodes' values (i.e., from left to right, level by level). Use a queue (BFS) to traverse level by level.",
+    "inputFormat": "root = [3,9,20,null,null,15,7]",
+    "outputFormat": "[[3],[9,20],[15,7]]",
+    "testCases": [
+      { "input": "[[3,9,20,null,null,15,7]]", "expected": "[[3],[9,20],[15,7]]" },
+      { "input": "[[1]]", "expected": "[[1]]" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function levelOrder(root) {\n    // Use a queue for BFS\n    \n}",
+      "java": "public class Solution {\n    public List<List<Integer>> levelOrder(TreeNode root) {\n        // Write your code here\n        return new ArrayList<>();\n    }\n}",
+      "python": "def level_order(root):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "detect-cycle-linked-list",
+    "title": "Linked List Cycle Detection",
     "difficulty": "Easy",
     "category": "LinkedList",
-    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
+    "description": "Given head, the head of a linked list, determine if the linked list has a cycle in it. Use Floyd's Cycle-Finding Algorithm (Tortoise and Hare) — maintain two pointers moving at different speeds. Return true if a cycle exists, false otherwise.",
+    "inputFormat": "head = [3,2,0,-4], pos = 1 (tail connects to node at index 1)",
+    "outputFormat": "true",
     "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
+      { "input": "[[3,2,0,-4], 1]", "expected": "true" },
+      { "input": "[[1,2], -1]", "expected": "false" }
     ],
     "defaultTemplates": {
-      "javascript": "function solveProblem8(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem8(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_8(input):\n    # Write your code here\n    pass"
+      "javascript": "function hasCycle(head) {\n    // Floyd's cycle detection (slow & fast pointers)\n    \n}",
+      "java": "public class Solution {\n    public boolean hasCycle(ListNode head) {\n        // Write your code here\n        return false;\n    }\n}",
+      "python": "def has_cycle(head):\n    # Write your code here\n    pass"
     }
   },
   {
-    "id": "problem-9",
-    "title": "Tree Challenge 9",
+    "id": "merge-k-sorted-lists",
+    "title": "Merge K Sorted Lists",
+    "difficulty": "Hard",
+    "category": "LinkedList",
+    "description": "You are given an array of k linked-lists, each linked-list is sorted in ascending order. Merge all the linked-lists into one sorted linked-list and return it. Use a min-heap (priority queue) approach for O(N log k) time complexity.",
+    "inputFormat": "lists = [[1,4,5],[1,3,4],[2,6]]",
+    "outputFormat": "[1,1,2,3,4,4,5,6]",
+    "testCases": [
+      { "input": "[[[1,4,5],[1,3,4],[2,6]]]", "expected": "[1,1,2,3,4,4,5,6]" },
+      { "input": "[[[]]]", "expected": "[]" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function mergeKLists(lists) {\n    // Use a min-heap / priority queue approach\n    \n}",
+      "java": "public class Solution {\n    public ListNode mergeKLists(ListNode[] lists) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def merge_k_lists(lists):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "number-of-islands",
+    "title": "Number of Islands",
+    "difficulty": "Medium",
+    "category": "Graph",
+    "description": "Given an m x n 2D binary grid which represents a map of '1's (land) and '0's (water), return the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. Use DFS or BFS to explore connected components.",
+    "inputFormat": "grid = [[\"1\",\"1\",\"0\"],[\"0\",\"1\",\"0\"],[\"0\",\"0\",\"1\"]]",
+    "outputFormat": "2",
+    "testCases": [
+      { "input": "[[[\"1\",\"1\",\"0\"],[\"0\",\"1\",\"0\"],[\"0\",\"0\",\"1\"]]]", "expected": "2" },
+      { "input": "[[[\"1\",\"1\",\"1\"],[\"0\",\"1\",\"0\"],[\"1\",\"1\",\"1\"]]]", "expected": "1" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function numIslands(grid) {\n    // Use DFS/BFS to explore connected land cells\n    \n}",
+      "java": "public class Solution {\n    public int numIslands(char[][] grid) {\n        // Write your code here\n        return 0;\n    }\n}",
+      "python": "def num_islands(grid):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "course-schedule",
+    "title": "Course Schedule (Detect Cycle in DAG)",
+    "difficulty": "Medium",
+    "category": "Graph",
+    "description": "There are numCourses courses labeled from 0 to numCourses-1. Some courses have prerequisites. Given an array prerequisites where prerequisites[i] = [ai, bi] means you must take course bi before course ai, return true if you can finish all courses. This is essentially detecting a cycle in a directed graph using topological sort (Kahn's algorithm) or DFS.",
+    "inputFormat": "numCourses = 2, prerequisites = [[1,0]]",
+    "outputFormat": "true",
+    "testCases": [
+      { "input": "[2, [[1,0]]]", "expected": "true" },
+      { "input": "[2, [[1,0],[0,1]]]", "expected": "false" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function canFinish(numCourses, prerequisites) {\n    // Topological sort or DFS cycle detection\n    \n}",
+      "java": "public class Solution {\n    public boolean canFinish(int numCourses, int[][] prerequisites) {\n        // Write your code here\n        return false;\n    }\n}",
+      "python": "def can_finish(num_courses, prerequisites):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "dijkstra-shortest-path",
+    "title": "Network Delay Time (Dijkstra's Algorithm)",
+    "difficulty": "Medium",
+    "category": "Graph",
+    "description": "You are given a network of n nodes, labeled from 1 to n. You are also given times, a list of travel times as directed edges times[i] = (ui, vi, wi). We will send a signal from a given node k. Return the minimum time it takes for all the n nodes to receive the signal. If it is impossible for all the n nodes to receive the signal, return -1. Use Dijkstra's algorithm with a min-heap.",
+    "inputFormat": "times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2",
+    "outputFormat": "2",
+    "testCases": [
+      { "input": "[[[2,1,1],[2,3,1],[3,4,1]], 4, 2]", "expected": "2" },
+      { "input": "[[[1,2,1]], 2, 1]", "expected": "1" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function networkDelayTime(times, n, k) {\n    // Implement Dijkstra's Algorithm with a min-heap\n    \n}",
+      "java": "public class Solution {\n    public int networkDelayTime(int[][] times, int n, int k) {\n        // Write your code here\n        return -1;\n    }\n}",
+      "python": "def network_delay_time(times, n, k):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "coin-change",
+    "title": "Coin Change",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money. Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1. Use bottom-up DP for O(amount * coins.length) time.",
+    "inputFormat": "coins = [1, 5, 6, 9], amount = 11",
+    "outputFormat": "2",
+    "testCases": [
+      { "input": "[[1,5,6,9], 11]", "expected": "2" },
+      { "input": "[[2], 3]", "expected": "-1" },
+      { "input": "[[1], 0]", "expected": "0" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function coinChange(coins, amount) {\n    // Bottom-up DP — dp[i] = min coins to make amount i\n    \n}",
+      "java": "public class Solution {\n    public int coinChange(int[] coins, int amount) {\n        // Write your code here\n        return -1;\n    }\n}",
+      "python": "def coin_change(coins, amount):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "longest-common-subsequence",
+    "title": "Longest Common Subsequence",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "Given two strings text1 and text2, return the length of their longest common subsequence. A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order. Build a 2D DP table where dp[i][j] = LCS of text1[0..i-1] and text2[0..j-1].",
+    "inputFormat": "text1 = \"abcde\", text2 = \"ace\"",
+    "outputFormat": "3",
+    "testCases": [
+      { "input": "[\"abcde\", \"ace\"]", "expected": "3" },
+      { "input": "[\"abc\", \"abc\"]", "expected": "3" },
+      { "input": "[\"abc\", \"def\"]", "expected": "0" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function longestCommonSubsequence(text1, text2) {\n    // Build a 2D DP table\n    \n}",
+      "java": "public class Solution {\n    public int longestCommonSubsequence(String text1, String text2) {\n        // Write your code here\n        return 0;\n    }\n}",
+      "python": "def longest_common_subsequence(text1, text2):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "knapsack-01",
+    "title": "0/1 Knapsack Problem",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "Given weights and values of n items, put these items in a knapsack of capacity W to get the maximum total value. Each item can only be included once (0/1 property). Solve using DP where dp[i][w] = max value using first i items with capacity w. Time: O(n*W), Space: O(n*W).",
+    "inputFormat": "weights = [1,3,4,5], values = [1,4,5,7], W = 7",
+    "outputFormat": "9",
+    "testCases": [
+      { "input": "[[1,3,4,5], [1,4,5,7], 7]", "expected": "9" },
+      { "input": "[[2,3], [3,4], 5]", "expected": "7" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function knapsack(weights, values, W) {\n    // 2D DP table approach\n    const n = weights.length;\n    // Your code here\n    \n}",
+      "java": "public class Solution {\n    public int knapsack(int[] weights, int[] values, int W) {\n        // Write your code here\n        return 0;\n    }\n}",
+      "python": "def knapsack(weights, values, W):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "validate-bst",
+    "title": "Validate Binary Search Tree",
+    "difficulty": "Medium",
+    "category": "Tree",
+    "description": "Given the root of a binary tree, determine if it is a valid binary search tree (BST). A valid BST is defined as: The left subtree of a node contains only nodes with keys less than the node's key. The right subtree contains only nodes with keys greater than the node's key. Recursively pass min/max bounds.",
+    "inputFormat": "root = [2,1,3]",
+    "outputFormat": "true",
+    "testCases": [
+      { "input": "[[2,1,3]]", "expected": "true" },
+      { "input": "[[5,1,4,null,null,3,6]]", "expected": "false" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function isValidBST(root) {\n    // Pass min/max bounds through recursive calls\n    \n}",
+      "java": "public class Solution {\n    public boolean isValidBST(TreeNode root) {\n        // Write your code here\n        return false;\n    }\n}",
+      "python": "def is_valid_bst(root):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "lowest-common-ancestor",
+    "title": "Lowest Common Ancestor of a BST",
+    "difficulty": "Medium",
+    "category": "Tree",
+    "description": "Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes p and q. The LCA is defined as the lowest node T such that both p and q are descendants of T. Use BST property: if both p and q are greater than root, go right; if both less, go left; otherwise root is LCA.",
+    "inputFormat": "root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8",
+    "outputFormat": "6",
+    "testCases": [
+      { "input": "[[6,2,8,0,4,7,9], 2, 8]", "expected": "6" },
+      { "input": "[[6,2,8,0,4,7,9], 2, 4]", "expected": "2" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function lowestCommonAncestor(root, p, q) {\n    // Use BST properties to navigate\n    \n}",
+      "java": "public class Solution {\n    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "def lowest_common_ancestor(root, p, q):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "word-search",
+    "title": "Word Search",
+    "difficulty": "Medium",
+    "category": "Graph",
+    "description": "Given an m x n grid of characters board and a string word, return true if word exists in the grid. The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once. Use DFS with backtracking.",
+    "inputFormat": "board = [[\"A\",\"B\",\"C\"],[\"S\",\"F\",\"C\"],[\"A\",\"D\",\"E\"]], word = \"ABCCED\"",
+    "outputFormat": "true",
+    "testCases": [
+      { "input": "[[[\"A\",\"B\",\"C\"],[\"S\",\"F\",\"C\"],[\"A\",\"D\",\"E\"]], \"ABCCED\"]", "expected": "true" },
+      { "input": "[[[\"A\",\"B\"],[\"C\",\"D\"]], \"ABDC\"]", "expected": "true" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function exist(board, word) {\n    // DFS with backtracking on the grid\n    \n}",
+      "java": "public class Solution {\n    public boolean exist(char[][] board, String word) {\n        // Write your code here\n        return false;\n    }\n}",
+      "python": "def exist(board, word):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "merge-intervals",
+    "title": "Merge Intervals",
+    "difficulty": "Medium",
+    "category": "Array",
+    "description": "Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input. Sort by start time first, then iterate and merge.",
+    "inputFormat": "intervals = [[1,3],[2,6],[8,10],[15,18]]",
+    "outputFormat": "[[1,6],[8,10],[15,18]]",
+    "testCases": [
+      { "input": "[[[1,3],[2,6],[8,10],[15,18]]]", "expected": "[[1,6],[8,10],[15,18]]" },
+      { "input": "[[[1,4],[4,5]]]", "expected": "[[1,5]]" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function merge(intervals) {\n    // Sort by start, then greedily merge\n    \n}",
+      "java": "public class Solution {\n    public int[][] merge(int[][] intervals) {\n        // Write your code here\n        return new int[][]{};\n    }\n}",
+      "python": "def merge(intervals):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "product-except-self",
+    "title": "Product of Array Except Self",
+    "difficulty": "Medium",
+    "category": "Array",
+    "description": "Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. You must solve it in O(n) time without using the division operation. Use prefix and suffix product arrays.",
+    "inputFormat": "nums = [1,2,3,4]",
+    "outputFormat": "[24,12,8,6]",
+    "testCases": [
+      { "input": "[[1,2,3,4]]", "expected": "[24,12,8,6]" },
+      { "input": "[[-1,1,0,-3,3]]", "expected": "[0,0,9,0,0]" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function productExceptSelf(nums) {\n    // Prefix pass then suffix pass — no division\n    \n}",
+      "java": "public class Solution {\n    public int[] productExceptSelf(int[] nums) {\n        // Write your code here\n        return new int[]{};\n    }\n}",
+      "python": "def product_except_self(nums):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "find-duplicate",
+    "title": "Find the Duplicate Number",
+    "difficulty": "Medium",
+    "category": "Array",
+    "description": "Given an array of integers nums containing n+1 integers where each integer is in the range [1, n], there is only one repeated number. Find this number without modifying the array and using only O(1) extra space. Use Floyd's Cycle Detection treating the array as a linked list.",
+    "inputFormat": "nums = [1,3,4,2,2]",
+    "outputFormat": "2",
+    "testCases": [
+      { "input": "[[1,3,4,2,2]]", "expected": "2" },
+      { "input": "[[3,1,3,4,2]]", "expected": "3" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function findDuplicate(nums) {\n    // Floyd's cycle detection on the array\n    \n}",
+      "java": "public class Solution {\n    public int findDuplicate(int[] nums) {\n        // Write your code here\n        return -1;\n    }\n}",
+      "python": "def find_duplicate(nums):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "anagram-check",
+    "title": "Valid Anagram",
+    "difficulty": "Easy",
+    "category": "String",
+    "description": "Given two strings s and t, return true if t is an anagram of s, and false otherwise. An anagram is a word or phrase formed by rearranging the letters of a different word or phrase. Use a frequency counter approach in O(n) time and O(1) space (since only 26 lowercase letters).",
+    "inputFormat": "s = \"anagram\", t = \"nagaram\"",
+    "outputFormat": "true",
+    "testCases": [
+      { "input": "[\"anagram\", \"nagaram\"]", "expected": "true" },
+      { "input": "[\"rat\", \"car\"]", "expected": "false" },
+      { "input": "[\"listen\", \"silent\"]", "expected": "true" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function isAnagram(s, t) {\n    // Use frequency counter or sort & compare\n    \n}",
+      "java": "public class Solution {\n    public boolean isAnagram(String s, String t) {\n        // Write your code here\n        return false;\n    }\n}",
+      "python": "def is_anagram(s, t):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "group-anagrams",
+    "title": "Group Anagrams",
+    "difficulty": "Medium",
+    "category": "String",
+    "description": "Given an array of strings strs, group the anagrams together. You can return the answer in any order. Use a HashMap where the key is the sorted version of each word — all anagrams will share the same sorted key.",
+    "inputFormat": "strs = [\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]",
+    "outputFormat": "[[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]]",
+    "testCases": [
+      { "input": "[[\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]]", "expected": "[[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]]" },
+      { "input": "[[\"\"]]", "expected": "[[\"\"]]" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function groupAnagrams(strs) {\n    // Sort each string as key in a map\n    \n}",
+      "java": "public class Solution {\n    public List<List<String>> groupAnagrams(String[] strs) {\n        // Write your code here\n        return new ArrayList<>();\n    }\n}",
+      "python": "def group_anagrams(strs):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "trapping-rainwater",
+    "title": "Trapping Rain Water",
+    "difficulty": "Hard",
+    "category": "Array",
+    "description": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining. Use the two-pointer approach: maintain left and right pointers, track max heights on each side. Water trapped at each position = min(leftMax, rightMax) - height[i].",
+    "inputFormat": "height = [0,1,0,2,1,0,1,3,2,1,2,1]",
+    "outputFormat": "6",
+    "testCases": [
+      { "input": "[[0,1,0,2,1,0,1,3,2,1,2,1]]", "expected": "6" },
+      { "input": "[[4,2,0,3,2,5]]", "expected": "9" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function trap(height) {\n    // Two-pointer approach — O(n) time, O(1) space\n    \n}",
+      "java": "public class Solution {\n    public int trap(int[] height) {\n        // Write your code here\n        return 0;\n    }\n}",
+      "python": "def trap(height):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "median-sorted-arrays",
+    "title": "Median of Two Sorted Arrays",
+    "difficulty": "Hard",
+    "category": "Array",
+    "description": "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays. The overall run time complexity should be O(log(m+n)). Binary search on the smaller array to find the correct partition point.",
+    "inputFormat": "nums1 = [1,3], nums2 = [2]",
+    "outputFormat": "2.0",
+    "testCases": [
+      { "input": "[[1,3], [2]]", "expected": "2.0" },
+      { "input": "[[1,2], [3,4]]", "expected": "2.5" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function findMedianSortedArrays(nums1, nums2) {\n    // Binary search on the smaller array\n    \n}",
+      "java": "public class Solution {\n    public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n        // Write your code here\n        return 0.0;\n    }\n}",
+      "python": "def find_median_sorted_arrays(nums1, nums2):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "lru-cache",
+    "title": "LRU Cache",
+    "difficulty": "Hard",
+    "category": "LinkedList",
+    "description": "Design a data structure that follows the constraints of a Least Recently Used (LRU) cache. Implement LRUCache class with get(key) and put(key, value) — both must run in O(1) time. Use a HashMap combined with a Doubly Linked List (DDL): the map for O(1) lookup, the DLL to maintain recency order.",
+    "inputFormat": "LRUCache(2), put(1,1), put(2,2), get(1) → 1, put(3,3), get(2) → -1",
+    "outputFormat": "-1 (key 2 was evicted)",
+    "testCases": [
+      { "input": "[[2, [[\"put\",1,1],[\"put\",2,2],[\"get\",1],[\"put\",3,3],[\"get\",2],[\"get\",3]]]]", "expected": "[null,null,1,null,-1,3]" }
+    ],
+    "defaultTemplates": {
+      "javascript": "class LRUCache {\n    constructor(capacity) {\n        // Initialize with HashMap + Doubly Linked List\n        this.capacity = capacity;\n    }\n\n    get(key) {\n        // Return value or -1\n    }\n\n    put(key, value) {\n        // Insert or update, evict LRU if over capacity\n    }\n}",
+      "java": "class LRUCache {\n    public LRUCache(int capacity) {\n        // Initialize here\n    }\n\n    public int get(int key) {\n        return -1;\n    }\n\n    public void put(int key, int value) {\n        // Write your code here\n    }\n}",
+      "python": "class LRUCache:\n    def __init__(self, capacity):\n        # Initialize here\n        pass\n\n    def get(self, key):\n        # Write your code here\n        return -1\n\n    def put(self, key, value):\n        # Write your code here\n        pass"
+    }
+  },
+  {
+    "id": "top-k-frequent",
+    "title": "Top K Frequent Elements",
+    "difficulty": "Medium",
+    "category": "Array",
+    "description": "Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order. Use a min-heap of size k for O(n log k) or Bucket Sort for O(n) — bucket sort is the optimal approach.",
+    "inputFormat": "nums = [1,1,1,2,2,3], k = 2",
+    "outputFormat": "[1, 2]",
+    "testCases": [
+      { "input": "[[1,1,1,2,2,3], 2]", "expected": "[1,2]" },
+      { "input": "[[1], 1]", "expected": "[1]" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function topKFrequent(nums, k) {\n    // Bucket sort approach: count freq, bucket by freq\n    \n}",
+      "java": "public class Solution {\n    public int[] topKFrequent(int[] nums, int k) {\n        // Write your code here\n        return new int[]{};\n    }\n}",
+      "python": "def top_k_frequent(nums, k):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "3sum",
+    "title": "3Sum",
+    "difficulty": "Medium",
+    "category": "Array",
+    "description": "Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, j != k, and nums[i] + nums[j] + nums[k] == 0. The solution set must not contain duplicate triplets. Sort the array, then use a two-pointer approach for each element.",
+    "inputFormat": "nums = [-1,0,1,2,-1,-4]",
+    "outputFormat": "[[-1,-1,2],[-1,0,1]]",
+    "testCases": [
+      { "input": "[[-1,0,1,2,-1,-4]]", "expected": "[[-1,-1,2],[-1,0,1]]" },
+      { "input": "[[0,0,0]]", "expected": "[[0,0,0]]" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function threeSum(nums) {\n    // Sort, then two-pointer for each element\n    \n}",
+      "java": "public class Solution {\n    public List<List<Integer>> threeSum(int[] nums) {\n        // Write your code here\n        return new ArrayList<>();\n    }\n}",
+      "python": "def three_sum(nums):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "rotate-image",
+    "title": "Rotate Image (Matrix)",
+    "difficulty": "Medium",
+    "category": "Array",
+    "description": "You are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees clockwise in-place. To rotate 90° clockwise: (1) Transpose the matrix (swap matrix[i][j] with matrix[j][i]), then (2) Reverse each row.",
+    "inputFormat": "matrix = [[1,2,3],[4,5,6],[7,8,9]]",
+    "outputFormat": "[[7,4,1],[8,5,2],[9,6,3]]",
+    "testCases": [
+      { "input": "[[[1,2,3],[4,5,6],[7,8,9]]]", "expected": "[[7,4,1],[8,5,2],[9,6,3]]" },
+      { "input": "[[[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]]", "expected": "[[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function rotate(matrix) {\n    // Step 1: Transpose; Step 2: Reverse each row\n    \n}",
+      "java": "public class Solution {\n    public void rotate(int[][] matrix) {\n        // Write your code here\n    }\n}",
+      "python": "def rotate(matrix):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "spiral-matrix",
+    "title": "Spiral Matrix",
+    "difficulty": "Medium",
+    "category": "Array",
+    "description": "Given an m x n matrix, return all elements of the matrix in spiral order (clockwise from top-left). Use four boundary pointers (top, bottom, left, right) and simulate the spiral traversal, shrinking the boundaries after each pass.",
+    "inputFormat": "matrix = [[1,2,3],[4,5,6],[7,8,9]]",
+    "outputFormat": "[1,2,3,6,9,8,7,4,5]",
+    "testCases": [
+      { "input": "[[[1,2,3],[4,5,6],[7,8,9]]]", "expected": "[1,2,3,6,9,8,7,4,5]" },
+      { "input": "[[[1,2],[3,4]]]", "expected": "[1,2,4,3]" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function spiralOrder(matrix) {\n    // Use top/bottom/left/right boundary pointers\n    \n}",
+      "java": "public class Solution {\n    public List<Integer> spiralOrder(int[][] matrix) {\n        // Write your code here\n        return new ArrayList<>();\n    }\n}",
+      "python": "def spiral_order(matrix):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "palindromic-substrings",
+    "title": "Palindromic Substrings",
+    "difficulty": "Medium",
+    "category": "String",
+    "description": "Given a string s, return the number of palindromic substrings in it. A string is a palindrome when it reads the same backward as forward. Use the Expand Around Center approach: for each center (or pair of centers), expand outward and count palindromes. O(n²) time, O(1) space.",
+    "inputFormat": "s = \"aaa\"",
+    "outputFormat": "6",
+    "testCases": [
+      { "input": "[\"abc\"]", "expected": "3" },
+      { "input": "[\"aaa\"]", "expected": "6" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function countSubstrings(s) {\n    // Expand from each center (odd and even lengths)\n    \n}",
+      "java": "public class Solution {\n    public int countSubstrings(String s) {\n        // Write your code here\n        return 0;\n    }\n}",
+      "python": "def count_substrings(s):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "word-break",
+    "title": "Word Break",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words. Use DP where dp[i] = true if s[0..i-1] can be segmented. For each position i, check all prefixes that exist in the dictionary.",
+    "inputFormat": "s = \"leetcode\", wordDict = [\"leet\",\"code\"]",
+    "outputFormat": "true",
+    "testCases": [
+      { "input": "[\"leetcode\", [\"leet\",\"code\"]]", "expected": "true" },
+      { "input": "[\"catsandog\", [\"cats\",\"dog\",\"sand\",\"and\",\"cat\"]]", "expected": "false" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function wordBreak(s, wordDict) {\n    // dp[i] = can we segment s[0..i-1]\n    \n}",
+      "java": "public class Solution {\n    public boolean wordBreak(String s, List<String> wordDict) {\n        // Write your code here\n        return false;\n    }\n}",
+      "python": "def word_break(s, word_dict):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "house-robber",
+    "title": "House Robber",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected. Given an integer array nums representing the amount of money of each house, return the maximum amount you can rob tonight without alerting the police.",
+    "inputFormat": "nums = [2,7,9,3,1]",
+    "outputFormat": "12",
+    "testCases": [
+      { "input": "[[1,2,3,1]]", "expected": "4" },
+      { "input": "[[2,7,9,3,1]]", "expected": "12" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function rob(nums) {\n    // dp: at each house, max(rob_current + dp[i-2], dp[i-1])\n    \n}",
+      "java": "public class Solution {\n    public int rob(int[] nums) {\n        // Write your code here\n        return 0;\n    }\n}",
+      "python": "def rob(nums):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "kth-largest-element",
+    "title": "Kth Largest Element in an Array",
+    "difficulty": "Medium",
+    "category": "Array",
+    "description": "Given an integer array nums and an integer k, return the kth largest element in the array. Note that it is the kth largest element in sorted order, not the kth distinct element. Use QuickSelect algorithm for average O(n) time — find the (n-k)th smallest element using partition.",
+    "inputFormat": "nums = [3,2,1,5,6,4], k = 2",
+    "outputFormat": "5",
+    "testCases": [
+      { "input": "[[3,2,1,5,6,4], 2]", "expected": "5" },
+      { "input": "[[3,2,3,1,2,4,5,5,6], 4]", "expected": "4" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function findKthLargest(nums, k) {\n    // Min-heap of size k, or QuickSelect\n    \n}",
+      "java": "public class Solution {\n    public int findKthLargest(int[] nums, int k) {\n        // Write your code here\n        return 0;\n    }\n}",
+      "python": "def find_kth_largest(nums, k):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "decode-string",
+    "title": "Decode String",
+    "difficulty": "Medium",
+    "category": "String",
+    "description": "Given an encoded string, return its decoded string. The encoding rule is k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. Use a stack-based approach: push count and current string before each '[', and when ']' is encountered, pop and repeat.",
+    "inputFormat": "s = \"3[a2[c]]\"",
+    "outputFormat": "\"accaccacc\"",
+    "testCases": [
+      { "input": "[\"3[a]2[bc]\"]", "expected": "\"aaabcbc\"" },
+      { "input": "[\"3[a2[c]]\"]", "expected": "\"accaccacc\"" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function decodeString(s) {\n    // Stack-based: push (count, currentStr) on '['\n    \n}",
+      "java": "public class Solution {\n    public String decodeString(String s) {\n        // Write your code here\n        return \"\";\n    }\n}",
+      "python": "def decode_string(s):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "implement-trie",
+    "title": "Implement Trie (Prefix Tree)",
+    "difficulty": "Medium",
+    "category": "Graph",
+    "description": "A trie (also called prefix tree) is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. Implement the Trie class with insert(word), search(word), and startsWith(prefix) methods. Each TrieNode has children[26] and an isEnd flag.",
+    "inputFormat": "insert(\"apple\"), search(\"apple\") → true, search(\"app\") → false, startsWith(\"app\") → true",
+    "outputFormat": "[null, true, false, true]",
+    "testCases": [
+      { "input": "[[\"insert\",\"search\",\"search\",\"startsWith\"], [[\"apple\"],[\"apple\"],[\"app\"],[\"app\"]]]", "expected": "[null,true,false,true]" }
+    ],
+    "defaultTemplates": {
+      "javascript": "class Trie {\n    constructor() {\n        this.root = {};\n    }\n\n    insert(word) {\n        // Traverse/create nodes for each char\n    }\n\n    search(word) {\n        // Return true only if full word exists\n    }\n\n    startsWith(prefix) {\n        // Return true if any word starts with prefix\n    }\n}",
+      "java": "class Trie {\n    public Trie() {}\n    public void insert(String word) {}\n    public boolean search(String word) { return false; }\n    public boolean startsWith(String prefix) { return false; }\n}",
+      "python": "class Trie:\n    def __init__(self):\n        self.root = {}\n\n    def insert(self, word):\n        pass\n\n    def search(self, word):\n        return False\n\n    def starts_with(self, prefix):\n        return False"
+    }
+  },
+  {
+    "id": "serialize-deserialize-tree",
+    "title": "Serialize and Deserialize Binary Tree",
     "difficulty": "Hard",
     "category": "Tree",
-    "description": "Solve the following algorithmic challenge related to Tree. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
+    "description": "Serialization is the process of converting a data structure or object into a sequence of bits so it can be stored or transmitted. Design an algorithm to serialize and deserialize a binary tree. Use pre-order (DFS) traversal: serialize by appending node values separated by commas, using 'null' for missing nodes.",
+    "inputFormat": "root = [1,2,3,null,null,4,5]",
+    "outputFormat": "\"1,2,null,null,3,4,null,null,5,null,null\"",
     "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
+      { "input": "[[1,2,3,null,null,4,5]]", "expected": "true (serialize then deserialize gives same tree)" }
     ],
     "defaultTemplates": {
-      "javascript": "function solveProblem9(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem9(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_9(input):\n    # Write your code here\n    pass"
+      "javascript": "const serialize = (root) => {\n    // Pre-order DFS, 'null' for missing nodes\n};\n\nconst deserialize = (data) => {\n    // Parse comma-separated values using a queue\n};",
+      "java": "public class Codec {\n    public String serialize(TreeNode root) {\n        return \"\";\n    }\n    public TreeNode deserialize(String data) {\n        return null;\n    }\n}",
+      "python": "class Codec:\n    def serialize(self, root):\n        pass\n\n    def deserialize(self, data):\n        pass"
     }
   },
   {
-    "id": "problem-10",
-    "title": "Dynamic Programming Challenge 10",
-    "difficulty": "Medium",
-    "category": "Dynamic Programming",
-    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
+    "id": "sliding-window-maximum",
+    "title": "Sliding Window Maximum",
+    "difficulty": "Hard",
+    "category": "Array",
+    "description": "You are given an array of integers nums and an integer k. There is a sliding window of size k which moves from the very left of the array to the very right. You can only see the k numbers in the window. Return the max of the sliding window at each position. Use a Monotonic Deque (decreasing) for O(n) time.",
+    "inputFormat": "nums = [1,3,-1,-3,5,3,6,7], k = 3",
+    "outputFormat": "[3,3,5,5,6,7]",
     "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
+      { "input": "[[1,3,-1,-3,5,3,6,7], 3]", "expected": "[3,3,5,5,6,7]" },
+      { "input": "[[1], 1]", "expected": "[1]" }
     ],
     "defaultTemplates": {
-      "javascript": "function solveProblem10(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem10(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_10(input):\n    # Write your code here\n    pass"
+      "javascript": "function maxSlidingWindow(nums, k) {\n    // Monotonic decreasing deque — O(n)\n    \n}",
+      "java": "public class Solution {\n    public int[] maxSlidingWindow(int[] nums, int k) {\n        // Write your code here\n        return new int[]{};\n    }\n}",
+      "python": "def max_sliding_window(nums, k):\n    # Write your code here\n    pass"
     }
   },
   {
-    "id": "problem-11",
-    "title": "Graph Challenge 11",
+    "id": "alien-dictionary",
+    "title": "Alien Dictionary (Topological Sort)",
     "difficulty": "Hard",
     "category": "Graph",
-    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
+    "description": "There is a new alien language that uses the English alphabet. However, the order among the letters is unknown. You are given a list of words from the alien language's dictionary, where the strings in words are sorted lexicographically. Derive the order of letters using Topological Sort (Kahn's BFS). Return empty string if invalid (cycle detected).",
+    "inputFormat": "words = [\"wrt\",\"wrf\",\"er\",\"ett\",\"rftt\"]",
+    "outputFormat": "\"wertf\"",
     "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
+      { "input": "[[\"wrt\",\"wrf\",\"er\",\"ett\",\"rftt\"]]", "expected": "\"wertf\"" },
+      { "input": "[[\"z\",\"x\"]]", "expected": "\"zx\"" }
     ],
     "defaultTemplates": {
-      "javascript": "function solveProblem11(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem11(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_11(input):\n    # Write your code here\n    pass"
+      "javascript": "function alienOrder(words) {\n    // Build adjacency list from adjacent words, then topological sort\n    \n}",
+      "java": "public class Solution {\n    public String alienOrder(String[] words) {\n        // Write your code here\n        return \"\";\n    }\n}",
+      "python": "def alien_order(words):\n    # Write your code here\n    pass"
     }
   },
   {
-    "id": "problem-12",
-    "title": "Array Challenge 12",
+    "id": "find-median-data-stream",
+    "title": "Find Median from Data Stream",
+    "difficulty": "Hard",
+    "category": "Array",
+    "description": "The MedianFinder class finds the median from a data stream. Implement addNum(num) and findMedian() methods. Use two heaps: a max-heap for the lower half and a min-heap for the upper half. Keep them balanced so the median can always be computed in O(1).",
+    "inputFormat": "addNum(1), addNum(2), findMedian() → 1.5, addNum(3), findMedian() → 2.0",
+    "outputFormat": "[null, null, 1.5, null, 2.0]",
+    "testCases": [
+      { "input": "[[\"addNum\",\"addNum\",\"findMedian\",\"addNum\",\"findMedian\"], [[1],[2],[],[3],[]]]", "expected": "[null,null,1.5,null,2.0]" }
+    ],
+    "defaultTemplates": {
+      "javascript": "class MedianFinder {\n    constructor() {\n        // maxHeap for lower half, minHeap for upper half\n    }\n\n    addNum(num) {\n        // Add and rebalance heaps\n    }\n\n    findMedian() {\n        // Return median based on heap tops\n    }\n}",
+      "java": "class MedianFinder {\n    public MedianFinder() {}\n    public void addNum(int num) {}\n    public double findMedian() { return 0.0; }\n}",
+      "python": "class MedianFinder:\n    def __init__(self):\n        pass\n\n    def add_num(self, num):\n        pass\n\n    def find_median(self):\n        return 0.0"
+    }
+  },
+  {
+    "id": "roman-to-integer",
+    "title": "Roman to Integer",
+    "difficulty": "Easy",
+    "category": "String",
+    "description": "Given a roman numeral string s, convert it to an integer. Roman numerals are represented by seven different symbols: I(1), V(5), X(10), L(50), C(100), D(500), M(1000). Subtraction cases: IV=4, IX=9, XL=40, XC=90, CD=400, CM=900. Traverse right to left: if current value is less than previous, subtract it.",
+    "inputFormat": "s = \"MCMXCIV\"",
+    "outputFormat": "1994",
+    "testCases": [
+      { "input": "[\"III\"]", "expected": "3" },
+      { "input": "[\"LVIII\"]", "expected": "58" },
+      { "input": "[\"MCMXCIV\"]", "expected": "1994" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function romanToInt(s) {\n    // Map each symbol, traverse and handle subtraction cases\n    \n}",
+      "java": "public class Solution {\n    public int romanToInt(String s) {\n        // Write your code here\n        return 0;\n    }\n}",
+      "python": "def roman_to_int(s):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "palindrome-number",
+    "title": "Palindrome Number",
     "difficulty": "Easy",
     "category": "Array",
-    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
+    "description": "Given an integer x, return true if x is a palindrome, and false otherwise. An integer is a palindrome when it reads the same backward as forward. Negative numbers are not palindromes. Solve without converting to a string — reverse the second half of the number and compare with the first half.",
+    "inputFormat": "x = 121",
+    "outputFormat": "true",
     "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
+      { "input": "[121]", "expected": "true" },
+      { "input": "[-121]", "expected": "false" },
+      { "input": "[10]", "expected": "false" }
     ],
     "defaultTemplates": {
-      "javascript": "function solveProblem12(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem12(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_12(input):\n    # Write your code here\n    pass"
+      "javascript": "function isPalindrome(x) {\n    // Reverse the second half and compare\n    \n}",
+      "java": "public class Solution {\n    public boolean isPalindrome(int x) {\n        // Write your code here\n        return false;\n    }\n}",
+      "python": "def is_palindrome(x):\n    # Write your code here\n    pass"
     }
   },
   {
-    "id": "problem-13",
-    "title": "String Challenge 13",
-    "difficulty": "Medium",
-    "category": "String",
-    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem13(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem13(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_13(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-14",
-    "title": "LinkedList Challenge 14",
-    "difficulty": "Easy",
-    "category": "LinkedList",
-    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem14(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem14(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_14(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-15",
-    "title": "Tree Challenge 15",
+    "id": "first-missing-positive",
+    "title": "First Missing Positive",
     "difficulty": "Hard",
+    "category": "Array",
+    "description": "Given an unsorted integer array nums, return the smallest missing positive integer. You must implement an algorithm that runs in O(n) time and uses O(1) auxiliary space. Trick: use the array itself as a hash map — place each number x at index x-1 if 1 <= x <= n, then scan for the first index where nums[i] != i+1.",
+    "inputFormat": "nums = [3,4,-1,1]",
+    "outputFormat": "2",
+    "testCases": [
+      { "input": "[[1,2,0]]", "expected": "3" },
+      { "input": "[[3,4,-1,1]]", "expected": "2" },
+      { "input": "[[7,8,9,11,12]]", "expected": "1" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function firstMissingPositive(nums) {\n    // Place each num at its correct index, then scan\n    \n}",
+      "java": "public class Solution {\n    public int firstMissingPositive(int[] nums) {\n        // Write your code here\n        return 1;\n    }\n}",
+      "python": "def first_missing_positive(nums):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "minimum-window-substring",
+    "title": "Minimum Window Substring",
+    "difficulty": "Hard",
+    "category": "String",
+    "description": "Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. Use a sliding window with two frequency maps — expand right pointer to include all chars, shrink left pointer to minimize the window.",
+    "inputFormat": "s = \"ADOBECODEBANC\", t = \"ABC\"",
+    "outputFormat": "\"BANC\"",
+    "testCases": [
+      { "input": "[\"ADOBECODEBANC\", \"ABC\"]", "expected": "\"BANC\"" },
+      { "input": "[\"a\", \"a\"]", "expected": "\"a\"" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function minWindow(s, t) {\n    // Sliding window with character frequency maps\n    \n}",
+      "java": "public class Solution {\n    public String minWindow(String s, String t) {\n        // Write your code here\n        return \"\";\n    }\n}",
+      "python": "def min_window(s, t):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "subsets",
+    "title": "Subsets (Power Set)",
+    "difficulty": "Medium",
+    "category": "Graph",
+    "description": "Given an integer array nums of unique elements, return all possible subsets (the power set). The solution set must not contain duplicate subsets. Return the solution in any order. Use backtracking: at each step, choose to include or exclude the current element, branching recursively.",
+    "inputFormat": "nums = [1,2,3]",
+    "outputFormat": "[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]",
+    "testCases": [
+      { "input": "[[1,2,3]]", "expected": "[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]" },
+      { "input": "[[0]]", "expected": "[[],[0]]" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function subsets(nums) {\n    // Backtracking: include or exclude each element\n    \n}",
+      "java": "public class Solution {\n    public List<List<Integer>> subsets(int[] nums) {\n        // Write your code here\n        return new ArrayList<>();\n    }\n}",
+      "python": "def subsets(nums):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "permutations",
+    "title": "Permutations",
+    "difficulty": "Medium",
+    "category": "Graph",
+    "description": "Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order. Use backtracking: swap current index with all subsequent indices, recurse, then swap back (undo). This generates all n! permutations.",
+    "inputFormat": "nums = [1,2,3]",
+    "outputFormat": "[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]",
+    "testCases": [
+      { "input": "[[1,2,3]]", "expected": "[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]" },
+      { "input": "[[0,1]]", "expected": "[[0,1],[1,0]]" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function permute(nums) {\n    // Backtracking with swap\n    \n}",
+      "java": "public class Solution {\n    public List<List<Integer>> permute(int[] nums) {\n        // Write your code here\n        return new ArrayList<>();\n    }\n}",
+      "python": "def permute(nums):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "container-most-water",
+    "title": "Container With Most Water",
+    "difficulty": "Medium",
+    "category": "Array",
+    "description": "You are given an integer array height of length n. Find two lines that together with the x-axis form a container such that it contains the most water. Return the maximum amount of water the container can store. Use the two-pointer approach: start from both ends and move the pointer with the shorter height inward.",
+    "inputFormat": "height = [1,8,6,2,5,4,8,3,7]",
+    "outputFormat": "49",
+    "testCases": [
+      { "input": "[[1,8,6,2,5,4,8,3,7]]", "expected": "49" },
+      { "input": "[[1,1]]", "expected": "1" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function maxArea(height) {\n    // Two-pointer from both ends, move shorter pointer\n    \n}",
+      "java": "public class Solution {\n    public int maxArea(int[] height) {\n        // Write your code here\n        return 0;\n    }\n}",
+      "python": "def max_area(height):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "unique-paths",
+    "title": "Unique Paths",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "There is a robot on an m x n grid. The robot is initially located at the top-left corner. The robot tries to move to the bottom-right corner. The robot can only move either down or right at any point in time. Return the number of possible unique paths. Use DP: dp[i][j] = dp[i-1][j] + dp[i][j-1].",
+    "inputFormat": "m = 3, n = 7",
+    "outputFormat": "28",
+    "testCases": [
+      { "input": "[3, 7]", "expected": "28" },
+      { "input": "[3, 2]", "expected": "3" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function uniquePaths(m, n) {\n    // dp[i][j] = paths from top-left to (i,j)\n    \n}",
+      "java": "public class Solution {\n    public int uniquePaths(int m, int n) {\n        // Write your code here\n        return 0;\n    }\n}",
+      "python": "def unique_paths(m, n):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "maximum-product-subarray",
+    "title": "Maximum Product Subarray",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product. Track both the maximum and minimum product up to each index (since a negative * negative = positive — min can become max).",
+    "inputFormat": "nums = [2,3,-2,4]",
+    "outputFormat": "6",
+    "testCases": [
+      { "input": "[[2,3,-2,4]]", "expected": "6" },
+      { "input": "[[-2,0,-1]]", "expected": "0" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function maxProduct(nums) {\n    // Track both max and min product at each step\n    \n}",
+      "java": "public class Solution {\n    public int maxProduct(int[] nums) {\n        // Write your code here\n        return 0;\n    }\n}",
+      "python": "def max_product(nums):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "jump-game",
+    "title": "Jump Game",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "description": "You are given an integer array nums. You are initially positioned at the first index, and each element in the array represents your maximum jump length at that position. Return true if you can reach the last index, or false otherwise. Greedy: track the farthest reachable index.",
+    "inputFormat": "nums = [2,3,1,1,4]",
+    "outputFormat": "true",
+    "testCases": [
+      { "input": "[[2,3,1,1,4]]", "expected": "true" },
+      { "input": "[[3,2,1,0,4]]", "expected": "false" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function canJump(nums) {\n    // Greedy: track max reachable index\n    \n}",
+      "java": "public class Solution {\n    public boolean canJump(int[] nums) {\n        // Write your code here\n        return false;\n    }\n}",
+      "python": "def can_jump(nums):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "gas-station",
+    "title": "Gas Station",
+    "difficulty": "Medium",
+    "category": "Array",
+    "description": "There are n gas stations along a circular route. You have a car with an unlimited gas tank. Given two integer arrays gas and cost, return the starting gas station's index if you can travel around the circuit once in the clockwise direction, otherwise return -1. If the total gas >= total cost, there exists exactly one valid starting point.",
+    "inputFormat": "gas = [1,2,3,4,5], cost = [3,4,5,1,2]",
+    "outputFormat": "3",
+    "testCases": [
+      { "input": "[[1,2,3,4,5], [3,4,5,1,2]]", "expected": "3" },
+      { "input": "[[2,3,4], [3,4,3]]", "expected": "-1" }
+    ],
+    "defaultTemplates": {
+      "javascript": "function canCompleteCircuit(gas, cost) {\n    // Greedy: track running total, reset start when negative\n    \n}",
+      "java": "public class Solution {\n    public int canCompleteCircuit(int[] gas, int[] cost) {\n        // Write your code here\n        return -1;\n    }\n}",
+      "python": "def can_complete_circuit(gas, cost):\n    # Write your code here\n    pass"
+    }
+  },
+  {
+    "id": "diameter-binary-tree",
+    "title": "Diameter of Binary Tree",
+    "difficulty": "Easy",
     "category": "Tree",
-    "description": "Solve the following algorithmic challenge related to Tree. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
+    "description": "Given the root of a binary tree, return the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root. At each node, the diameter = left height + right height. Track the global max during DFS.",
+    "inputFormat": "root = [1,2,3,4,5]",
+    "outputFormat": "3",
     "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
+      { "input": "[[1,2,3,4,5]]", "expected": "3" },
+      { "input": "[[1,2]]", "expected": "1" }
     ],
     "defaultTemplates": {
-      "javascript": "function solveProblem15(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem15(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_15(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-16",
-    "title": "Dynamic Programming Challenge 16",
-    "difficulty": "Medium",
-    "category": "Dynamic Programming",
-    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem16(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem16(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_16(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-17",
-    "title": "Graph Challenge 17",
-    "difficulty": "Hard",
-    "category": "Graph",
-    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem17(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem17(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_17(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-18",
-    "title": "Array Challenge 18",
-    "difficulty": "Easy",
-    "category": "Array",
-    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem18(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem18(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_18(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-19",
-    "title": "String Challenge 19",
-    "difficulty": "Medium",
-    "category": "String",
-    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem19(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem19(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_19(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-20",
-    "title": "LinkedList Challenge 20",
-    "difficulty": "Easy",
-    "category": "LinkedList",
-    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem20(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem20(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_20(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-21",
-    "title": "Tree Challenge 21",
-    "difficulty": "Hard",
-    "category": "Tree",
-    "description": "Solve the following algorithmic challenge related to Tree. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem21(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem21(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_21(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-22",
-    "title": "Dynamic Programming Challenge 22",
-    "difficulty": "Medium",
-    "category": "Dynamic Programming",
-    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem22(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem22(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_22(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-23",
-    "title": "Graph Challenge 23",
-    "difficulty": "Hard",
-    "category": "Graph",
-    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem23(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem23(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_23(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-24",
-    "title": "Array Challenge 24",
-    "difficulty": "Easy",
-    "category": "Array",
-    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem24(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem24(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_24(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-25",
-    "title": "String Challenge 25",
-    "difficulty": "Medium",
-    "category": "String",
-    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem25(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem25(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_25(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-26",
-    "title": "LinkedList Challenge 26",
-    "difficulty": "Easy",
-    "category": "LinkedList",
-    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem26(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem26(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_26(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-27",
-    "title": "Tree Challenge 27",
-    "difficulty": "Hard",
-    "category": "Tree",
-    "description": "Solve the following algorithmic challenge related to Tree. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem27(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem27(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_27(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-28",
-    "title": "Dynamic Programming Challenge 28",
-    "difficulty": "Medium",
-    "category": "Dynamic Programming",
-    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem28(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem28(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_28(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-29",
-    "title": "Graph Challenge 29",
-    "difficulty": "Hard",
-    "category": "Graph",
-    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem29(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem29(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_29(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-30",
-    "title": "Array Challenge 30",
-    "difficulty": "Easy",
-    "category": "Array",
-    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem30(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem30(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_30(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-31",
-    "title": "String Challenge 31",
-    "difficulty": "Medium",
-    "category": "String",
-    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem31(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem31(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_31(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-32",
-    "title": "LinkedList Challenge 32",
-    "difficulty": "Easy",
-    "category": "LinkedList",
-    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem32(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem32(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_32(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-33",
-    "title": "Tree Challenge 33",
-    "difficulty": "Hard",
-    "category": "Tree",
-    "description": "Solve the following algorithmic challenge related to Tree. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem33(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem33(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_33(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-34",
-    "title": "Dynamic Programming Challenge 34",
-    "difficulty": "Medium",
-    "category": "Dynamic Programming",
-    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem34(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem34(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_34(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-35",
-    "title": "Graph Challenge 35",
-    "difficulty": "Hard",
-    "category": "Graph",
-    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem35(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem35(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_35(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-36",
-    "title": "Array Challenge 36",
-    "difficulty": "Easy",
-    "category": "Array",
-    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem36(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem36(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_36(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-37",
-    "title": "String Challenge 37",
-    "difficulty": "Medium",
-    "category": "String",
-    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem37(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem37(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_37(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-38",
-    "title": "LinkedList Challenge 38",
-    "difficulty": "Easy",
-    "category": "LinkedList",
-    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem38(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem38(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_38(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-39",
-    "title": "Tree Challenge 39",
-    "difficulty": "Hard",
-    "category": "Tree",
-    "description": "Solve the following algorithmic challenge related to Tree. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem39(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem39(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_39(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-40",
-    "title": "Dynamic Programming Challenge 40",
-    "difficulty": "Medium",
-    "category": "Dynamic Programming",
-    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem40(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem40(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_40(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-41",
-    "title": "Graph Challenge 41",
-    "difficulty": "Hard",
-    "category": "Graph",
-    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem41(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem41(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_41(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-42",
-    "title": "Array Challenge 42",
-    "difficulty": "Easy",
-    "category": "Array",
-    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem42(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem42(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_42(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-43",
-    "title": "String Challenge 43",
-    "difficulty": "Medium",
-    "category": "String",
-    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem43(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem43(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_43(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-44",
-    "title": "LinkedList Challenge 44",
-    "difficulty": "Easy",
-    "category": "LinkedList",
-    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem44(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem44(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_44(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-45",
-    "title": "Tree Challenge 45",
-    "difficulty": "Hard",
-    "category": "Tree",
-    "description": "Solve the following algorithmic challenge related to Tree. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem45(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem45(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_45(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-46",
-    "title": "Dynamic Programming Challenge 46",
-    "difficulty": "Medium",
-    "category": "Dynamic Programming",
-    "description": "Solve the following algorithmic challenge related to Dynamic Programming. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem46(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem46(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_46(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-47",
-    "title": "Graph Challenge 47",
-    "difficulty": "Hard",
-    "category": "Graph",
-    "description": "Solve the following algorithmic challenge related to Graph. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem47(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem47(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_47(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-48",
-    "title": "Array Challenge 48",
-    "difficulty": "Easy",
-    "category": "Array",
-    "description": "Solve the following algorithmic challenge related to Array. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem48(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem48(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_48(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-49",
-    "title": "String Challenge 49",
-    "difficulty": "Medium",
-    "category": "String",
-    "description": "Solve the following algorithmic challenge related to String. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem49(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem49(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_49(input):\n    # Write your code here\n    pass"
-    }
-  },
-  {
-    "id": "problem-50",
-    "title": "LinkedList Challenge 50",
-    "difficulty": "Easy",
-    "category": "LinkedList",
-    "description": "Solve the following algorithmic challenge related to LinkedList. Ensure your solution is highly optimized for Time and Space Complexity. Constraints: 1 <= N <= 10^5.",
-    "inputFormat": "input = [data]",
-    "outputFormat": "[result]",
-    "testCases": [
-      {
-        "input": "[[1, 2, 3]]",
-        "expected": "mocked_output"
-      },
-      {
-        "input": "[[4, 5, 6]]",
-        "expected": "mocked_output"
-      }
-    ],
-    "defaultTemplates": {
-      "javascript": "function solveProblem50(input) {\n    // Write your code here\n    \n}",
-      "java": "public class Solution {\n    public Object solveProblem50(Object input) {\n        // Write your code here\n        return null;\n    }\n}",
-      "python": "def solve_problem_50(input):\n    # Write your code here\n    pass"
+      "javascript": "function diameterOfBinaryTree(root) {\n    // DFS: at each node, diameter = leftH + rightH\n    \n}",
+      "java": "public class Solution {\n    public int diameterOfBinaryTree(TreeNode root) {\n        // Write your code here\n        return 0;\n    }\n}",
+      "python": "def diameter_of_binary_tree(root):\n    # Write your code here\n    pass"
     }
   }
 ]
