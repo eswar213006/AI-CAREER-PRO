@@ -4,7 +4,8 @@ import {
   FileUp, FileCheck, CheckCircle2, XCircle, Lightbulb, Check,
   ShieldAlert, Wand2, Copy, Download, Clipboard, ClipboardCheck,
   ChevronRight, Loader2, Sparkles, Target, Code2,
-  User, Briefcase, GraduationCap, Award, FolderGit2, ChevronDown
+  User, Briefcase, GraduationCap, Award, FolderGit2, ChevronDown,
+  Plus, Trash2
 } from 'lucide-react';
 import type { RootState } from '../store';
 import { updateUser } from '../store/authSlice';
@@ -57,7 +58,7 @@ export const ResumeAnalyzer: React.FC = () => {
   const dispatch = useDispatch();
   const { showToast } = useToast();
 
-  const [activeTab, setActiveTab] = useState<'ats' | 'builder'>('ats');
+  const [activeTab, setActiveTab] = useState<'ats' | 'builder' | 'enhancer'>('ats');
 
   // ATS State
   const [file, setFile] = useState<File | null>(null);
@@ -74,24 +75,70 @@ export const ResumeAnalyzer: React.FC = () => {
   const [generatedMarkdown, setGeneratedMarkdown] = useState('');
   const [copied, setCopied] = useState(false);
 
-  // New Comprehensive Fields
+  // Dynamic Arrays for multiple entries
+  const [educations, setEducations] = useState<Array<{ college: string; degree: string; gradYear: string; cgpa: string; }>>([
+    { college: '', degree: '', gradYear: '', cgpa: '' }
+  ]);
+  const [experiences, setExperiences] = useState<Array<{ company: string; role: string; duration: string; achievements: string; }>>([
+    { company: '', role: '', duration: '', achievements: '' }
+  ]);
+
+  // Contact / Additional Fields
   const [fullName, setFullName] = useState(user?.profile?.name || '');
   const [email, setEmail] = useState(user?.email || '');
   const [phone, setPhone] = useState('');
   const [github, setGithub] = useState('');
   const [linkedin, setLinkedin] = useState('');
   const [portfolio, setPortfolio] = useState('');
-  const [college, setCollege] = useState('');
-  const [degree, setDegree] = useState('');
-  const [gradYear, setGradYear] = useState('');
-  const [cgpa, setCgpa] = useState('');
-  const [experienceDetails, setExperienceDetails] = useState('');
   const [projectDetails, setProjectDetails] = useState('');
   const [certifications, setCertifications] = useState('');
   const [hobbies, setHobbies] = useState('');
 
+  // Enhancer State
+  const [enhancerFile, setEnhancerFile] = useState<File | null>(null);
+  const [extracting, setExtracting] = useState(false);
+  const [isPrefilled, setIsPrefilled] = useState(false);
+
   // Active accordion section
   const [openSection, setOpenSection] = useState<'contact' | 'profile' | 'education' | 'experience' | 'additional'>('contact');
+
+  // Education Helpers
+  const addEducation = () => {
+    setEducations([...educations, { college: '', degree: '', gradYear: '', cgpa: '' }]);
+  };
+
+  const removeEducation = (index: number) => {
+    if (educations.length > 1) {
+      setEducations(educations.filter((_, i) => i !== index));
+    } else {
+      setEducations([{ college: '', degree: '', gradYear: '', cgpa: '' }]);
+    }
+  };
+
+  const updateEducation = (index: number, field: keyof typeof educations[0], value: string) => {
+    const updated = [...educations];
+    updated[index] = { ...updated[index], [field]: value };
+    setEducations(updated);
+  };
+
+  // Experience Helpers
+  const addExperience = () => {
+    setExperiences([...experiences, { company: '', role: '', duration: '', achievements: '' }]);
+  };
+
+  const removeExperience = (index: number) => {
+    if (experiences.length > 1) {
+      setExperiences(experiences.filter((_, i) => i !== index));
+    } else {
+      setExperiences([{ company: '', role: '', duration: '', achievements: '' }]);
+    }
+  };
+
+  const updateExperience = (index: number, field: keyof typeof experiences[0], value: string) => {
+    const updated = [...experiences];
+    updated[index] = { ...updated[index], [field]: value };
+    setExperiences(updated);
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -101,6 +148,17 @@ export const ResumeAnalyzer: React.FC = () => {
         return;
       }
       setFile(selected);
+    }
+  };
+
+  const handleEnhancerFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const selected = e.target.files[0];
+      if (selected.type !== 'application/pdf') {
+        showToast('Please upload a PDF file.', 'error');
+        return;
+      }
+      setEnhancerFile(selected);
     }
   };
 
@@ -132,6 +190,53 @@ export const ResumeAnalyzer: React.FC = () => {
     }
   };
 
+  const handleExtract = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!enhancerFile) return showToast('Please select your old resume PDF file.', 'error');
+    setExtracting(true);
+    const formData = new FormData();
+    formData.append('resume', enhancerFile);
+    try {
+      const response = await api.post('/resume/extract', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      const data = response.data.data;
+      if (data) {
+        setFullName(data.fullName || '');
+        setEmail(data.email || '');
+        setPhone(data.phone || '');
+        setGithub(data.github || '');
+        setLinkedin(data.linkedin || '');
+        setPortfolio(data.portfolio || '');
+        setTechStack(data.techStack || '');
+
+        if (Array.isArray(data.educations) && data.educations.length > 0) {
+          setEducations(data.educations);
+        } else {
+          setEducations([{ college: '', degree: '', gradYear: '', cgpa: '' }]);
+        }
+
+        if (Array.isArray(data.experiences) && data.experiences.length > 0) {
+          setExperiences(data.experiences);
+        } else {
+          setExperiences([{ company: '', role: '', duration: '', achievements: '' }]);
+        }
+
+        setCertifications(data.certifications || '');
+        setHobbies(data.hobbies || '');
+        setIsPrefilled(true);
+
+        showToast('Successfully extracted details from your resume!', 'success');
+        setActiveTab('builder');
+        setOpenSection('contact');
+      }
+    } catch (error: any) {
+      showToast(error.response?.data?.message || 'Resume extraction failed. Make sure it is not scanned or empty.', 'error');
+    } finally {
+      setExtracting(false);
+    }
+  };
+
   const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!techStack.trim()) return showToast('Please enter your tech stack.', 'error');
@@ -151,14 +256,21 @@ export const ResumeAnalyzer: React.FC = () => {
       formData.append('github', github);
       formData.append('linkedin', linkedin);
       formData.append('portfolio', portfolio);
-      formData.append('college', college);
-      formData.append('degree', degree);
-      formData.append('gradYear', gradYear);
-      formData.append('cgpa', cgpa);
-      formData.append('experienceDetails', experienceDetails);
+      
+      // Fallback fields for backwards compatibility
+      formData.append('college', educations[0]?.college || '');
+      formData.append('degree', educations[0]?.degree || '');
+      formData.append('gradYear', educations[0]?.gradYear || '');
+      formData.append('cgpa', educations[0]?.cgpa || '');
+      formData.append('experienceDetails', experiences[0] ? `${experiences[0].role} at ${experiences[0].company}: ${experiences[0].achievements}` : '');
+      
       formData.append('projectDetails', projectDetails);
       formData.append('certifications', certifications);
       formData.append('hobbies', hobbies);
+
+      // JSON stringified arrays
+      formData.append('educations', JSON.stringify(educations));
+      formData.append('experiences', JSON.stringify(experiences));
 
       if (builderPdfFile) {
         formData.append('resume', builderPdfFile);
@@ -355,7 +467,7 @@ export const ResumeAnalyzer: React.FC = () => {
           <span>Resume Hub</span>
         </h2>
         <p className="text-xs text-gray-400">
-          Analyze your existing resume for ATS compliance or let AI build a fully optimized resume from scratch.
+          Analyze your existing resume for ATS compliance, build an optimized resume from scratch, or enhance your old resume using AI.
         </p>
       </div>
 
@@ -381,7 +493,18 @@ export const ResumeAnalyzer: React.FC = () => {
           }`}
         >
           <Wand2 className="h-3.5 w-3.5" />
-          AI Builder
+          AI Scratch Builder
+        </button>
+        <button
+          onClick={() => setActiveTab('enhancer')}
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold transition-all ${
+            activeTab === 'enhancer'
+              ? 'bg-accent-pink/10 border border-accent-pink/30 text-accent-pink shadow-inner'
+              : 'text-gray-500 hover:text-gray-300'
+          }`}
+        >
+          <Sparkles className="h-3.5 w-3.5" />
+          Resume Enhancer
         </button>
       </div>
 
@@ -490,7 +613,7 @@ export const ResumeAnalyzer: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <GlassCard className="border-emerald-500/20">
                     <h4 className="text-xs font-bold text-emerald-400 mb-3 flex items-center gap-1.5">
-                      <CheckCircle2 className="h-4 w-4" />
+                      <CheckCircle2 className="h-4.5 w-4.5" />
                       Resume Strengths
                     </h4>
                     <ul className="flex flex-col gap-2">
@@ -504,7 +627,7 @@ export const ResumeAnalyzer: React.FC = () => {
                   </GlassCard>
                   <GlassCard className="border-red-500/20">
                     <h4 className="text-xs font-bold text-red-400 mb-3 flex items-center gap-1.5">
-                      <XCircle className="h-4 w-4" />
+                      <XCircle className="h-4.5 w-4.5" />
                       Areas of Weakness
                     </h4>
                     <ul className="flex flex-col gap-2">
@@ -541,7 +664,7 @@ export const ResumeAnalyzer: React.FC = () => {
                     </h3>
                   </div>
                   <p className="text-[10px] text-gray-400 mb-3 leading-relaxed">
-                    Your ATS score is <span className="text-white font-bold">{report.atsScore}/100</span>. Use the AI Builder tab to generate a fully optimized, ATS-ready resume for <span className="text-accent-purple font-bold">{targetRole}</span> from scratch.
+                    Your ATS score is <span className="text-white font-bold">{report.atsScore}/100</span>. Use the AI Scratch Builder tab to generate a fully optimized, ATS-ready resume for <span className="text-accent-purple font-bold">{targetRole}</span> from scratch.
                   </p>
                   <button
                     onClick={() => { setBuilderRole(targetRole); setActiveTab('builder'); }}
@@ -564,7 +687,7 @@ export const ResumeAnalyzer: React.FC = () => {
         </div>
       )}
 
-      {/* ─── AI BUILDER TAB ─── */}
+      {/* ─── AI SCRATCH BUILDER TAB ─── */}
       {activeTab === 'builder' && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
           {/* Builder Config */}
@@ -573,6 +696,23 @@ export const ResumeAnalyzer: React.FC = () => {
               <h3 className="text-xs uppercase font-bold text-gray-400 tracking-wider">Resume Configuration</h3>
               <p className="text-[10px] text-gray-500 mt-1">Fill in your details and AI will generate a complete ATS-optimized resume.</p>
             </div>
+
+            {isPrefilled && (
+              <div className="p-3 bg-emerald-950/20 border border-emerald-500/30 rounded-xl flex items-center justify-between mb-1">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4.5 w-4.5 text-emerald-400 shrink-0" />
+                  <p className="text-[10px] text-emerald-300 font-medium">
+                    Form pre-filled successfully from old resume!
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsPrefilled(false)}
+                  className="text-[9px] text-emerald-400 hover:text-emerald-300 underline font-bold"
+                >
+                  Dismiss
+                </button>
+              </div>
+            )}
 
             <form onSubmit={handleGenerate} className="flex flex-col gap-4">
               {/* SECTION 1: CONTACT INFORMATION */}
@@ -718,54 +858,77 @@ export const ResumeAnalyzer: React.FC = () => {
                 >
                   <div className="flex items-center gap-2 text-white">
                     <GraduationCap className="h-4 w-4 text-primary-400" />
-                    <span className="text-xs font-bold">3. Education</span>
+                    <span className="text-xs font-bold">3. Education Records</span>
                   </div>
                   <ChevronDown className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${openSection === 'education' ? 'rotate-180' : ''}`} />
                 </button>
                 {openSection === 'education' && (
-                  <div className="p-4 border-t border-dark-border space-y-3">
-                    <div>
-                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">College/University</label>
-                      <input
-                        type="text"
-                        value={college}
-                        onChange={(e) => setCollege(e.target.value)}
-                        placeholder="XYZ Institute of Technology"
-                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Degree & Branch</label>
-                      <input
-                        type="text"
-                        value={degree}
-                        onChange={(e) => setDegree(e.target.value)}
-                        placeholder="B.E. / B.Tech in Computer Science"
-                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
-                      />
-                    </div>
-                    <div className="grid grid-cols-2 gap-3">
-                      <div>
-                        <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Graduation Year</label>
-                        <input
-                          type="text"
-                          value={gradYear}
-                          onChange={(e) => setGradYear(e.target.value)}
-                          placeholder="2025"
-                          className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
-                        />
+                  <div className="p-4 border-t border-dark-border space-y-4">
+                    {educations.map((edu, idx) => (
+                      <div key={idx} className="relative p-3 border border-dark-border/60 rounded-xl bg-dark-bg/60 space-y-2.5 mb-2">
+                        {educations.length > 1 && (
+                          <button
+                            type="button"
+                            onClick={() => removeEducation(idx)}
+                            className="absolute top-2 right-2 p-1 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-lg transition-colors"
+                            title="Remove Education"
+                          >
+                            <Trash2 className="h-3.5 w-3.5" />
+                          </button>
+                        )}
+                        <span className="text-[10px] font-bold text-gray-500 uppercase">Education #{idx + 1}</span>
+                        <div>
+                          <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">College/University</label>
+                          <input
+                            type="text"
+                            value={edu.college}
+                            onChange={(e) => updateEducation(idx, 'college', e.target.value)}
+                            placeholder="XYZ Institute of Technology"
+                            className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Degree & Branch</label>
+                          <input
+                            type="text"
+                            value={edu.degree}
+                            onChange={(e) => updateEducation(idx, 'degree', e.target.value)}
+                            placeholder="B.E. / B.Tech in Computer Science"
+                            className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                          />
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Graduation Year</label>
+                            <input
+                              type="text"
+                              value={edu.gradYear}
+                              onChange={(e) => updateEducation(idx, 'gradYear', e.target.value)}
+                              placeholder="2025"
+                              className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">CGPA / GPA</label>
+                            <input
+                              type="text"
+                              value={edu.cgpa}
+                              onChange={(e) => updateEducation(idx, 'cgpa', e.target.value)}
+                              placeholder="8.5 / 10"
+                              className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                            />
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">CGPA / GPA</label>
-                        <input
-                          type="text"
-                          value={cgpa}
-                          onChange={(e) => setCgpa(e.target.value)}
-                          placeholder="8.5 / 10"
-                          className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
-                        />
-                      </div>
-                    </div>
+                    ))}
+                    <button
+                      type="button"
+                      onClick={addEducation}
+                      className="w-full flex items-center justify-center gap-1.5 py-2 px-4 border border-dashed border-dark-border hover:border-primary-500/50 hover:bg-primary-500/5 rounded-xl text-xs font-semibold text-gray-400 hover:text-white transition-all"
+                    >
+                      <Plus className="h-3.5 w-3.5" />
+                      Add Education Record
+                    </button>
                   </div>
                 )}
               </div>
@@ -784,19 +947,80 @@ export const ResumeAnalyzer: React.FC = () => {
                   <ChevronDown className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${openSection === 'experience' ? 'rotate-180' : ''}`} />
                 </button>
                 {openSection === 'experience' && (
-                  <div className="p-4 border-t border-dark-border space-y-3">
-                    <div>
-                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Work / Internship Experience</label>
-                      <p className="text-[8px] text-gray-500 mb-1.5">Include roles, company names, and achievements using XYZ format.</p>
-                      <textarea
-                        value={experienceDetails}
-                        onChange={(e) => setExperienceDetails(e.target.value)}
-                        rows={3}
-                        placeholder="e.g. Software Engineer Intern at TechCorp. Built microservices in Node.js, reducing API latency by 30%..."
-                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500 resize-none"
-                      />
+                  <div className="p-4 border-t border-dark-border space-y-4">
+                    <div className="space-y-1">
+                      <label className="block text-[9px] uppercase font-bold text-gray-400">Work / Internship Experience</label>
+                      <p className="text-[8px] text-gray-500">Include roles, company names, and achievements using XYZ format.</p>
                     </div>
-                    <div>
+
+                    {experiences.map((exp, idx) => (
+                      <div key={idx} className="relative p-3 border border-dark-border/60 rounded-xl bg-dark-bg/60 space-y-2.5 mb-2">
+                        {experiences.length > 1 && (
+                          <button
+                            type="button"
+                            onClick={() => removeExperience(idx)}
+                            className="absolute top-2 right-2 p-1 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-lg transition-colors"
+                            title="Remove Experience"
+                          >
+                            <Trash2 className="h-3.5 w-3.5" />
+                          </button>
+                        )}
+                        <span className="text-[10px] font-bold text-gray-500 uppercase">Experience #{idx + 1}</span>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Company Name</label>
+                            <input
+                              type="text"
+                              value={exp.company}
+                              onChange={(e) => updateExperience(idx, 'company', e.target.value)}
+                              placeholder="TechCorp Inc."
+                              className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Job Title / Role</label>
+                            <input
+                              type="text"
+                              value={exp.role}
+                              onChange={(e) => updateExperience(idx, 'role', e.target.value)}
+                              placeholder="Software Engineer Intern"
+                              className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Duration / Period</label>
+                          <input
+                            type="text"
+                            value={exp.duration}
+                            onChange={(e) => updateExperience(idx, 'duration', e.target.value)}
+                            placeholder="June 2024 – Present or 6 Months"
+                            className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Achievements & Impact</label>
+                          <textarea
+                            value={exp.achievements}
+                            onChange={(e) => updateExperience(idx, 'achievements', e.target.value)}
+                            rows={3}
+                            placeholder="e.g. Engineered a scalable REST API using Node.js, reducing latency by 30% by integrating Redis caching."
+                            className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500 resize-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    
+                    <button
+                      type="button"
+                      onClick={addExperience}
+                      className="w-full flex items-center justify-center gap-1.5 py-2 px-4 border border-dashed border-dark-border hover:border-primary-500/50 hover:bg-primary-500/5 rounded-xl text-xs font-semibold text-gray-400 hover:text-white transition-all mb-4"
+                    >
+                      <Plus className="h-3.5 w-3.5" />
+                      Add Experience Record
+                    </button>
+
+                    <div className="border-t border-dark-border/40 pt-4">
                       <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Key Technical Projects</label>
                       <p className="text-[8px] text-gray-500 mb-1.5">Briefly describe 1-2 major projects, their technologies, and impact.</p>
                       <textarea
@@ -980,6 +1204,77 @@ export const ResumeAnalyzer: React.FC = () => {
                 <div className="mt-6 flex flex-wrap justify-center gap-2">
                   {['ATS Optimized', 'XYZ Bullet Format', 'Role-Specific Keywords', 'Download as .md'].map((tag) => (
                     <span key={tag} className="px-3 py-1 text-[9px] font-bold rounded-full border border-accent-purple/20 text-accent-purple bg-accent-purple/5">
+                      ✓ {tag}
+                    </span>
+                  ))}
+                </div>
+              </GlassCard>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ─── RESUME ENHANCER TAB ─── */}
+      {activeTab === 'enhancer' && (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+          <GlassCard className="lg:col-span-1 space-y-5 border-accent-pink/20">
+            <div>
+              <h3 className="text-xs uppercase font-bold text-accent-pink tracking-wider">Enhance Old Resume</h3>
+              <p className="text-[10px] text-gray-500 mt-1">
+                Upload your old PDF resume. AI will extract all details and auto-populate the Builder form.
+              </p>
+            </div>
+
+            <form onSubmit={handleExtract} className="flex flex-col gap-5">
+              <div>
+                <label className="block text-[10px] uppercase font-bold text-gray-400 mb-1.5">Old Resume (PDF)</label>
+                <div className="border border-dashed border-dark-border rounded-xl p-6 hover:bg-dark-hover/30 hover:border-gray-500 transition-colors relative flex flex-col items-center justify-center text-center cursor-pointer">
+                  <input type="file" accept=".pdf" onChange={handleEnhancerFileChange} className="absolute inset-0 opacity-0 cursor-pointer" />
+                  <FileUp className="h-8 w-8 text-accent-pink mb-2" />
+                  {enhancerFile ? (
+                    <div>
+                      <p className="text-xs font-bold text-white max-w-[200px] truncate">{enhancerFile.name}</p>
+                      <p className="text-[10px] text-gray-500 mt-0.5">{(enhancerFile.size / (1024 * 1024)).toFixed(2)} MB • PDF</p>
+                    </div>
+                  ) : (
+                    <div>
+                      <p className="text-xs text-gray-300 font-semibold">Drag & Drop Resume</p>
+                      <p className="text-[9px] text-gray-500 mt-0.5">Supports PDF only (Max 5MB)</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <Button type="submit" loading={extracting} className="w-full bg-gradient-to-r from-accent-pink to-accent-purple border-none hover:opacity-90">
+                {extracting ? 'Extracting details...' : 'Extract & Pre-fill Form'}
+              </Button>
+            </form>
+          </GlassCard>
+
+          <div className="lg:col-span-2">
+            {extracting ? (
+              <GlassCard className="space-y-6 animate-pulse min-h-[400px] border-accent-pink/10">
+                <div className="flex items-center gap-3 border-b border-dark-border pb-4">
+                  <Loader2 className="h-5 w-5 text-accent-pink animate-spin" />
+                  <span className="text-sm text-gray-400 font-medium">Extracting and structuring your resume details...</span>
+                </div>
+                <div className="space-y-3">
+                  {[...Array(6)].map((_, i) => (
+                    <div key={i} className="h-3 bg-dark-border rounded" style={{ width: `${50 + (i * 7) % 40}%` }} />
+                  ))}
+                </div>
+              </GlassCard>
+            ) : (
+              <GlassCard className="flex flex-col items-center justify-center text-center p-12 min-h-[400px] border-accent-pink/15">
+                <div className="h-20 w-20 rounded-full bg-accent-pink/10 border border-accent-pink/20 flex items-center justify-center mb-6">
+                  <Sparkles className="h-9 w-9 text-accent-pink" />
+                </div>
+                <h3 className="text-lg font-extrabold text-white mb-2">Resume Enhancer</h3>
+                <p className="text-xs text-gray-500 max-w-[320px] leading-relaxed">
+                  Have an old resume? Upload it here. Our AI will automatically parse all sections (education, experience, contact info, skills) and load them into the dynamic multi-field AI Scratch Builder.
+                </p>
+                <div className="mt-6 flex flex-wrap justify-center gap-2">
+                  {['Automated Parsing', 'Education Auto-Fill', 'Experience Auto-Fill', 'Editable Form Output'].map((tag) => (
+                    <span key={tag} className="px-3 py-1 text-[9px] font-bold rounded-full border border-accent-pink/20 text-accent-pink bg-accent-pink/5">
                       ✓ {tag}
                     </span>
                   ))}

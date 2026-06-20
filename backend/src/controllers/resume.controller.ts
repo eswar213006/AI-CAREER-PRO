@@ -185,11 +185,32 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
       experienceDetails,
       projectDetails,
       certifications,
-      hobbies
+      hobbies,
+      educations,
+      experiences
     } = req.body;
 
     if (!targetRole || !techStack) {
       return res.status(400).json({ message: 'Target role and tech stack are required.' });
+    }
+
+    // Safely parse educations and experiences arrays
+    let parsedEducations = [];
+    if (educations) {
+      try {
+        parsedEducations = typeof educations === 'string' ? JSON.parse(educations) : educations;
+      } catch {
+        parsedEducations = [];
+      }
+    }
+
+    let parsedExperiences = [];
+    if (experiences) {
+      try {
+        parsedExperiences = typeof experiences === 'string' ? JSON.parse(experiences) : experiences;
+      } catch {
+        parsedExperiences = [];
+      }
     }
 
     // ── 1. Determine baseline details with fallbacks ────────────────────────────
@@ -241,6 +262,30 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
     const candidateGradYear = gradYear?.trim() || 'Expected May 2025';
     const candidateCgpa = cgpa?.trim() || '8.5 / 10';
 
+    let educationsSection = '';
+    if (Array.isArray(parsedEducations) && parsedEducations.length > 0) {
+      educationsSection = parsedEducations.map((edu: any) => `
+      - Institution: ${edu.college || 'N/A'}
+        Degree: ${edu.degree || 'N/A'}
+        Graduation Year: ${edu.gradYear || 'N/A'}
+        CGPA/GPA: ${edu.cgpa || 'N/A'}
+      `).join('\n');
+    } else {
+      educationsSection = `- Institution: ${candidateCollege}\n- Degree: ${candidateDegree}\n- Graduation Year: ${candidateGradYear}\n- CGPA/GPA: ${candidateCgpa}`;
+    }
+
+    let experiencesSection = '';
+    if (Array.isArray(parsedExperiences) && parsedExperiences.length > 0) {
+      experiencesSection = parsedExperiences.map((exp: any) => `
+      - Company: ${exp.company || 'N/A'}
+        Role: ${exp.role || 'N/A'}
+        Duration: ${exp.duration || 'N/A'}
+        Achievements: ${exp.achievements || 'N/A'}
+      `).join('\n');
+    } else {
+      experiencesSection = experienceDetails || 'Describe a relevant professional experience or internship placeholder using the Google XYZ formula: "Accomplished [X] as measured by [Y], by doing [Z]".';
+    }
+
     const prompt = `
       You are an expert technical recruiter and resume writer.
       Generate a professional, highly ATS-optimized markdown resume for ${candidateName}, a ${experienceLevel} ${targetRole}.
@@ -257,14 +302,11 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
       - Target Role: ${targetRole}
       ${pdfExtractedInfo}
       
-      Education:
-      - Institution: ${candidateCollege}
-      - Degree: ${candidateDegree}
-      - Graduation Year: ${candidateGradYear}
-      - CGPA/GPA: ${candidateCgpa}
+      Education History:
+      ${educationsSection}
       
       Work Experience / Internships:
-      ${experienceDetails ? experienceDetails : 'Describe a relevant professional experience or internship placeholder using the Google XYZ formula: "Accomplished [X] as measured by [Y], by doing [Z]".'}
+      ${experiencesSection}
       
       Projects:
       ${projectDetails ? projectDetails : 'Incorporate 2 impressive project placeholders tailored to the role using the Google XYZ formula.'}
@@ -278,13 +320,44 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
       3. Technical Skills (categorized, using these provided skills: ${techStack})
       4. Work Experience (using the experience details provided, formatted using the Google XYZ formula)
       5. Projects (using the project details provided, formatted using the Google XYZ formula)
-      6. Education (showing the degree, college, year, CGPA)
+      6. Education (showing all education details, degrees, colleges, years, CGPAs)
       ${certifications ? '7. Certifications & Achievements' : ''}
       ${hobbies ? '8. Hobbies & Extracurriculars' : ''}
 
       IMPORTANT: Use the actual candidate name "${candidateName}" throughout. Do NOT use placeholder names like "John Doe" or "Your Name".
       Output ONLY the raw markdown text for the resume. Do not use code blocks around the entire output.
     `;
+
+    // Build dynamic fallback sections
+    let fallbackEducationList = '';
+    if (Array.isArray(parsedEducations) && parsedEducations.length > 0) {
+      fallbackEducationList = parsedEducations.map((edu: any) => `
+**${edu.degree || 'Degree'}**
+*${edu.college || 'College'} | ${edu.gradYear || 'Year'}*
+- CGPA/GPA: ${edu.cgpa || 'N/A'}
+      `).join('\n');
+    } else {
+      fallbackEducationList = `
+**${candidateDegree}**
+*${candidateCollege} | ${candidateGradYear}*
+- CGPA/GPA: ${candidateCgpa}
+      `;
+    }
+
+    let fallbackExperienceList = '';
+    if (Array.isArray(parsedExperiences) && parsedExperiences.length > 0) {
+      fallbackExperienceList = parsedExperiences.map((exp: any) => `
+### ${exp.role || 'Role'} | ${exp.company || 'Company'}
+*${exp.duration || 'Duration'}*
+${(exp.achievements || '').split('\n').map((line: string) => line.startsWith('-') ? line : `- ${line}`).join('\n')}
+      `).join('\n');
+    } else {
+      fallbackExperienceList = `
+### ${targetRole} Intern | Tech Innovators Pvt. Ltd.
+*June 2024 – Present*
+${experienceDetails ? experienceDetails.split('\n').map((line: string) => line.startsWith('-') ? line : `- ${line}`).join('\n') : `- Engineered a scalable REST API using Node.js and Express, improving data retrieval speeds by 40% as measured by load testing benchmarks.\n- Migrated legacy frontend components to React, reducing bundle size by 15% and improving Lighthouse performance score to 95+.`}
+      `;
+    }
 
     const fallbackResume = `# ${candidateName}
 *${candidateEmail} | ${candidatePhone} | [LinkedIn](${candidateLinkedin}) | [GitHub](${candidateGithub})${candidatePortfolio ? ` | [Portfolio](${candidatePortfolio})` : ''}*
@@ -298,10 +371,7 @@ Results-driven ${experienceLevel} ${targetRole} with a strong foundation in buil
 - **Core Concepts:** Data Structures, Algorithms, System Design, REST APIs
 
 ## Experience & Projects
-
-### ${targetRole} Intern | Tech Innovators Pvt. Ltd.
-*June 2024 – Present*
-${experienceDetails ? experienceDetails.split('\n').map((line: string) => line.startsWith('-') ? line : `- ${line}`).join('\n') : `- Engineered a scalable REST API using Node.js and Express, improving data retrieval speeds by 40% as measured by load testing benchmarks.\n- Migrated legacy frontend components to React, reducing bundle size by 15% and improving Lighthouse performance score to 95+.`}
+${fallbackExperienceList}
 
 ### Technical Projects
 ${projectDetails ? projectDetails.split('\n').map((line: string) => line.startsWith('-') ? line : `- ${line}`).join('\n') : `### ${targetRole} Personal Project: E-Commerce Platform
@@ -310,12 +380,11 @@ ${projectDetails ? projectDetails.split('\n').map((line: string) => line.startsW
 - Implemented JWT-based authentication and role-based access control, securing all API endpoints against OWASP Top 10 vulnerabilities.`}
 
 ## Education
-**${candidateDegree}**
-*${candidateCollege} | ${candidateGradYear}*
-- CGPA/GPA: ${candidateCgpa}
+${fallbackEducationList}
 ${certifications ? `\n## Certifications & Achievements\n${certifications.split('\n').map((line: string) => line.startsWith('-') ? line : `- ${line}`).join('\n')}` : ''}
 ${hobbies ? `\n## Hobbies & Extracurriculars\n${hobbies.split('\n').map((line: string) => line.startsWith('-') ? line : `- ${line}`).join('\n')}` : ''}
 `;
+
     const aiResumeMarkdown = await generateAIResponse(prompt, fallbackResume);
 
     await dbService.user.findByIdAndUpdate(userId, {
@@ -325,6 +394,85 @@ ${hobbies ? `\n## Hobbies & Extracurriculars\n${hobbies.split('\n').map((line: s
     res.status(200).json({
       message: 'Resume generated successfully.',
       markdown: typeof aiResumeMarkdown === 'string' ? aiResumeMarkdown : aiResumeMarkdown.content || fallbackResume,
+    });
+  } catch (error: any) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const extractResume = async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const userId = req.user?.id;
+    if (!userId) return res.status(401).json({ message: 'Unauthorized.' });
+    if (!req.file) return res.status(400).json({ message: 'Please upload an old resume in PDF format.' });
+
+    const rawText = await extractPdfText(req.file.path);
+    if (!rawText.trim()) {
+      return res.status(400).json({ message: 'Failed to extract text from the PDF file. Make sure it is not empty or scanned.' });
+    }
+
+    const prompt = `
+      You are an expert resume parsing AI. Parse the text extracted from the candidate's old resume PDF.
+      
+      Resume text:
+      "${rawText}"
+
+      Extract all structured details and return them strictly in the following JSON format. Output ONLY the raw JSON string. Do not wrap it in markdown code blocks like \`\`\`json.
+      {
+        "fullName": "extract full name if present",
+        "email": "extract email if present",
+        "phone": "extract phone if present",
+        "github": "extract github if present",
+        "linkedin": "extract linkedin if present",
+        "portfolio": "extract portfolio/website link if present",
+        "techStack": "comma separated skills like React, Node.js, Python",
+        "educations": [
+          { "college": "name of university/institution", "degree": "degree name, e.g. B.Tech in CS", "gradYear": "graduation year", "cgpa": "cgpa/gpa value" }
+        ],
+        "experiences": [
+          { "company": "name of company", "role": "job title", "duration": "employment duration", "achievements": "bulleted achievements description" }
+        ],
+        "certifications": "bulleted certifications if present",
+        "hobbies": "bulleted hobbies/extracurriculars if present"
+      }
+    `;
+
+    const defaultJson = {
+      fullName: extractNameFromPdf(rawText) || '',
+      email: '',
+      phone: '',
+      github: '',
+      linkedin: '',
+      portfolio: '',
+      techStack: scanResumeKeywords(rawText).join(', '),
+      educations: [],
+      experiences: [],
+      certifications: '',
+      hobbies: '',
+    };
+
+    const aiTextResponse = await generateAIResponse(prompt, JSON.stringify(defaultJson));
+    
+    // Safely parse JSON from AI response
+    let parsedData = defaultJson;
+    try {
+      let rawJson = '';
+      if (typeof aiTextResponse === 'string') {
+        rawJson = aiTextResponse;
+      } else if (aiTextResponse && typeof aiTextResponse.content === 'string') {
+        rawJson = aiTextResponse.content;
+      }
+
+      // Remove markdown wrapping if present
+      rawJson = rawJson.replace(/^```json\s*/i, '').replace(/```\s*$/, '').trim();
+      parsedData = JSON.parse(rawJson);
+    } catch (parseError) {
+      console.error('Error parsing AI JSON for resume extraction:', parseError);
+    }
+
+    res.status(200).json({
+      message: 'Resume text extracted and structured successfully.',
+      data: parsedData,
     });
   } catch (error: any) {
     res.status(500).json({ message: error.message });
