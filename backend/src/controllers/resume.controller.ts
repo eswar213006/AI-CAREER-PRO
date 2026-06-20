@@ -264,14 +264,18 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
 
     let educationsSection = '';
     if (Array.isArray(parsedEducations) && parsedEducations.length > 0) {
-      educationsSection = parsedEducations.map((edu: any) => `
-      - Institution: ${edu.college || 'N/A'}
-        Degree/Title: ${edu.degree || 'N/A'}
-        Graduation Year: ${edu.gradYear || 'N/A'}
-        CGPA/GPA: ${edu.cgpa || 'N/A'}
-      `).join('\n');
+      // Pre-format each education entry as markdown so Gemini copies it verbatim
+      // and never invents its own heading labels
+      educationsSection = parsedEducations.map((edu: any) => {
+        const title = edu.degree?.trim() || edu.college?.trim() || 'Education';
+        const institution = edu.college?.trim() || '';
+        const year = edu.gradYear?.trim() || '';
+        const cgpa = edu.cgpa?.trim() || '';
+        return `**${title}**\n${institution ? `*${institution}${year ? ' | ' + year : ''}*` : (year ? `*${year}*` : '')}${cgpa ? `\n- CGPA/GPA: ${cgpa}` : ''}`;
+      }).join('\n\n');
     } else {
-      educationsSection = `- Institution: ${candidateCollege}\n- Degree/Title: ${candidateDegree}\n- Graduation Year: ${candidateGradYear}\n- CGPA/GPA: ${candidateCgpa}`;
+      const singleTitle = candidateDegree?.trim() || candidateCollege?.trim() || 'Education';
+      educationsSection = `**${singleTitle}**\n*${candidateCollege}${candidateGradYear ? ' | ' + candidateGradYear : ''}*${candidateCgpa ? '\n- CGPA/GPA: ' + candidateCgpa : ''}`;
     }
 
     let experiencesSection = '';
@@ -320,7 +324,7 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
       3. Technical Skills (categorized, using these provided skills: ${techStack})
       4. Work Experience (using the experience details provided, formatted using the Google XYZ formula)
       5. Projects (using the project details provided, formatted using the Google XYZ formula)
-      6. Education: List all education entries provided. Do NOT hardcode or prefix headings with labels like "Degree:" or "Degree Name:" for each entry in the resume output. Instead, use the user's specific degree/certificate title itself (e.g. "B.Tech in Computer Science", "Class XII", "Class X", etc.) directly as the bold heading/title for that education entry, followed by the institution name and year on a separate line or format.
+      6. Education: Copy the education entries EXACTLY as formatted in the Education History section above. Each entry already has a bold title (the actual degree/certificate name like "B.Tech in Computer Science" or "Class XII"). Do NOT add any prefix labels like "Degree:", "Degree/Title:", or "Qualification:" before those titles. Do NOT change or rewrite the titles. Just use them as-is.
       ${certifications ? '7. Certifications & Achievements' : ''}
       ${hobbies ? '8. Hobbies & Extracurriculars' : ''}
 
@@ -328,20 +332,19 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
       Output ONLY the raw markdown text for the resume. Do not use code blocks around the entire output.
     `;
 
-    // Build dynamic fallback sections
+    // Build dynamic fallback sections — use same pre-formatted approach as the Gemini prompt
     let fallbackEducationList = '';
     if (Array.isArray(parsedEducations) && parsedEducations.length > 0) {
-      fallbackEducationList = parsedEducations.map((edu: any) => `
-**${edu.degree || 'Degree/Title'}**
-*${edu.college || 'College'} | ${edu.gradYear || 'Year'}*
-- CGPA/GPA: ${edu.cgpa || 'N/A'}
-      `).join('\n');
+      fallbackEducationList = parsedEducations.map((edu: any) => {
+        const title = edu.degree?.trim() || edu.college?.trim() || 'Bachelor\'s Degree';
+        const institution = edu.college?.trim() || '';
+        const year = edu.gradYear?.trim() || '';
+        const cgpa = edu.cgpa?.trim() || '';
+        return `**${title}**\n${institution ? `*${institution}${year ? ' | ' + year : ''}*` : (year ? `*${year}*` : '')}${cgpa ? `\n- CGPA/GPA: ${cgpa}` : ''}`;
+      }).join('\n\n');
     } else {
-      fallbackEducationList = `
-**${candidateDegree}**
-*${candidateCollege} | ${candidateGradYear}*
-- CGPA/GPA: ${candidateCgpa}
-      `;
+      const singleTitle = candidateDegree?.trim() || candidateCollege?.trim() || 'Bachelor\'s Degree';
+      fallbackEducationList = `**${singleTitle}**\n*${candidateCollege}${candidateGradYear ? ' | ' + candidateGradYear : ''}*${candidateCgpa ? '\n- CGPA/GPA: ' + candidateCgpa : ''}`;
     }
 
     let fallbackExperienceList = '';
