@@ -51,6 +51,40 @@ const HR_BEHAVIORAL_QUESTIONS = [
   'Where do you see yourself in five years? What are your professional growth goals?'
 ];
 
+// Rich detailed ideal answers for fallback questions (used in simulation/fallback mode)
+const FALLBACK_IDEAL_ANSWERS: Record<string, string> = {
+  'hashmap and concurrenthashmap': 'HashMap is not thread-safe and allows one null key. ConcurrentHashMap is thread-safe, disallows nulls, and uses fine-grained node/bucket locks (synchronized/CAS in Java 8) to allow concurrent operations without blocking the entire map.',
+  'java memory model': 'Heap memory stores objects/instance variables (shared between threads). Stack memory stores thread-local execution frames and primitives. Garbage Collection reclaims unreachable heap objects using generations (Young, Old, Metaspace) and GC Roots.',
+  'spring boot application lifecycle': 'Starts via SpringApplication.run(), bootstraps ApplicationContext, scans components, registers Bean definitions, instantiates beans, resolves dependencies (via Reflection/Constructor Injection), and runs CommandLine/ApplicationRunners.',
+  'oop principles': 'Encapsulation (data hiding), Inheritance (code reuse), Polymorphism (dynamic method overriding/overloading), Abstraction (hiding implementation details via interfaces). Polymorphism defines customized behavior; Abstraction defines templates.',
+  'multithreading in java': 'Achieved using Thread, Runnable, Callable, and ExecutorService. ThreadPoolExecutor manages worker threads and task queues to prevent thread creation overhead. Synchronized blocks serialize access by locking on an object monitor.',
+  'react virtual dom': 'An in-memory copy of the real DOM. React diffs changes using a reconciliation algorithm and updates only changed nodes. Re-renders in functional components are triggered by state updates (useState/useReducer), prop changes, or context updates.',
+  'event loop in node.js': 'Coordinates async execution. process.nextTick fires immediately after the current operation (microtask queue). setImmediate runs in the Check phase of the event loop. setTimeout runs in the Timers phase after a specified delay threshold.',
+  'jwt authentication flow': 'Access token (short-lived, e.g. 15m) sent in Authorization header. Refresh token (long-lived, e.g. 7d) stored in a secure, HttpOnly, SameSite cookie, validated against a database whitelist for security rotation/revocation.',
+  'sql and nosql': 'SQL is relational, has schemas, and guarantees ACID properties (e.g. PostgreSQL). NoSQL is non-relational, schema-less, and horizontally scalable (e.g. MongoDB). Choose NoSQL/MongoDB for polymorphic data, unstructured documents, or high write speed.',
+  'optimize the performance of a react': 'Implement code-splitting (React.lazy & Suspense), memoize heavy components with React.memo, cache functions/values via useCallback/useMemo, use virtualized lists for long feeds, and minimize asset sizes.',
+  'process and a thread': 'A process is an isolated execution unit with dedicated virtual memory space (inter-process communication needed). A thread is the smallest schedulable execution unit inside a process, sharing memory (heap/code) with other threads.',
+  'binary tree, how do you find the lowest common ancestor': 'Recursively traverse nodes: if node is null, p, or q, return node. Search left and right subtrees. If both subtrees return non-null, current node is LCA. Time complexity is O(N) where N is number of nodes. Space complexity is O(H) recursion stack.',
+  'tcp and udp': 'TCP is connection-oriented, reliable, guarantees packet ordering, and handles congestion. UDP is connectionless, fast, unreliable, and suitable for streaming. TCP handshake: SYN -> SYN-ACK -> ACK.',
+  'normalization and denormalization': 'Normalization structures tables to eliminate redundancy and improve integrity (1NF, 2NF, 3NF). Denormalization intentionally adds redundant data to speed up complex query executions in read-heavy/analytical workloads.',
+  'rate limiter for a public api': 'Protects APIs from abuse. Algorithms include Token Bucket (allows bursts), Leaky Bucket (smooths rates), Fixed Window, and Sliding Window. Can be implemented using Redis to count client IP hits within a sliding timeframe.',
+  'inner join, left join, and right join': 'INNER JOIN returns records with matching keys in both tables. LEFT JOIN returns all records from the left table and matched from the right (nulls otherwise). RIGHT JOIN returns all from the right and matched from the left.',
+  'central limit theorem': 'States that the distribution of sample means approaches a normal distribution as the sample size becomes large (N >= 30), regardless of the population distribution shape. Essential for hypothesis testing and interval estimation.',
+  'missing or null values in a dataset': 'Techniques: drop rows/columns containing missing values, impute using statistical metrics (mean, median, mode), or model-based imputation. In Python, use Pandas (dropna, fillna) or Scikit-learn (SimpleImputer).',
+  'bar chart, a histogram, and a scatter plot': 'Bar Chart: compares values of discrete categorical variables. Histogram: visualizes the frequency distribution of a continuous numerical variable. Scatter Plot: plots pairs of continuous variables to show correlation.',
+  'second highest salary': 'SQL query: SELECT MAX(Salary) FROM Employee WHERE Salary < (SELECT MAX(Salary) FROM Employee); OR using offset: SELECT Salary FROM Employee ORDER BY Salary DESC LIMIT 1 OFFSET 1;',
+  'supervised, unsupervised, and reinforcement': 'Supervised: learning from labeled training data (known inputs and targets). Unsupervised: discovering hidden patterns or clusters in unlabeled data. Reinforcement: agent learning to maximize cumulative reward through environment interactions.',
+  'vanishing gradient problem': 'Occurs in deep networks when backpropagated gradients shrink exponentially towards zero, stalling weight updates. Mitigated by using non-saturating activation functions like ReLU and skip-connections (as in ResNet).',
+  'transformer architecture': 'A sequence-to-sequence model relying on attention mechanisms without recurrent layers. Self-attention computes key-query-value vector scores to parallelize token relationship analysis over any distance in text.',
+  'precision, recall, and f1-score': 'Precision: TP / (TP + FP) (minimizes false positives). Recall: TP / (TP + FN) (minimizes false negatives, critical in medical diagnostics). F1-Score: harmonic mean of precision and recall, balancing both.',
+  'prevent overfitting': 'Apply cross-validation, gather more training data, simplify model complexity, use dropout layers (neural nets), or apply regularization like L1 (Lasso - forces weight sparsity) and L2 (Ridge - shrinks weights).',
+  'conflict with a teammate': 'Apply the STAR method: describe a professional conflict, focus on communication, active listening, and compromise rather than blame. Conclude with a successful resolution and what you learned.',
+  'why do you want to join our company': 'Align your personal career goals with the company mission, show familiarity with their specific projects/values, demonstrate technical fit, and express excitement for growth and contribution.',
+  'tight deadline and multiple competing': 'Detail task prioritization strategies (like Eisenhower Matrix), communication with project leaders, time blocks, and how you successfully hit the objective through structured planning.',
+  'project you worked on that failed': 'Discuss a technical/project failure objectively without casting blame. Focus on structural root causes, recovery actions taken, and key lessons applied to ensure future project successes.',
+  'where do you see yourself in five years': 'Express realistic, ambitious goals: mastering technical skills, moving towards technical/architectural leadership or mentoring, and contributing to high-impact products.'
+};
+
 export const generateInterview = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const userId = req.user?.id;
@@ -101,12 +135,20 @@ export const generateInterview = async (req: AuthenticatedRequest, res: Response
       ];
     }
 
-    const fallbackQuestions = selectedBase.map((q, idx) => ({
-      id: `q${idx + 1}`,
-      text: company ? `[${company} Specific] ${q}` : q,
-      category: interviewType.toLowerCase(),
-      idealAnswer: 'Key topics: structure, clarity, accuracy, and naming edge cases.'
-    }));
+    const fallbackQuestions = selectedBase.map((q, idx) => {
+      const qLower = q.toLowerCase().trim();
+      const foundKey = Object.keys(FALLBACK_IDEAL_ANSWERS).find(key => qLower.includes(key));
+      const idealAnswer = foundKey 
+        ? FALLBACK_IDEAL_ANSWERS[foundKey] 
+        : 'Key topics: structure, clarity, accuracy, and naming edge cases.';
+
+      return {
+        id: `q${idx + 1}`,
+        text: company ? `[${company} Specific] ${q}` : q,
+        category: interviewType.toLowerCase(),
+        idealAnswer
+      };
+    });
 
     const generatedQuestions = await generateAIResponse(prompt, fallbackQuestions);
 

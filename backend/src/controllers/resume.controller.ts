@@ -200,8 +200,8 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
         if (userRecord?.profile?.name) {
           candidateName = userRecord.profile.name;
         }
-        if (userRecord?.profile?.email) {
-          candidateEmail = userRecord.profile.email;
+        if (userRecord?.email) {
+          candidateEmail = userRecord.email;
         }
       } catch {
         // Ignore lookup errors — use defaults

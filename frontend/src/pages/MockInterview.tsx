@@ -399,6 +399,14 @@ export const MockInterview: React.FC = () => {
                   {q.feedback}
                 </p>
               </div>
+              {q.idealAnswer && (
+                <div>
+                  <span className="text-[10px] text-emerald-400 block uppercase font-bold">Expected Points / Ideal Answer</span>
+                  <p className="text-xs text-emerald-100/90 mt-1 bg-emerald-950/20 p-3.5 rounded-xl border border-emerald-900/30 leading-relaxed">
+                    {q.idealAnswer}
+                  </p>
+                </div>
+              )}
             </GlassCard>
           ))}
         </div>
