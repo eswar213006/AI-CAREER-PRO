@@ -888,12 +888,12 @@ export const ResumeAnalyzer: React.FC = () => {
                           />
                         </div>
                         <div>
-                          <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Degree & Branch</label>
+                          <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Degree / Certificate Title</label>
                           <input
                             type="text"
                             value={edu.degree}
                             onChange={(e) => updateEducation(idx, 'degree', e.target.value)}
-                            placeholder="B.E. / B.Tech in Computer Science"
+                            placeholder="e.g. B.Tech in Computer Science, Class XII, Class X"
                             className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
                           />
                         </div>

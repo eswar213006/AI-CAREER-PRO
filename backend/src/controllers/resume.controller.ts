@@ -266,12 +266,12 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
     if (Array.isArray(parsedEducations) && parsedEducations.length > 0) {
       educationsSection = parsedEducations.map((edu: any) => `
       - Institution: ${edu.college || 'N/A'}
-        Degree: ${edu.degree || 'N/A'}
+        Degree/Title: ${edu.degree || 'N/A'}
         Graduation Year: ${edu.gradYear || 'N/A'}
         CGPA/GPA: ${edu.cgpa || 'N/A'}
       `).join('\n');
     } else {
-      educationsSection = `- Institution: ${candidateCollege}\n- Degree: ${candidateDegree}\n- Graduation Year: ${candidateGradYear}\n- CGPA/GPA: ${candidateCgpa}`;
+      educationsSection = `- Institution: ${candidateCollege}\n- Degree/Title: ${candidateDegree}\n- Graduation Year: ${candidateGradYear}\n- CGPA/GPA: ${candidateCgpa}`;
     }
 
     let experiencesSection = '';
@@ -320,7 +320,7 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
       3. Technical Skills (categorized, using these provided skills: ${techStack})
       4. Work Experience (using the experience details provided, formatted using the Google XYZ formula)
       5. Projects (using the project details provided, formatted using the Google XYZ formula)
-      6. Education (showing all education details, degrees, colleges, years, CGPAs)
+      6. Education: List all education entries provided. Do NOT hardcode or prefix headings with labels like "Degree:" or "Degree Name:" for each entry in the resume output. Instead, use the user's specific degree/certificate title itself (e.g. "B.Tech in Computer Science", "Class XII", "Class X", etc.) directly as the bold heading/title for that education entry, followed by the institution name and year on a separate line or format.
       ${certifications ? '7. Certifications & Achievements' : ''}
       ${hobbies ? '8. Hobbies & Extracurriculars' : ''}
 
@@ -332,7 +332,7 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
     let fallbackEducationList = '';
     if (Array.isArray(parsedEducations) && parsedEducations.length > 0) {
       fallbackEducationList = parsedEducations.map((edu: any) => `
-**${edu.degree || 'Degree'}**
+**${edu.degree || 'Degree/Title'}**
 *${edu.college || 'College'} | ${edu.gradYear || 'Year'}*
 - CGPA/GPA: ${edu.cgpa || 'N/A'}
       `).join('\n');
