@@ -20,9 +20,10 @@ const renderMarkdown = (md: string): string => {
     .replace(/^### (.+)$/gm, '<h3 class="text-sm font-bold text-white mt-4 mb-1">$1</h3>')
     .replace(/\*\*(.+?)\*\*/g, '<strong class="text-white font-bold">$1</strong>')
     .replace(/\*(.+?)\*/g, '<em class="text-gray-400 italic">$1</em>')
+    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-primary-400 hover:underline font-semibold">$1</a>')
     .replace(/^- (.+)$/gm, '<li class="flex gap-2 text-xs text-gray-300 mt-1"><span class="text-primary-400 mt-0.5 shrink-0">•</span><span>$1</span></li>')
     .replace(/(<li[\s\S]*?<\/li>)+/gm, (match) => `<ul class="mt-1 space-y-0.5">${match}</ul>`)
-    .replace(/^(?!<[h|l|u])(.*\S.*)$/gm, '<p class="text-xs text-gray-300 leading-relaxed">$1</p>')
+    .replace(/^(?!<[h|l|u|a])(.*\S.*)$/gm, '<p class="text-xs text-gray-300 leading-relaxed">$1</p>')
     .replace(/\n\n/g, '<br/>');
 };
 
@@ -154,6 +155,159 @@ export const ResumeAnalyzer: React.FC = () => {
     a.click();
     URL.revokeObjectURL(url);
     showToast('Resume downloaded as .md file!', 'success');
+  };
+
+  const handleDownloadPdf = () => {
+    if (!generatedMarkdown) return;
+
+    // Create a new window for printing
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) {
+      showToast('Popup blocked! Please allow popups to download PDF.', 'error');
+      return;
+    }
+
+    // Normalize markdown line endings
+    const normalizedMarkdown = generatedMarkdown.replace(/\r\n/g, '\n');
+
+    // Parse Markdown to print-friendly clean HTML
+    const cleanHtml = normalizedMarkdown
+      .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+      .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+      .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+      .replace(/^- (.+)$/gm, '<li>$1</li>')
+      .replace(/(<li>[\s\S]*?<\/li>)+/gm, (match) => `<ul>${match}</ul>`)
+      .replace(/^(?!<[h|l|u|a])(.*\S.*)$/gm, '<p>$1</p>')
+      .replace(/\n\n/g, '<br/>');
+
+    printWindow.document.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>${builderRole.replace(/\s+/g, '_')}_Resume</title>
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+            
+            body {
+              font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+              color: #111827;
+              line-height: 1.5;
+              padding: 40px;
+              max-width: 800px;
+              margin: 0 auto;
+              background-color: white;
+            }
+            
+            h1 {
+              font-size: 26px;
+              font-weight: 700;
+              text-align: center;
+              margin: 0 0 6px 0;
+              letter-spacing: -0.02em;
+            }
+            
+            /* Center email and links paragraph directly below name */
+            h1 + p, h1 + p > em {
+              text-align: center;
+              font-size: 11px;
+              color: #4b5563;
+              margin-top: 0;
+              margin-bottom: 20px;
+              display: block;
+              font-style: normal;
+            }
+
+            h1 + p a {
+              color: #2563eb;
+              text-decoration: none;
+              font-weight: 500;
+            }
+
+            h1 + p a:hover {
+              text-decoration: underline;
+            }
+            
+            h2 {
+              font-size: 14px;
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 0.05em;
+              border-bottom: 1.5px solid #1f2937;
+              padding-bottom: 3px;
+              margin-top: 22px;
+              margin-bottom: 10px;
+              color: #111827;
+            }
+            
+            h3 {
+              font-size: 12px;
+              font-weight: 600;
+              margin-top: 10px;
+              margin-bottom: 4px;
+              color: #111827;
+            }
+            
+            p, li {
+              font-size: 11.5px;
+              color: #374151;
+              margin: 4px 0;
+            }
+            
+            ul {
+              padding-left: 18px;
+              margin: 4px 0;
+            }
+            
+            li {
+              margin-bottom: 3px;
+            }
+            
+            strong {
+              font-weight: 600;
+              color: #111827;
+            }
+            
+            a {
+              color: #2563eb;
+              text-decoration: none;
+            }
+            
+            a:hover {
+              text-decoration: underline;
+            }
+            
+            @media print {
+              body {
+                padding: 0;
+                margin: 0;
+              }
+              @page {
+                size: A4;
+                margin: 15mm 20mm 15mm 20mm;
+              }
+            }
+          </style>
+        </head>
+        <body>
+          <div>
+            ${cleanHtml}
+          </div>
+          <script>
+            window.addEventListener('DOMContentLoaded', () => {
+              setTimeout(() => {
+                window.print();
+                window.close();
+              }, 400);
+            });
+          </script>
+        </body>
+      </html>
+    `);
+    printWindow.document.close();
+    showToast('PDF print preview launched!', 'success');
   };
 
   return (
@@ -523,10 +677,17 @@ export const ResumeAnalyzer: React.FC = () => {
                     </button>
                     <button
                       onClick={handleDownload}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-accent-purple/30 bg-accent-purple/10 hover:bg-accent-purple/20 text-xs font-bold text-accent-purple transition-colors"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-dark-border hover:bg-dark-hover text-xs font-bold text-gray-300 transition-colors"
                     >
                       <Download className="h-3.5 w-3.5" />
                       Download .md
+                    </button>
+                    <button
+                      onClick={handleDownloadPdf}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-accent-purple/30 bg-accent-purple/10 hover:bg-accent-purple/20 text-xs font-bold text-accent-purple transition-colors"
+                    >
+                      <Download className="h-3.5 w-3.5" />
+                      Download PDF
                     </button>
                   </div>
                 </div>
