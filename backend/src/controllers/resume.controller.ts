@@ -163,50 +163,83 @@ export const analyzeResume = async (req: AuthenticatedRequest, res: Response) =>
   }
 };
 
-// ─── Controller: Generate Resume ──────────────────────────────────────────────
 export const generateResume = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const userId = req.user?.id;
     if (!userId) return res.status(401).json({ message: 'Unauthorized.' });
 
-    const { targetRole, experienceLevel, techStack, projectSummaries } = req.body;
+    const {
+      targetRole,
+      experienceLevel,
+      techStack,
+      fullName,
+      email,
+      phone,
+      github,
+      linkedin,
+      portfolio,
+      college,
+      degree,
+      gradYear,
+      cgpa,
+      experienceDetails,
+      projectDetails,
+      certifications,
+      hobbies
+    } = req.body;
+
     if (!targetRole || !techStack) {
       return res.status(400).json({ message: 'Target role and tech stack are required.' });
     }
 
-    // ── 1. Determine the candidate's real name ─────────────────────────────────
-    // Priority: extracted from uploaded PDF → user profile name → generic placeholder
-    let candidateName = 'Your Name';
-    let candidateEmail = 'your.email@example.com';
-    let candidateGithub = 'github.com/yourusername';
-    let pdfExtractedInfo = '';
+    // ── 1. Determine baseline details with fallbacks ────────────────────────────
+    let candidateName = fullName?.trim() || '';
+    let candidateEmail = email?.trim() || '';
+    let candidatePhone = phone?.trim() || '123-456-7890';
+    let candidateGithub = github?.trim() || 'github.com/yourusername';
+    let candidateLinkedin = linkedin?.trim() || '';
+    let candidatePortfolio = portfolio?.trim() || '';
 
-    // If a PDF file was uploaded along with the generation request, extract text from it
+    // If a PDF file was uploaded, read it
+    let pdfExtractedInfo = '';
     if (req.file) {
       const rawPdfText = await extractPdfText(req.file.path);
       const detectedName = extractNameFromPdf(rawPdfText);
-      if (detectedName) candidateName = detectedName;
-      // Pass a summary of the PDF content to AI for richer generation
+      if (!candidateName && detectedName) candidateName = detectedName;
       const keywords = scanResumeKeywords(rawPdfText);
       pdfExtractedInfo = rawPdfText
-        ? `\n      The candidate's existing resume contains these keywords: ${keywords.join(', ')}. Use this context to make the generated resume more tailored.`
+        ? `\n      The candidate's uploaded PDF resume references these keywords: ${keywords.join(', ')}.`
         : '';
     }
 
-    // Try user profile as fallback for name
-    if (candidateName === 'Your Name') {
+    // Try fallback database lookup if name, email, or linkedin are missing
+    if (!candidateName || !candidateEmail || !candidateLinkedin) {
       try {
         const userRecord = await dbService.user.findById(userId);
-        if (userRecord?.profile?.name) {
+        if (!candidateName && userRecord?.profile?.name) {
           candidateName = userRecord.profile.name;
         }
-        if (userRecord?.email) {
+        if (!candidateEmail && userRecord?.email) {
           candidateEmail = userRecord.email;
         }
+        if (!candidateLinkedin && userRecord?.profile?.name) {
+          const lHandle = userRecord.profile.name.toLowerCase().replace(/\s+/g, '-');
+          candidateLinkedin = `linkedin.com/in/${lHandle}`;
+        }
       } catch {
-        // Ignore lookup errors — use defaults
+        // Ignore fallback db errors
       }
     }
+
+    // Ensure we have something
+    if (!candidateName) candidateName = 'Your Name';
+    if (!candidateEmail) candidateEmail = 'your.email@example.com';
+    if (!candidateLinkedin) candidateLinkedin = `linkedin.com/in/${candidateName.toLowerCase().replace(/\s+/g, '-')}`;
+
+    const candidateCollege = college?.trim() || 'XYZ Institute of Technology';
+    const candidateDegree = degree?.trim() || 'B.E. / B.Tech in Computer Science & Engineering';
+    const candidateGradYear = gradYear?.trim() || 'Expected May 2025';
+    const candidateCgpa = cgpa?.trim() || '8.5 / 10';
 
     const prompt = `
       You are an expert technical recruiter and resume writer.
@@ -215,30 +248,49 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
       Candidate Details:
       - Name: ${candidateName}
       - Email: ${candidateEmail}
+      - Phone: ${candidatePhone}
       - GitHub: ${candidateGithub}
+      - LinkedIn: ${candidateLinkedin}
+      ${candidatePortfolio ? `- Portfolio/Website: ${candidatePortfolio}` : ''}
       - Tech Stack: ${techStack}
       - Experience Level: ${experienceLevel}
       - Target Role: ${targetRole}
       ${pdfExtractedInfo}
       
+      Education:
+      - Institution: ${candidateCollege}
+      - Degree: ${candidateDegree}
+      - Graduation Year: ${candidateGradYear}
+      - CGPA/GPA: ${candidateCgpa}
+      
+      Work Experience / Internships:
+      ${experienceDetails ? experienceDetails : 'Describe a relevant professional experience or internship placeholder using the Google XYZ formula: "Accomplished [X] as measured by [Y], by doing [Z]".'}
+      
+      Projects:
+      ${projectDetails ? projectDetails : 'Incorporate 2 impressive project placeholders tailored to the role using the Google XYZ formula.'}
+      
+      ${certifications ? `Certifications & Achievements:\n${certifications}` : ''}
+      ${hobbies ? `Hobbies & Extracurriculars:\n${hobbies}` : ''}
+      
       The resume MUST include the following sections:
-      1. Header (Name: ${candidateName}, Email: ${candidateEmail}, LinkedIn: linkedin.com/in/${candidateName.toLowerCase().replace(/\s+/g, '-')}, GitHub: ${candidateGithub})
+      1. Header (Name, Email, Phone, LinkedIn, GitHub, Portfolio if available)
       2. Professional Summary (2-3 sentences. Write in third person and tailor to ${targetRole}.)
       3. Technical Skills (categorized, using these provided skills: ${techStack})
-      4. Experience/Projects (Format using the Google XYZ formula: "Accomplished [X] as measured by [Y], by doing [Z]".
-         Incorporate these project ideas/summaries: ${projectSummaries || 'Include 2 standard impressive project placeholders related to the role.'})
-      5. Education (Placeholder for B.E./B.Tech in Computer Science or related field)
+      4. Work Experience (using the experience details provided, formatted using the Google XYZ formula)
+      5. Projects (using the project details provided, formatted using the Google XYZ formula)
+      6. Education (showing the degree, college, year, CGPA)
+      ${certifications ? '7. Certifications & Achievements' : ''}
+      ${hobbies ? '8. Hobbies & Extracurriculars' : ''}
 
-      IMPORTANT: Use the actual name "${candidateName}" throughout. Do NOT use placeholder names like "John Doe" or "Your Name".
+      IMPORTANT: Use the actual candidate name "${candidateName}" throughout. Do NOT use placeholder names like "John Doe" or "Your Name".
       Output ONLY the raw markdown text for the resume. Do not use code blocks around the entire output.
     `;
 
-    const linkedinHandle = candidateName.toLowerCase().replace(/\s+/g, '-');
     const fallbackResume = `# ${candidateName}
-*${candidateEmail} | [LinkedIn](https://linkedin.com/in/${linkedinHandle}) | [GitHub](https://github.com/yourusername)*
+*${candidateEmail} | ${candidatePhone} | [LinkedIn](${candidateLinkedin}) | [GitHub](${candidateGithub})${candidatePortfolio ? ` | [Portfolio](${candidatePortfolio})` : ''}*
 
 ## Professional Summary
-Results-driven ${experienceLevel} ${targetRole} with a strong foundation in building scalable applications. Proven ability to leverage modern technologies to optimize performance and deliver exceptional user experiences. Seeking to contribute expertise in ${techStack.split(',')[0]?.trim() || 'full-stack development'} to a dynamic engineering team.
+Results-driven ${experienceLevel} ${targetRole} with a strong foundation in building scalable applications. Proven ability to leverage modern technologies to optimize performance and deliver exceptional user experiences. Seeking to contribute expertise in ${techStack.split(',')[0]?.trim() || 'software engineering'} to a dynamic engineering team.
 
 ## Technical Skills
 - **Languages & Frameworks:** ${techStack}
@@ -249,22 +301,21 @@ Results-driven ${experienceLevel} ${targetRole} with a strong foundation in buil
 
 ### ${targetRole} Intern | Tech Innovators Pvt. Ltd.
 *June 2024 – Present*
-- Engineered a scalable REST API using Node.js and Express, improving data retrieval speeds by 40% as measured by load testing benchmarks.
-- Migrated legacy frontend components to React, reducing bundle size by 15% and improving Lighthouse performance score to 95+.
+${experienceDetails ? experienceDetails.split('\n').map((line: string) => line.startsWith('-') ? line : `- ${line}`).join('\n') : `- Engineered a scalable REST API using Node.js and Express, improving data retrieval speeds by 40% as measured by load testing benchmarks.\n- Migrated legacy frontend components to React, reducing bundle size by 15% and improving Lighthouse performance score to 95+.`}
 
-### ${targetRole} Personal Project: ${projectSummaries ? 'Custom Application' : 'E-Commerce Platform'}
+### Technical Projects
+${projectDetails ? projectDetails.split('\n').map((line: string) => line.startsWith('-') ? line : `- ${line}`).join('\n') : `### ${targetRole} Personal Project: E-Commerce Platform
 *Jan 2024 – May 2024*
-- Architected a robust full-stack application incorporating ${techStack.split(',')[0]?.trim() || 'React'} and a scalable NoSQL database, serving 500+ concurrent users.
-- Implemented JWT-based authentication and role-based access control, securing all API endpoints against OWASP Top 10 vulnerabilities.
-${projectSummaries ? `\n*Project Highlights:*\n- ${projectSummaries}\n` : ''}
+- Architected a robust full-stack application incorporating React and a scalable NoSQL database, serving 500+ concurrent users.
+- Implemented JWT-based authentication and role-based access control, securing all API endpoints against OWASP Top 10 vulnerabilities.`}
 
 ## Education
-**B.E. / B.Tech in Computer Science & Engineering**
-*XYZ Institute of Technology | Expected May 2025*
-- Relevant Coursework: Operating Systems, Database Management, Distributed Systems, Machine Learning
-- CGPA: 8.5 / 10
+**${candidateDegree}**
+*${candidateCollege} | ${candidateGradYear}*
+- CGPA/GPA: ${candidateCgpa}
+${certifications ? `\n## Certifications & Achievements\n${certifications.split('\n').map((line: string) => line.startsWith('-') ? line : `- ${line}`).join('\n')}` : ''}
+${hobbies ? `\n## Hobbies & Extracurriculars\n${hobbies.split('\n').map((line: string) => line.startsWith('-') ? line : `- ${line}`).join('\n')}` : ''}
 `;
-
     const aiResumeMarkdown = await generateAIResponse(prompt, fallbackResume);
 
     await dbService.user.findByIdAndUpdate(userId, {

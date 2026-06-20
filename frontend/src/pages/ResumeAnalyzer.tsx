@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   FileUp, FileCheck, CheckCircle2, XCircle, Lightbulb, Check,
   ShieldAlert, Wand2, Copy, Download, Clipboard, ClipboardCheck,
-  ChevronRight, Loader2, Sparkles, Target, Code2
+  ChevronRight, Loader2, Sparkles, Target, Code2,
+  User, Briefcase, GraduationCap, Award, FolderGit2, ChevronDown
 } from 'lucide-react';
 import type { RootState } from '../store';
 import { updateUser } from '../store/authSlice';
@@ -68,11 +69,29 @@ export const ResumeAnalyzer: React.FC = () => {
   const [builderRole, setBuilderRole] = useState(user?.profile?.targetRole || 'Software Engineer');
   const [experienceLevel, setExperienceLevel] = useState('Fresher (0-1 years)');
   const [techStack, setTechStack] = useState(COMMON_STACKS['Software Engineer']);
-  const [projectSummaries, setProjectSummaries] = useState('');
   const [builderPdfFile, setBuilderPdfFile] = useState<File | null>(null);
   const [generating, setGenerating] = useState(false);
   const [generatedMarkdown, setGeneratedMarkdown] = useState('');
   const [copied, setCopied] = useState(false);
+
+  // New Comprehensive Fields
+  const [fullName, setFullName] = useState(user?.profile?.name || '');
+  const [email, setEmail] = useState(user?.email || '');
+  const [phone, setPhone] = useState('');
+  const [github, setGithub] = useState('');
+  const [linkedin, setLinkedin] = useState('');
+  const [portfolio, setPortfolio] = useState('');
+  const [college, setCollege] = useState('');
+  const [degree, setDegree] = useState('');
+  const [gradYear, setGradYear] = useState('');
+  const [cgpa, setCgpa] = useState('');
+  const [experienceDetails, setExperienceDetails] = useState('');
+  const [projectDetails, setProjectDetails] = useState('');
+  const [certifications, setCertifications] = useState('');
+  const [hobbies, setHobbies] = useState('');
+
+  // Active accordion section
+  const [openSection, setOpenSection] = useState<'contact' | 'profile' | 'education' | 'experience' | 'additional'>('contact');
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -116,6 +135,9 @@ export const ResumeAnalyzer: React.FC = () => {
   const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!techStack.trim()) return showToast('Please enter your tech stack.', 'error');
+    if (!fullName.trim()) return showToast('Please enter your full name.', 'error');
+    if (!email.trim()) return showToast('Please enter your email.', 'error');
+
     setGenerating(true);
     setGeneratedMarkdown('');
     try {
@@ -123,7 +145,21 @@ export const ResumeAnalyzer: React.FC = () => {
       formData.append('targetRole', builderRole);
       formData.append('experienceLevel', experienceLevel);
       formData.append('techStack', techStack);
-      formData.append('projectSummaries', projectSummaries);
+      formData.append('fullName', fullName);
+      formData.append('email', email);
+      formData.append('phone', phone);
+      formData.append('github', github);
+      formData.append('linkedin', linkedin);
+      formData.append('portfolio', portfolio);
+      formData.append('college', college);
+      formData.append('degree', degree);
+      formData.append('gradYear', gradYear);
+      formData.append('cgpa', cgpa);
+      formData.append('experienceDetails', experienceDetails);
+      formData.append('projectDetails', projectDetails);
+      formData.append('certifications', certifications);
+      formData.append('hobbies', hobbies);
+
       if (builderPdfFile) {
         formData.append('resume', builderPdfFile);
       }
@@ -538,92 +574,313 @@ export const ResumeAnalyzer: React.FC = () => {
               <p className="text-[10px] text-gray-500 mt-1">Fill in your details and AI will generate a complete ATS-optimized resume.</p>
             </div>
 
-            <form onSubmit={handleGenerate} className="flex flex-col gap-5">
-              <div>
-                <label className="block text-[10px] uppercase font-bold text-gray-400 mb-1">Target Role</label>
-                <select
-                  value={builderRole}
-                  onChange={(e) => {
-                    setBuilderRole(e.target.value);
-                    setTechStack(COMMON_STACKS[e.target.value] || '');
-                  }}
-                  className="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-accent-purple cursor-pointer"
+            <form onSubmit={handleGenerate} className="flex flex-col gap-4">
+              {/* SECTION 1: CONTACT INFORMATION */}
+              <div className="border border-dark-border rounded-xl overflow-hidden bg-dark-bg/40">
+                <button
+                  type="button"
+                  onClick={() => setOpenSection(openSection === 'contact' ? '' as any : 'contact')}
+                  className="w-full flex items-center justify-between px-4 py-3 bg-dark-card/60 hover:bg-dark-hover/40 transition-colors"
                 >
-                  {ROLES.map((r) => <option key={r} value={r}>{r}</option>)}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-[10px] uppercase font-bold text-gray-400 mb-1">Experience Level</label>
-                <select
-                  value={experienceLevel}
-                  onChange={(e) => setExperienceLevel(e.target.value)}
-                  className="w-full bg-dark-bg border border-dark-border rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-accent-purple cursor-pointer"
-                >
-                  {EXPERIENCE_LEVELS.map((l) => <option key={l} value={l}>{l}</option>)}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-[10px] uppercase font-bold text-gray-400 mb-1">
-                  Tech Stack & Skills
-                </label>
-                <p className="text-[9px] text-gray-600 mb-1.5">Pre-filled based on role. Edit as needed.</p>
-                <textarea
-                  value={techStack}
-                  onChange={(e) => setTechStack(e.target.value)}
-                  rows={3}
-                  placeholder="React, Node.js, MongoDB, TypeScript..."
-                  className="w-full bg-dark-bg border border-dark-border rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-accent-purple resize-none"
-                />
-              </div>
-
-              <div>
-                <label className="block text-[10px] uppercase font-bold text-gray-400 mb-1">
-                  Your Projects / Experience (Optional)
-                </label>
-                <p className="text-[9px] text-gray-600 mb-1.5">Brief summaries of real projects you want included.</p>
-                <textarea
-                  value={projectSummaries}
-                  onChange={(e) => setProjectSummaries(e.target.value)}
-                  rows={4}
-                  placeholder="e.g. Built a food delivery app with React and Node.js; Used Redis for caching; Reduced load time by 50%..."
-                  className="w-full bg-dark-bg border border-dark-border rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-accent-purple resize-none"
-                />
-              </div>
-
-              <div>
-                <label className="block text-[10px] uppercase font-bold text-gray-400 mb-1">
-                  Upload Existing Resume (Optional)
-                </label>
-                <p className="text-[9px] text-gray-600 mb-1.5">Upload your PDF so AI uses your real name & context.</p>
-                <div className="border border-dashed border-dark-border rounded-xl p-4 hover:bg-dark-hover/30 hover:border-accent-purple/40 transition-colors relative flex items-center gap-3 cursor-pointer">
-                  <input
-                    type="file"
-                    accept=".pdf"
-                    onChange={(e) => {
-                      if (e.target.files && e.target.files[0]) setBuilderPdfFile(e.target.files[0]);
-                    }}
-                    className="absolute inset-0 opacity-0 cursor-pointer"
-                  />
-                  <FileUp className="h-5 w-5 text-accent-purple shrink-0" />
-                  <div className="min-w-0">
-                    {builderPdfFile ? (
-                      <>
-                        <p className="text-xs font-bold text-white truncate">{builderPdfFile.name}</p>
-                        <p className="text-[9px] text-gray-500">{(builderPdfFile.size / 1024).toFixed(0)} KB • PDF</p>
-                      </>
-                    ) : (
-                      <p className="text-[10px] text-gray-500">Click to upload PDF (optional)</p>
-                    )}
+                  <div className="flex items-center gap-2 text-white">
+                    <User className="h-4 w-4 text-primary-400" />
+                    <span className="text-xs font-bold">1. Contact Information</span>
                   </div>
-                </div>
+                  <ChevronDown className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${openSection === 'contact' ? 'rotate-180' : ''}`} />
+                </button>
+                {openSection === 'contact' && (
+                  <div className="p-4 border-t border-dark-border space-y-3">
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Full Name *</label>
+                      <input
+                        type="text"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        placeholder="John Doe"
+                        required
+                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Email Address *</label>
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="john.doe@example.com"
+                        required
+                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Phone Number</label>
+                      <input
+                        type="text"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        placeholder="123-456-7890"
+                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">GitHub Profile</label>
+                      <input
+                        type="text"
+                        value={github}
+                        onChange={(e) => setGithub(e.target.value)}
+                        placeholder="github.com/yourusername"
+                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">LinkedIn Profile</label>
+                      <input
+                        type="text"
+                        value={linkedin}
+                        onChange={(e) => setLinkedin(e.target.value)}
+                        placeholder="linkedin.com/in/yourusername"
+                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Portfolio Website</label>
+                      <input
+                        type="text"
+                        value={portfolio}
+                        onChange={(e) => setPortfolio(e.target.value)}
+                        placeholder="yourportfolio.com (optional)"
+                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* SECTION 2: PROFESSIONAL PROFILE */}
+              <div className="border border-dark-border rounded-xl overflow-hidden bg-dark-bg/40">
+                <button
+                  type="button"
+                  onClick={() => setOpenSection(openSection === 'profile' ? '' as any : 'profile')}
+                  className="w-full flex items-center justify-between px-4 py-3 bg-dark-card/60 hover:bg-dark-hover/40 transition-colors"
+                >
+                  <div className="flex items-center gap-2 text-white">
+                    <Briefcase className="h-4 w-4 text-primary-400" />
+                    <span className="text-xs font-bold">2. Job Profile & Skills</span>
+                  </div>
+                  <ChevronDown className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${openSection === 'profile' ? 'rotate-180' : ''}`} />
+                </button>
+                {openSection === 'profile' && (
+                  <div className="p-4 border-t border-dark-border space-y-3">
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Target Role</label>
+                      <select
+                        value={builderRole}
+                        onChange={(e) => {
+                          setBuilderRole(e.target.value);
+                          setTechStack(COMMON_STACKS[e.target.value] || '');
+                        }}
+                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500 cursor-pointer"
+                      >
+                        {ROLES.map((r) => <option key={r} value={r}>{r}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Experience Level</label>
+                      <select
+                        value={experienceLevel}
+                        onChange={(e) => setExperienceLevel(e.target.value)}
+                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500 cursor-pointer"
+                      >
+                        {EXPERIENCE_LEVELS.map((l) => <option key={l} value={l}>{l}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Tech Stack & Skills *</label>
+                      <textarea
+                        value={techStack}
+                        onChange={(e) => setTechStack(e.target.value)}
+                        rows={3}
+                        required
+                        placeholder="React, Node.js, MongoDB, TypeScript..."
+                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500 resize-none"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* SECTION 3: EDUCATION */}
+              <div className="border border-dark-border rounded-xl overflow-hidden bg-dark-bg/40">
+                <button
+                  type="button"
+                  onClick={() => setOpenSection(openSection === 'education' ? '' as any : 'education')}
+                  className="w-full flex items-center justify-between px-4 py-3 bg-dark-card/60 hover:bg-dark-hover/40 transition-colors"
+                >
+                  <div className="flex items-center gap-2 text-white">
+                    <GraduationCap className="h-4 w-4 text-primary-400" />
+                    <span className="text-xs font-bold">3. Education</span>
+                  </div>
+                  <ChevronDown className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${openSection === 'education' ? 'rotate-180' : ''}`} />
+                </button>
+                {openSection === 'education' && (
+                  <div className="p-4 border-t border-dark-border space-y-3">
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">College/University</label>
+                      <input
+                        type="text"
+                        value={college}
+                        onChange={(e) => setCollege(e.target.value)}
+                        placeholder="XYZ Institute of Technology"
+                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Degree & Branch</label>
+                      <input
+                        type="text"
+                        value={degree}
+                        onChange={(e) => setDegree(e.target.value)}
+                        placeholder="B.E. / B.Tech in Computer Science"
+                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                      />
+                    </div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Graduation Year</label>
+                        <input
+                          type="text"
+                          value={gradYear}
+                          onChange={(e) => setGradYear(e.target.value)}
+                          placeholder="2025"
+                          className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">CGPA / GPA</label>
+                        <input
+                          type="text"
+                          value={cgpa}
+                          onChange={(e) => setCgpa(e.target.value)}
+                          placeholder="8.5 / 10"
+                          className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* SECTION 4: EXPERIENCE & PROJECTS */}
+              <div className="border border-dark-border rounded-xl overflow-hidden bg-dark-bg/40">
+                <button
+                  type="button"
+                  onClick={() => setOpenSection(openSection === 'experience' ? '' as any : 'experience')}
+                  className="w-full flex items-center justify-between px-4 py-3 bg-dark-card/60 hover:bg-dark-hover/40 transition-colors"
+                >
+                  <div className="flex items-center gap-2 text-white">
+                    <FolderGit2 className="h-4 w-4 text-primary-400" />
+                    <span className="text-xs font-bold">4. Experience & Projects</span>
+                  </div>
+                  <ChevronDown className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${openSection === 'experience' ? 'rotate-180' : ''}`} />
+                </button>
+                {openSection === 'experience' && (
+                  <div className="p-4 border-t border-dark-border space-y-3">
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Work / Internship Experience</label>
+                      <p className="text-[8px] text-gray-500 mb-1.5">Include roles, company names, and achievements using XYZ format.</p>
+                      <textarea
+                        value={experienceDetails}
+                        onChange={(e) => setExperienceDetails(e.target.value)}
+                        rows={3}
+                        placeholder="e.g. Software Engineer Intern at TechCorp. Built microservices in Node.js, reducing API latency by 30%..."
+                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500 resize-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Key Technical Projects</label>
+                      <p className="text-[8px] text-gray-500 mb-1.5">Briefly describe 1-2 major projects, their technologies, and impact.</p>
+                      <textarea
+                        value={projectDetails}
+                        onChange={(e) => setProjectDetails(e.target.value)}
+                        rows={3}
+                        placeholder="e.g. E-Commerce Backend: Designed REST APIs handling 10k+ requests/min. Utilized Redis for sessions..."
+                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500 resize-none"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* SECTION 5: EXTRA DETAILS */}
+              <div className="border border-dark-border rounded-xl overflow-hidden bg-dark-bg/40">
+                <button
+                  type="button"
+                  onClick={() => setOpenSection(openSection === 'additional' ? '' as any : 'additional')}
+                  className="w-full flex items-center justify-between px-4 py-3 bg-dark-card/60 hover:bg-dark-hover/40 transition-colors"
+                >
+                  <div className="flex items-center gap-2 text-white">
+                    <Award className="h-4 w-4 text-primary-400" />
+                    <span className="text-xs font-bold">5. Additional Info & PDF</span>
+                  </div>
+                  <ChevronDown className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${openSection === 'additional' ? 'rotate-180' : ''}`} />
+                </button>
+                {openSection === 'additional' && (
+                  <div className="p-4 border-t border-dark-border space-y-3">
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Certifications & Achievements</label>
+                      <textarea
+                        value={certifications}
+                        onChange={(e) => setCertifications(e.target.value)}
+                        rows={2}
+                        placeholder="e.g. AWS Certified Developer Associate, Google Kickstart top 5%..."
+                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500 resize-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">Hobbies & Extracurriculars</label>
+                      <textarea
+                        value={hobbies}
+                        onChange={(e) => setHobbies(e.target.value)}
+                        rows={2}
+                        placeholder="e.g. Competitive Programming club lead, Volunteered at local shelter..."
+                        className="w-full bg-dark-bg border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-primary-500 resize-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[9px] uppercase font-bold text-gray-400 mb-1">
+                        Upload Existing Resume (Optional)
+                      </label>
+                      <p className="text-[8px] text-gray-500 mb-1.5">Uses your existing PDF resume text for context.</p>
+                      <div className="border border-dashed border-dark-border rounded-lg p-3 hover:bg-dark-hover/30 hover:border-primary-500/40 transition-colors relative flex items-center gap-2.5 cursor-pointer">
+                        <input
+                          type="file"
+                          accept=".pdf"
+                          onChange={(e) => {
+                            if (e.target.files && e.target.files[0]) setBuilderPdfFile(e.target.files[0]);
+                          }}
+                          className="absolute inset-0 opacity-0 cursor-pointer"
+                        />
+                        <FileUp className="h-4 w-4 text-primary-400 shrink-0" />
+                        <div className="min-w-0">
+                          {builderPdfFile ? (
+                            <>
+                              <p className="text-xs font-bold text-white truncate">{builderPdfFile.name}</p>
+                              <p className="text-[8px] text-gray-500">{(builderPdfFile.size / 1024).toFixed(0)} KB • PDF</p>
+                            </>
+                          ) : (
+                            <p className="text-[9px] text-gray-500">Click to upload PDF</p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <button
                 type="submit"
                 disabled={generating}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-accent-purple to-primary-500 text-white text-xs font-bold hover:opacity-90 transition-opacity disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-accent-purple to-primary-500 text-white text-xs font-bold hover:opacity-90 transition-opacity disabled:opacity-50 mt-2"
               >
                 {generating ? (
                   <><Loader2 className="h-4 w-4 animate-spin" /> Generating...</>
