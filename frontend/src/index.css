@@ -89,3 +89,105 @@
 .code-editor-textarea {
   font-family: 'Fira Code', 'Courier New', Courier, monospace;
 }
+
+/* Premium Resume Preview Styles */
+.prose-custom {
+  color: #1f2937;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.prose-custom h1 {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 4px;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.prose-custom h1 + p {
+  text-align: center;
+  font-size: 10.5px;
+  color: #4b5563;
+  margin-top: -2px;
+  margin-bottom: 16px;
+  display: block;
+  font-style: normal;
+}
+.prose-custom h1 + p em, .prose-custom h1 + p a {
+  font-style: normal;
+  color: #4b5563;
+  text-decoration: none;
+}
+.prose-custom h1 + p a:hover {
+  text-decoration: underline;
+  color: #2563eb;
+}
+.prose-custom h2 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1.5px solid #1f2937;
+  padding-bottom: 2px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  color: #111827;
+}
+.prose-custom h3 {
+  font-size: 11.5px;
+  font-weight: 700;
+  margin-top: 8px;
+  margin-bottom: 2px;
+  color: #111827;
+}
+.prose-custom p, .prose-custom li {
+  font-size: 11px;
+  color: #374151;
+  line-height: 1.4;
+  margin: 3px 0;
+}
+.prose-custom ul {
+  padding-left: 16px;
+  margin: 3px 0;
+  list-style-type: disc;
+}
+.prose-custom li {
+  margin-bottom: 2px;
+}
+.prose-custom strong {
+  font-weight: 700;
+  color: #111827;
+}
+.prose-custom em {
+  color: #4b5563;
+  font-style: italic;
+}
+.prose-custom a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+.prose-custom a:hover {
+  color: #1d4ed8;
+}
+.prose-custom .flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 6px;
+  margin-bottom: 2px;
+  width: 100%;
+}
+.prose-custom .flex-row > *:first-child {
+  margin: 0;
+  text-align: left;
+}
+.prose-custom .flex-row > em {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+  color: #111827;
+  white-space: nowrap;
+  margin-left: 10px;
+  text-align: right;
+}

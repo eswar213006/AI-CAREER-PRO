@@ -16,17 +16,23 @@ import api from '../utils/api';
 
 // Inline simple markdown renderer (avoids dependency issues)
 const renderMarkdown = (md: string): string => {
-  return md
-    .replace(/^# (.+)$/gm, '<h1 class="text-xl font-black text-white mt-6 mb-2">$1</h1>')
-    .replace(/^## (.+)$/gm, '<h2 class="text-base font-extrabold text-primary-400 mt-5 mb-2 border-b border-dark-border pb-1">$1</h2>')
-    .replace(/^### (.+)$/gm, '<h3 class="text-sm font-bold text-white mt-4 mb-1">$1</h3>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong class="text-white font-bold">$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em class="text-gray-400 italic">$1</em>')
-    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-primary-400 hover:underline font-semibold">$1</a>')
-    .replace(/^- (.+)$/gm, '<li class="flex gap-2 text-xs text-gray-300 mt-1"><span class="text-primary-400 mt-0.5 shrink-0">•</span><span>$1</span></li>')
-    .replace(/(<li[\s\S]*?<\/li>)+/gm, (match) => `<ul class="mt-1 space-y-0.5">${match}</ul>`)
-    .replace(/^(?!<[h|l|u|a])(.*\S.*)$/gm, '<p class="text-xs text-gray-300 leading-relaxed">$1</p>')
+  const normalized = md.replace(/\r\n/g, '\n');
+  let html = normalized
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>[\s\S]*?<\/li>)+/gm, (match) => `<ul>${match}</ul>`)
+    .replace(/^(?!<[h|l|u|a])(.*\S.*)$/gm, '<p>$1</p>')
     .replace(/\n\n/g, '<br/>');
+
+  // Handle left-right date alignment (pipe syntax)
+  html = html.replace(/<(h3|p|li)>(.*?)\s*\|\s*<em>(.*?)<\/em><\/\1>/g, '<div class="flex-row"><$1>$2</$1><em>$3</em></div>');
+  
+  return html;
 };
 
 const ROLES = [
@@ -319,7 +325,7 @@ export const ResumeAnalyzer: React.FC = () => {
     const normalizedMarkdown = generatedMarkdown.replace(/\r\n/g, '\n');
 
     // Parse Markdown to print-friendly clean HTML
-    const cleanHtml = normalizedMarkdown
+    let cleanHtml = normalizedMarkdown
       .replace(/^# (.+)$/gm, '<h1>$1</h1>')
       .replace(/^## (.+)$/gm, '<h2>$1</h2>')
       .replace(/^### (.+)$/gm, '<h3>$1</h3>')
@@ -331,6 +337,9 @@ export const ResumeAnalyzer: React.FC = () => {
       .replace(/^(?!<[h|l|u|a])(.*\S.*)$/gm, '<p>$1</p>')
       .replace(/\n\n/g, '<br/>');
 
+    // Handle left-right date alignment (pipe syntax)
+    cleanHtml = cleanHtml.replace(/<(h3|p|li)>(.*?)\s*\|\s*<em>(.*?)<\/em><\/\1>/g, '<div class="pdf-flex-row"><$1>$2</$1><em>$3</em></div>');
+
     printWindow.document.write(`
       <!DOCTYPE html>
       <html>
@@ -341,8 +350,8 @@ export const ResumeAnalyzer: React.FC = () => {
             
             body {
               font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-              color: #111827;
-              line-height: 1.5;
+              color: #1f2937;
+              line-height: 1.4;
               padding: 40px;
               max-width: 800px;
               margin: 0 auto;
@@ -350,81 +359,112 @@ export const ResumeAnalyzer: React.FC = () => {
             }
             
             h1 {
-              font-size: 26px;
+              font-size: 24px;
               font-weight: 700;
               text-align: center;
-              margin: 0 0 6px 0;
-              letter-spacing: -0.02em;
+              margin: 0 0 4px 0;
+              letter-spacing: -0.01em;
+              text-transform: uppercase;
+              color: #111827;
             }
             
             /* Center email and links paragraph directly below name */
-            h1 + p, h1 + p > em {
+            h1 + p {
               text-align: center;
-              font-size: 11px;
+              font-size: 10.5px;
               color: #4b5563;
-              margin-top: 0;
-              margin-bottom: 20px;
+              margin-top: -2px;
+              margin-bottom: 16px;
               display: block;
+            }
+
+            h1 + p em, h1 + p a {
               font-style: normal;
-            }
-
-            h1 + p a {
-              color: #2563eb;
+              color: #4b5563;
               text-decoration: none;
-              font-weight: 500;
             }
-
+            
             h1 + p a:hover {
               text-decoration: underline;
+              color: #2563eb;
             }
             
             h2 {
-              font-size: 14px;
+              font-size: 13px;
               font-weight: 700;
               text-transform: uppercase;
               letter-spacing: 0.05em;
               border-bottom: 1.5px solid #1f2937;
-              padding-bottom: 3px;
-              margin-top: 22px;
-              margin-bottom: 10px;
+              padding-bottom: 2px;
+              margin-top: 20px;
+              margin-bottom: 8px;
               color: #111827;
             }
             
             h3 {
-              font-size: 12px;
-              font-weight: 600;
-              margin-top: 10px;
-              margin-bottom: 4px;
+              font-size: 11.5px;
+              font-weight: 700;
+              margin-top: 8px;
+              margin-bottom: 2px;
               color: #111827;
             }
             
             p, li {
-              font-size: 11.5px;
+              font-size: 11px;
               color: #374151;
-              margin: 4px 0;
+              margin: 3px 0;
             }
             
             ul {
-              padding-left: 18px;
-              margin: 4px 0;
+              padding-left: 16px;
+              margin: 3px 0;
             }
             
             li {
-              margin-bottom: 3px;
+              margin-bottom: 2px;
             }
             
             strong {
-              font-weight: 600;
+              font-weight: 700;
               color: #111827;
+            }
+            
+            em {
+              color: #4b5563;
+              font-style: italic;
             }
             
             a {
               color: #2563eb;
-              text-decoration: none;
+              text-decoration: underline;
             }
             
             a:hover {
-              text-decoration: underline;
+              color: #1d4ed8;
+            }
+            
+            .pdf-flex-row {
+              display: flex;
+              justify-content: space-between;
+              align-items: baseline;
+              margin-top: 6px;
+              margin-bottom: 2px;
+              width: 100%;
+            }
+            
+            .pdf-flex-row > *:first-child {
+              margin: 0;
+              text-align: left;
+            }
+            
+            .pdf-flex-row > em {
+              font-style: normal;
+              font-weight: 600;
+              font-size: 11px;
+              color: #111827;
+              white-space: nowrap;
+              margin-left: 10px;
+              text-align: right;
             }
             
             @media print {
@@ -1174,12 +1214,12 @@ export const ResumeAnalyzer: React.FC = () => {
                 </div>
 
                 {/* Rendered resume */}
-                <GlassCard className="min-h-[600px]">
+                <div className="bg-white text-gray-900 shadow-2xl p-8 sm:p-12 rounded-2xl min-h-[600px] border border-gray-200/50">
                   <div
                     className="prose-custom leading-relaxed"
                     dangerouslySetInnerHTML={{ __html: renderMarkdown(generatedMarkdown) }}
                   />
-                </GlassCard>
+                </div>
 
                 {/* Raw markdown toggle */}
                 <details className="group">

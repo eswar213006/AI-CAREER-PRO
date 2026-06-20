@@ -264,31 +264,51 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
 
     let educationsSection = '';
     if (Array.isArray(parsedEducations) && parsedEducations.length > 0) {
-      // Pre-format each education entry as markdown so Gemini copies it verbatim
-      // and never invents its own heading labels
       educationsSection = parsedEducations.map((edu: any) => {
-        const title = edu.degree?.trim() || edu.college?.trim() || 'Education';
+        const title = edu.degree?.trim() || 'Education';
         const institution = edu.college?.trim() || '';
         const year = edu.gradYear?.trim() || '';
         const cgpa = edu.cgpa?.trim() || '';
-        return `**${title}**\n${institution ? `*${institution}${year ? ' | ' + year : ''}*` : (year ? `*${year}*` : '')}${cgpa ? `\n- CGPA/GPA: ${cgpa}` : ''}`;
+        
+        const isSchool = /class\s*(x|v?i{1,3})/i.test(title) || /school/i.test(institution);
+        
+        if (isSchool) {
+          return `**${institution}**\n${title}${cgpa ? ` - Percentage: ${cgpa}` : ''} | *${year}*`;
+        } else {
+          return `**${institution}** | *${year}*\n${title}${cgpa ? ` | CGPA: ${cgpa}` : ''}`;
+        }
       }).join('\n\n');
     } else {
-      const singleTitle = candidateDegree?.trim() || candidateCollege?.trim() || 'Education';
-      educationsSection = `**${singleTitle}**\n*${candidateCollege}${candidateGradYear ? ' | ' + candidateGradYear : ''}*${candidateCgpa ? '\n- CGPA/GPA: ' + candidateCgpa : ''}`;
+      const singleTitle = candidateDegree?.trim() || 'Bachelor\'s Degree';
+      educationsSection = `**${candidateCollege}** | *${candidateGradYear}*\n${singleTitle}${candidateCgpa ? ' | CGPA: ' + candidateCgpa : ''}`;
     }
 
     let experiencesSection = '';
     if (Array.isArray(parsedExperiences) && parsedExperiences.length > 0) {
-      experiencesSection = parsedExperiences.map((exp: any) => `
-      - Company: ${exp.company || 'N/A'}
-        Role: ${exp.role || 'N/A'}
-        Duration: ${exp.duration || 'N/A'}
-        Achievements: ${exp.achievements || 'N/A'}
-      `).join('\n');
+      experiencesSection = parsedExperiences.map((exp: any) => {
+        const company = exp.company?.trim() || 'Company';
+        const role = exp.role?.trim() || 'Role';
+        const duration = exp.duration?.trim() || '';
+        const achievementsStr = exp.achievements || '';
+        const formattedAchievements = achievementsStr
+          .split('\n')
+          .map((line: string) => line.trim())
+          .filter((line: string) => line.length > 0)
+          .map((line: string) => line.startsWith('-') ? line : `- ${line}`)
+          .join('\n');
+        return `**${company}, ${role}** | *${duration}*\n${formattedAchievements}`;
+      }).join('\n\n');
     } else {
-      experiencesSection = experienceDetails || 'Describe a relevant professional experience or internship placeholder using the Google XYZ formula: "Accomplished [X] as measured by [Y], by doing [Z]".';
+      experiencesSection = experienceDetails || 'Describe a relevant professional experience or internship placeholder using the Google XYZ formula.';
     }
+
+    const certsInstruction = certifications 
+      ? '7. Certifications & Achievements:\n         - Heading: "## CERTIFICATIONS"\n         - Format each certification on a single line: `**Certification Name - Issuer** | *Date*` (e.g. `**Principles of UI/UX - Meta** | *Nov 2024*`)' 
+      : '';
+
+    const hobbiesInstruction = hobbies 
+      ? '8. Hobbies & Extracurriculars:\n         - Heading: "## HOBBIES & EXTRACURRICULARS"\n         - Format each hobby/activity on a single line: `**Activity/Hobby Name**: brief description | *Date*`' 
+      : '';
 
     const prompt = `
       You are an expert technical recruiter and resume writer.
@@ -306,10 +326,10 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
       - Target Role: ${targetRole}
       ${pdfExtractedInfo}
       
-      Education History:
+      Education History (already pre-formatted using left-right layout):
       ${educationsSection}
       
-      Work Experience / Internships:
+      Work Experience / Internships (already pre-formatted using left-right layout):
       ${experiencesSection}
       
       Projects:
@@ -318,74 +338,91 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
       ${certifications ? `Certifications & Achievements:\n${certifications}` : ''}
       ${hobbies ? `Hobbies & Extracurriculars:\n${hobbies}` : ''}
       
-      The resume MUST include the following sections:
-      1. Header (Name, Email, Phone, LinkedIn, GitHub, Portfolio if available)
-      2. Professional Summary (2-3 sentences. Write in third person and tailor to ${targetRole}.)
-      3. Technical Skills (categorized, using these provided skills: ${techStack})
-      4. Work Experience (using the experience details provided, formatted using the Google XYZ formula)
-      5. Projects (using the project details provided, formatted using the Google XYZ formula)
-      6. Education: Copy the education entries EXACTLY as formatted in the Education History section above. Each entry already has a bold title (the actual degree/certificate name like "B.Tech in Computer Science" or "Class XII"). Do NOT add any prefix labels like "Degree:", "Degree/Title:", or "Qualification:" before those titles. Do NOT change or rewrite the titles. Just use them as-is.
-      ${certifications ? '7. Certifications & Achievements' : ''}
-      ${hobbies ? '8. Hobbies & Extracurriculars' : ''}
+      The resume MUST include the following sections and EXACT layout conventions:
+      
+      1. Header:
+         - Large bold centered name in uppercase: "# ${candidateName.toUpperCase()}"
+         - Contact line centered directly below, exactly in this format, separated by pipes: "*${candidatePhone} | ${candidateEmail} | LinkedIn: ${candidateLinkedin} | GitHub: ${candidateGithub}${candidatePortfolio ? ` | Portfolio: ${candidatePortfolio}` : ''}*"
+         
+      2. Professional Summary:
+         - Write in third person, tailored to ${targetRole}. (No heading prefix like "Summary:")
+         
+      3. Technical Skills:
+         - Heading: "## SKILLS"
+         - Categorized skills using bold headings and comma-separated lists, for example:
+           **Programming Languages:** Python, C, C++, Swift, HTML-CSS
+           **Libraries and Frameworks:** Matplotlib, NumPy, Pandas
+           **Databases:** MySQL
+           **Soft Skills:** Leadership Skills, Confident, Strong Communication
+           
+      4. Education:
+         - Heading: "## EDUCATION"
+         - Copy the education entries EXACTLY as formatted in the Education History section above. Each entry already has a left-right layout separated by a pipe. Do NOT add prefix labels like "Degree:" or change the formatting. Use them as-is.
+         
+      5. Work Experience:
+         - Heading: "## EXPERIENCE"
+         - Format each entry starting with a line: \`**Company Name, Job Title** | *Duration*\`
+         - Followed by bullet points detailing achievements using the Google XYZ formula.
+         
+      6. Projects & Research:
+         - Heading: "## PROJECTS & RESEARCH"
+         - Format each project entry starting with a line: \`**Project Name - Subtitle** | *Duration*\` (e.g. \`**Fleetly, Fleet Management App - Infosys internship Project** | *Apr 2025 - May 2025*\`)
+         - Followed by bullet points detailing technologies, logic, and descriptions.
+         
+      ${certsInstruction}
+         
+      ${hobbiesInstruction}
 
-      IMPORTANT: Use the actual candidate name "${candidateName}" throughout. Do NOT use placeholder names like "John Doe" or "Your Name".
+      IMPORTANT: Use the actual candidate name "${candidateName}" throughout. Do NOT use placeholder names.
       Output ONLY the raw markdown text for the resume. Do not use code blocks around the entire output.
     `;
 
     // Build dynamic fallback sections — use same pre-formatted approach as the Gemini prompt
-    let fallbackEducationList = '';
-    if (Array.isArray(parsedEducations) && parsedEducations.length > 0) {
-      fallbackEducationList = parsedEducations.map((edu: any) => {
-        const title = edu.degree?.trim() || edu.college?.trim() || 'Bachelor\'s Degree';
-        const institution = edu.college?.trim() || '';
-        const year = edu.gradYear?.trim() || '';
-        const cgpa = edu.cgpa?.trim() || '';
-        return `**${title}**\n${institution ? `*${institution}${year ? ' | ' + year : ''}*` : (year ? `*${year}*` : '')}${cgpa ? `\n- CGPA/GPA: ${cgpa}` : ''}`;
-      }).join('\n\n');
+    let fallbackEducationList = educationsSection;
+
+    let fallbackExperienceList = experiencesSection;
+
+    let fallbackProjectList = '';
+    if (projectDetails) {
+      fallbackProjectList = projectDetails
+        .split('\n')
+        .map((line: string) => line.trim())
+        .filter((line: string) => line.length > 0)
+        .map((line: string) => line.startsWith('-') ? line : `- ${line}`)
+        .join('\n');
     } else {
-      const singleTitle = candidateDegree?.trim() || candidateCollege?.trim() || 'Bachelor\'s Degree';
-      fallbackEducationList = `**${singleTitle}**\n*${candidateCollege}${candidateGradYear ? ' | ' + candidateGradYear : ''}*${candidateCgpa ? '\n- CGPA/GPA: ' + candidateCgpa : ''}`;
+      fallbackProjectList = `**E-Commerce Platform - Full Stack Personal Project** | *Jan 2024 – May 2024*
+- Architected a robust full-stack application incorporating React and a scalable NoSQL database, serving 500+ concurrent users.
+- Implemented JWT-based authentication and role-based access control, securing all API endpoints against OWASP Top 10 vulnerabilities.`;
     }
 
-    let fallbackExperienceList = '';
-    if (Array.isArray(parsedExperiences) && parsedExperiences.length > 0) {
-      fallbackExperienceList = parsedExperiences.map((exp: any) => `
-### ${exp.role || 'Role'} | ${exp.company || 'Company'}
-*${exp.duration || 'Duration'}*
-${(exp.achievements || '').split('\n').map((line: string) => line.startsWith('-') ? line : `- ${line}`).join('\n')}
-      `).join('\n');
-    } else {
-      fallbackExperienceList = `
-### ${targetRole} Intern | Tech Innovators Pvt. Ltd.
-*June 2024 – Present*
-${experienceDetails ? experienceDetails.split('\n').map((line: string) => line.startsWith('-') ? line : `- ${line}`).join('\n') : `- Engineered a scalable REST API using Node.js and Express, improving data retrieval speeds by 40% as measured by load testing benchmarks.\n- Migrated legacy frontend components to React, reducing bundle size by 15% and improving Lighthouse performance score to 95+.`}
-      `;
-    }
-
-    const fallbackResume = `# ${candidateName}
-*${candidateEmail} | ${candidatePhone} | [LinkedIn](${candidateLinkedin}) | [GitHub](${candidateGithub})${candidatePortfolio ? ` | [Portfolio](${candidatePortfolio})` : ''}*
+    const fallbackResume = `# ${candidateName.toUpperCase()}
+*${candidatePhone} | ${candidateEmail} | LinkedIn: ${candidateLinkedin} | GitHub: ${candidateGithub}${candidatePortfolio ? ` | Portfolio: ${candidatePortfolio}` : ''}*
 
 ## Professional Summary
 Results-driven ${experienceLevel} ${targetRole} with a strong foundation in building scalable applications. Proven ability to leverage modern technologies to optimize performance and deliver exceptional user experiences. Seeking to contribute expertise in ${techStack.split(',')[0]?.trim() || 'software engineering'} to a dynamic engineering team.
 
-## Technical Skills
-- **Languages & Frameworks:** ${techStack}
-- **Tools & Platforms:** Git, Docker, AWS, CI/CD, Agile/Scrum
-- **Core Concepts:** Data Structures, Algorithms, System Design, REST APIs
+## EDUCATION
+${fallbackEducationList}
 
-## Experience & Projects
+## EXPERIENCE
 ${fallbackExperienceList}
 
-### Technical Projects
-${projectDetails ? projectDetails.split('\n').map((line: string) => line.startsWith('-') ? line : `- ${line}`).join('\n') : `### ${targetRole} Personal Project: E-Commerce Platform
-*Jan 2024 – May 2024*
-- Architected a robust full-stack application incorporating React and a scalable NoSQL database, serving 500+ concurrent users.
-- Implemented JWT-based authentication and role-based access control, securing all API endpoints against OWASP Top 10 vulnerabilities.`}
+## SKILLS
+**Programming Languages:** ${techStack}
+**Tools & Platforms:** Git, Docker, AWS, CI/CD, Agile/Scrum
+**Core Concepts:** Data Structures, Algorithms, System Design, REST APIs
 
-## Education
-${fallbackEducationList}
-${certifications ? `\n## Certifications & Achievements\n${certifications.split('\n').map((line: string) => line.startsWith('-') ? line : `- ${line}`).join('\n')}` : ''}
-${hobbies ? `\n## Hobbies & Extracurriculars\n${hobbies.split('\n').map((line: string) => line.startsWith('-') ? line : `- ${line}`).join('\n')}` : ''}
+## PROJECTS & RESEARCH
+${fallbackProjectList}
+${certifications ? `\n## CERTIFICATIONS\n${certifications.split('\n').map((line: string) => line.trim()).filter((line: string) => line.length > 0).map((line: string) => {
+  if (line.includes('|')) return line;
+  return `**${line}**`;
+}).join('\n')}` : ''}
+${hobbies ? `\n## HOBBIES & EXTRACURRICULARS\n${hobbies.split('\n').map((line: string) => line.trim()).filter((line: string) => line.length > 0).map((line: string) => {
+  if (line.includes('|')) return line;
+  return `**${line}**`;
+}).join('\n')}` : ''}
 `;
 
     const aiResumeMarkdown = await generateAIResponse(prompt, fallbackResume);
