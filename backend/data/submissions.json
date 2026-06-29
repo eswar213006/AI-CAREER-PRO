@@ -160,5 +160,59 @@
       ],
       "refactoredCode": "// Refactored code successfully optimized."
     }
+  },
+  {
+    "_id": "1782760571805_ic9mbrg",
+    "createdAt": "2026-06-29T19:16:11.805Z",
+    "updatedAt": "2026-06-29T19:16:11.805Z",
+    "userId": "1782759327053_px0txga",
+    "problemId": "container-most-water",
+    "title": "Container With Most Water",
+    "code": "public class Solution {\n    // Optimal solution for Container With Most Water\n    public Object solve(Object input) {\n        // Implement optimal algorithm here\n        return null;\n    }\n}",
+    "language": "java",
+    "status": "Accepted",
+    "testCasesPassed": 2,
+    "totalTestCases": 2,
+    "executionTimeMs": 15,
+    "correctnessScore": 100,
+    "aiReview": {
+      "timeComplexity": "O(N)",
+      "spaceComplexity": "O(1)",
+      "optimizationSuggestions": [
+        "Verify edge cases such as empty inputs or negative values.",
+        "Optimize variable names for readability."
+      ],
+      "codeSmells": [
+        "None detected."
+      ],
+      "refactoredCode": "public class Solution {\n    // Optimal solution for Container With Most Water\n    public Object solve(Object input) {\n        // Implement optimal algorithm here\n        return null;\n    }\n}"
+    }
+  },
+  {
+    "_id": "1782760891806_d95v5y5",
+    "createdAt": "2026-06-29T19:21:31.806Z",
+    "updatedAt": "2026-06-29T19:21:31.806Z",
+    "userId": "1782759327053_px0txga",
+    "problemId": "container-most-water",
+    "title": "Container With Most Water",
+    "code": "public class Solution {\n    // Optimal solution for Container With Most Water\n    public Object solve(Object input) {\n        // Implement optimal algorithm here\n        return null;\n    }\n}",
+    "language": "java",
+    "status": "Accepted",
+    "testCasesPassed": 2,
+    "totalTestCases": 2,
+    "executionTimeMs": 15,
+    "correctnessScore": 100,
+    "aiReview": {
+      "timeComplexity": "O(N)",
+      "spaceComplexity": "O(1)",
+      "optimizationSuggestions": [
+        "Verify edge cases such as empty inputs or negative values.",
+        "Optimize variable names for readability."
+      ],
+      "codeSmells": [
+        "None detected."
+      ],
+      "refactoredCode": "public class Solution {\n    // Optimal solution for Container With Most Water\n    public Object solve(Object input) {\n        // Implement optimal algorithm here\n        return null;\n    }\n}"
+    }
   }
 ]
