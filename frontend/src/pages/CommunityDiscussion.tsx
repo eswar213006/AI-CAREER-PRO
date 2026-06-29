@@ -4,7 +4,7 @@ import { Button } from '../components/Button';
 import { useToast } from '../components/Toast';
 import { 
   MessageSquare, Heart, Bookmark, BookmarkCheck, ArrowRight, Share2,
-  Filter, Tag, Plus, CheckCircle, HelpCircle, Send, Users, Announcement
+  Filter, Tag, Plus, CheckCircle, HelpCircle, Send, Users
 } from 'lucide-react';
 
 interface CommentItem { userId: string; text: string; date: string; }
