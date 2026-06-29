@@ -261,5 +261,344 @@
         "Review weak topics in the preparation hub before starting your next mock."
       ]
     }
+  },
+  {
+    "_id": "1781382092031_oc3aqwh",
+    "createdAt": "2026-06-13T20:21:32.031Z",
+    "updatedAt": "2026-06-13T20:21:32.031Z",
+    "userId": "1781381901883_y3qukkj",
+    "jobRole": "Software Engineer",
+    "experienceLevel": "Fresher",
+    "difficulty": "Medium",
+    "interviewType": "Mixed",
+    "company": "General",
+    "status": "active",
+    "questions": [
+      {
+        "id": "q1",
+        "text": "Explain the difference between a Process and a Thread in Operating Systems. How do they communicate?",
+        "category": "mixed",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "",
+        "score": 0
+      },
+      {
+        "id": "q2",
+        "text": "Given a binary tree, how do you find the lowest common ancestor (LCA) of two given nodes? What is the complexity?",
+        "category": "mixed",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "",
+        "score": 0
+      },
+      {
+        "id": "q3",
+        "text": "Tell me about a time you faced a difficult conflict with a teammate or classmate. How did you resolve it?",
+        "category": "mixed",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "",
+        "score": 0
+      },
+      {
+        "id": "q4",
+        "text": "What is the difference between TCP and UDP? Explain the three-way handshake in TCP.",
+        "category": "mixed",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "",
+        "score": 0
+      },
+      {
+        "id": "q5",
+        "text": "Why do you want to join our company, and what makes you a good fit for this role?",
+        "category": "mixed",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "",
+        "score": 0
+      }
+    ],
+    "score": {
+      "technical": 0,
+      "communication": 0,
+      "confidence": 0,
+      "overall": 0
+    },
+    "voiceReport": {
+      "speakingSpeedWpm": 0,
+      "fillerWordCount": 0,
+      "fillerWordsDetected": [],
+      "pronunciationScore": 0,
+      "confidenceScore": 0,
+      "reportSummary": ""
+    },
+    "aiDetailedFeedback": {
+      "strengths": [],
+      "weaknesses": [],
+      "tips": []
+    }
+  },
+  {
+    "_id": "1781984844200_3tuwq27",
+    "createdAt": "2026-06-20T19:47:24.200Z",
+    "updatedAt": "2026-06-20T19:47:43.671Z",
+    "userId": "1781984686354_c1t3jxw",
+    "jobRole": "Software Engineer",
+    "experienceLevel": "Fresher",
+    "difficulty": "Hard",
+    "interviewType": "Technical",
+    "company": "General",
+    "status": "completed",
+    "questions": [
+      {
+        "id": "q1",
+        "text": "Explain the difference between a Process and a Thread in Operating Systems. How do they communicate?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "v",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q2",
+        "text": "Given a binary tree, how do you find the lowest common ancestor (LCA) of two given nodes? What is the complexity?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "v",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q3",
+        "text": "What is the difference between TCP and UDP? Explain the three-way handshake in TCP.",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "b",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q4",
+        "text": "Explain the difference between normalization and denormalization in DBMS. When would you use denormalization?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q5",
+        "text": "How would you design a rate limiter for a public API? What algorithms (like Token Bucket) would you apply?",
+        "category": "technical",
+        "idealAnswer": "Key topics: structure, clarity, accuracy, and naming edge cases.",
+        "userAnswer": "n",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      }
+    ],
+    "score": {
+      "technical": 0,
+      "communication": 0,
+      "confidence": 0,
+      "overall": 0
+    },
+    "voiceReport": {
+      "speakingSpeedWpm": 15,
+      "fillerWordCount": 0,
+      "fillerWordsDetected": [],
+      "pronunciationScore": 0,
+      "confidenceScore": 0,
+      "reportSummary": "Speaking pace is 15 WPM (Slow). Used 0 filler words. Pronunciation score: 0%, confidence score: 0%."
+    },
+    "aiDetailedFeedback": {
+      "strengths": [
+        "No significant strengths observed due to lack of detailed responses."
+      ],
+      "weaknesses": [
+        "Answers are far too brief or completely missing. Technical interviews require deep, structured explanations.",
+        "Could state more direct project metrics."
+      ],
+      "tips": [
+        "Practice speaking with a structural framework like STAR (Situation, Task, Action, Result).",
+        "Never skip a question completely—always state your assumptions or explain a brute-force approach.",
+        "Review weak topics in the preparation hub before starting your next mock."
+      ]
+    }
+  },
+  {
+    "_id": "1781988979734_v954gcw",
+    "createdAt": "2026-06-20T20:56:19.734Z",
+    "updatedAt": "2026-06-20T20:56:32.365Z",
+    "userId": "1781984686354_c1t3jxw",
+    "jobRole": "Software Engineer",
+    "experienceLevel": "Fresher",
+    "difficulty": "Medium",
+    "interviewType": "Technical",
+    "company": "General",
+    "status": "completed",
+    "questions": [
+      {
+        "id": "q1",
+        "text": "Explain the difference between a Process and a Thread in Operating Systems. How do they communicate?",
+        "category": "technical",
+        "idealAnswer": "A process is an isolated execution unit with dedicated virtual memory space (inter-process communication needed). A thread is the smallest schedulable execution unit inside a process, sharing memory (heap/code) with other threads.",
+        "userAnswer": "we",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q2",
+        "text": "Given a binary tree, how do you find the lowest common ancestor (LCA) of two given nodes? What is the complexity?",
+        "category": "technical",
+        "idealAnswer": "Recursively traverse nodes: if node is null, p, or q, return node. Search left and right subtrees. If both subtrees return non-null, current node is LCA. Time complexity is O(N) where N is number of nodes. Space complexity is O(H) recursion stack.",
+        "userAnswer": "qw",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q3",
+        "text": "What is the difference between TCP and UDP? Explain the three-way handshake in TCP.",
+        "category": "technical",
+        "idealAnswer": "TCP is connection-oriented, reliable, guarantees packet ordering, and handles congestion. UDP is connectionless, fast, unreliable, and suitable for streaming. TCP handshake: SYN -> SYN-ACK -> ACK.",
+        "userAnswer": "",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q4",
+        "text": "Explain the difference between normalization and denormalization in DBMS. When would you use denormalization?",
+        "category": "technical",
+        "idealAnswer": "Normalization structures tables to eliminate redundancy and improve integrity (1NF, 2NF, 3NF). Denormalization intentionally adds redundant data to speed up complex query executions in read-heavy/analytical workloads.",
+        "userAnswer": "",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q5",
+        "text": "How would you design a rate limiter for a public API? What algorithms (like Token Bucket) would you apply?",
+        "category": "technical",
+        "idealAnswer": "Protects APIs from abuse. Algorithms include Token Bucket (allows bursts), Leaky Bucket (smooths rates), Fixed Window, and Sliding Window. Can be implemented using Redis to count client IP hits within a sliding timeframe.",
+        "userAnswer": "",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      }
+    ],
+    "score": {
+      "technical": 0,
+      "communication": 0,
+      "confidence": 0,
+      "overall": 0
+    },
+    "voiceReport": {
+      "speakingSpeedWpm": 2,
+      "fillerWordCount": 0,
+      "fillerWordsDetected": [],
+      "pronunciationScore": 0,
+      "confidenceScore": 0,
+      "reportSummary": "Speaking pace is 2 WPM (Slow). Used 0 filler words. Pronunciation score: 0%, confidence score: 0%."
+    },
+    "aiDetailedFeedback": {
+      "strengths": [
+        "No significant strengths observed due to lack of detailed responses."
+      ],
+      "weaknesses": [
+        "Answers are far too brief or completely missing. Technical interviews require deep, structured explanations.",
+        "Could state more direct project metrics."
+      ],
+      "tips": [
+        "Practice speaking with a structural framework like STAR (Situation, Task, Action, Result).",
+        "Never skip a question completely—always state your assumptions or explain a brute-force approach.",
+        "Review weak topics in the preparation hub before starting your next mock."
+      ]
+    }
+  },
+  {
+    "_id": "1782759547043_u8p5my4",
+    "createdAt": "2026-06-29T18:59:07.043Z",
+    "updatedAt": "2026-06-29T18:59:27.578Z",
+    "userId": "1782759327053_px0txga",
+    "jobRole": "Cloud Engineer",
+    "experienceLevel": "Fresher",
+    "difficulty": "Medium",
+    "interviewType": "System Design",
+    "company": "General",
+    "status": "completed",
+    "questions": [
+      {
+        "id": "q1",
+        "text": "Explain the difference between a Process and a Thread in Operating Systems. How do they communicate?",
+        "category": "system design",
+        "idealAnswer": "A process is an isolated execution unit with dedicated virtual memory space (inter-process communication needed). A thread is the smallest schedulable execution unit inside a process, sharing memory (heap/code) with other threads.",
+        "userAnswer": "wr",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q2",
+        "text": "Given a binary tree, how do you find the lowest common ancestor (LCA) of two given nodes? What is the complexity?",
+        "category": "system design",
+        "idealAnswer": "Recursively traverse nodes: if node is null, p, or q, return node. Search left and right subtrees. If both subtrees return non-null, current node is LCA. Time complexity is O(N) where N is number of nodes. Space complexity is O(H) recursion stack.",
+        "userAnswer": "cjjy",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q3",
+        "text": "What is the difference between TCP and UDP? Explain the three-way handshake in TCP.",
+        "category": "system design",
+        "idealAnswer": "TCP is connection-oriented, reliable, guarantees packet ordering, and handles congestion. UDP is connectionless, fast, unreliable, and suitable for streaming. TCP handshake: SYN -> SYN-ACK -> ACK.",
+        "userAnswer": "yy",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q4",
+        "text": "Explain the difference between normalization and denormalization in DBMS. When would you use denormalization?",
+        "category": "system design",
+        "idealAnswer": "Normalization structures tables to eliminate redundancy and improve integrity (1NF, 2NF, 3NF). Denormalization intentionally adds redundant data to speed up complex query executions in read-heavy/analytical workloads.",
+        "userAnswer": "",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      },
+      {
+        "id": "q5",
+        "text": "How would you design a rate limiter for a public API? What algorithms (like Token Bucket) would you apply?",
+        "category": "system design",
+        "idealAnswer": "Protects APIs from abuse. Algorithms include Token Bucket (allows bursts), Leaky Bucket (smooths rates), Fixed Window, and Sliding Window. Can be implemented using Redis to count client IP hits within a sliding timeframe.",
+        "userAnswer": "",
+        "feedback": "No valid answer provided. In a real interview, always attempt to outline your thought process.",
+        "score": 0
+      }
+    ],
+    "score": {
+      "technical": 0,
+      "communication": 0,
+      "confidence": 0,
+      "overall": 0
+    },
+    "voiceReport": {
+      "speakingSpeedWpm": 2,
+      "fillerWordCount": 0,
+      "fillerWordsDetected": [],
+      "pronunciationScore": 0,
+      "confidenceScore": 0,
+      "reportSummary": "Speaking pace is 2 WPM (Slow). Used 0 filler words. Pronunciation score: 0%, confidence score: 0%."
+    },
+    "aiDetailedFeedback": {
+      "strengths": [
+        "No significant strengths observed due to lack of detailed responses."
+      ],
+      "weaknesses": [
+        "Answers are far too brief or completely missing. Technical interviews require deep, structured explanations.",
+        "Could state more direct project metrics."
+      ],
+      "tips": [
+        "Practice speaking with a structural framework like STAR (Situation, Task, Action, Result).",
+        "Never skip a question completely—always state your assumptions or explain a brute-force approach.",
+        "Review weak topics in the preparation hub before starting your next mock."
+      ]
+    }
   }
 ]

@@ -273,8 +273,10 @@ export const generateResume = async (req: AuthenticatedRequest, res: Response) =
         const isSchool = /class\s*(x|v?i{1,3})/i.test(title) || /school/i.test(institution);
         
         if (isSchool) {
-          return `**${institution}**\n${title}${cgpa ? ` - Percentage: ${cgpa}` : ''} | *${year}*`;
+          // School entry: show name, then degree/title and year
+          return `**${institution}**\n${title} | *${year}*`;
         } else {
+          // College entry: name on left, year on right, then degree and CGPA
           return `**${institution}** | *${year}*\n${title}${cgpa ? ` | CGPA: ${cgpa}` : ''}`;
         }
       }).join('\n\n');

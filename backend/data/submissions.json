@@ -25,5 +25,140 @@
       ],
       "refactoredCode": "function twoSum(nums, target) {\n    const map = new Map();\n    for (let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n        if (map.has(complement)) {\n            return [map.get(complement), i];\n        }\n        map.set(nums[i], i);\n    }\n    return [];\n}"
     }
+  },
+  {
+    "_id": "1782759781150_bzvydhg",
+    "createdAt": "2026-06-29T19:03:01.150Z",
+    "updatedAt": "2026-06-29T19:03:01.150Z",
+    "userId": "1782759327053_px0txga",
+    "problemId": "subsets",
+    "title": "Subsets (Power Set)",
+    "code": "function subsets(nums) {\n    // Backtracking: include or exclude each element\n    \n}",
+    "language": "javascript",
+    "status": "Accepted",
+    "testCasesPassed": 2,
+    "totalTestCases": 2,
+    "executionTimeMs": 15,
+    "correctnessScore": 100,
+    "aiReview": {
+      "timeComplexity": "O(N)",
+      "spaceComplexity": "O(1)",
+      "optimizationSuggestions": [
+        "Ensure proper input validation checks for empty arrays or null values.",
+        "Avoid redundant object creations within loop iterations to conserve heap allocations."
+      ],
+      "codeSmells": [
+        "None detected."
+      ],
+      "refactoredCode": "// Refactored code successfully optimized."
+    }
+  },
+  {
+    "_id": "1782759792725_jd64rd0",
+    "createdAt": "2026-06-29T19:03:12.725Z",
+    "updatedAt": "2026-06-29T19:03:12.725Z",
+    "userId": "1782759327053_px0txga",
+    "problemId": "subsets",
+    "title": "Subsets (Power Set)",
+    "code": "function subsets(nums) {\n    // Backtracking: include or exclude each element\n    \n}",
+    "language": "javascript",
+    "status": "Accepted",
+    "testCasesPassed": 2,
+    "totalTestCases": 2,
+    "executionTimeMs": 15,
+    "correctnessScore": 100,
+    "aiReview": {
+      "timeComplexity": "O(N)",
+      "spaceComplexity": "O(1)",
+      "optimizationSuggestions": [
+        "Ensure proper input validation checks for empty arrays or null values.",
+        "Avoid redundant object creations within loop iterations to conserve heap allocations."
+      ],
+      "codeSmells": [
+        "None detected."
+      ],
+      "refactoredCode": "// Refactored code successfully optimized."
+    }
+  },
+  {
+    "_id": "1782759934491_89p3o7w",
+    "createdAt": "2026-06-29T19:05:34.491Z",
+    "updatedAt": "2026-06-29T19:05:34.491Z",
+    "userId": "1782759327053_px0txga",
+    "problemId": "serialize-deserialize-tree",
+    "title": "Serialize and Deserialize Binary Tree",
+    "code": "const serialize = (root) => {\n    // Pre-order DFS, 'null' for missing nodes\n};\n\nconst deserialize = (data) => {\n    // Parse comma-separated values using a queue\n};",
+    "language": "javascript",
+    "status": "Compile Error",
+    "testCasesPassed": 0,
+    "totalTestCases": 1,
+    "executionTimeMs": 15,
+    "correctnessScore": 0,
+    "aiReview": {
+      "timeComplexity": "O(N)",
+      "spaceComplexity": "O(1)",
+      "optimizationSuggestions": [
+        "Ensure proper input validation checks for empty arrays or null values.",
+        "Avoid redundant object creations within loop iterations to conserve heap allocations."
+      ],
+      "codeSmells": [
+        "None detected."
+      ],
+      "refactoredCode": "// Refactored code successfully optimized."
+    }
+  },
+  {
+    "_id": "1782760035626_9j3ni3r",
+    "createdAt": "2026-06-29T19:07:15.626Z",
+    "updatedAt": "2026-06-29T19:07:15.626Z",
+    "userId": "1782759327053_px0txga",
+    "problemId": "two-sum",
+    "title": "Two Sum",
+    "code": "#include <iostream>\n#include <vector>\n#include <string>\nusing namespace std;\n\nclass Solution {\npublic:\n    auto twoSum(auto nums, auto target) {\n        // Write your code here\n        \n    }\n};",
+    "language": "cpp",
+    "status": "Accepted",
+    "testCasesPassed": 3,
+    "totalTestCases": 3,
+    "executionTimeMs": 15,
+    "correctnessScore": 100,
+    "aiReview": {
+      "timeComplexity": "O(N) with Hash Map",
+      "spaceComplexity": "O(N) for Hash Map storage",
+      "optimizationSuggestions": [
+        "Ensure proper input validation checks for empty arrays or null values.",
+        "Avoid redundant object creations within loop iterations to conserve heap allocations."
+      ],
+      "codeSmells": [
+        "None detected."
+      ],
+      "refactoredCode": "// Refactored code successfully optimized."
+    }
+  },
+  {
+    "_id": "1782760070601_zfr4lyj",
+    "createdAt": "2026-06-29T19:07:50.601Z",
+    "updatedAt": "2026-06-29T19:07:50.602Z",
+    "userId": "1782759327053_px0txga",
+    "problemId": "implement-trie",
+    "title": "Implement Trie (Prefix Tree)",
+    "code": "class Trie {\n    public Trie() {}\n    public void insert(String word) {}\n    public boolean search(String word) { return false; }\n    public boolean startsWith(String prefix) { return false; }\n}",
+    "language": "java",
+    "status": "Accepted",
+    "testCasesPassed": 1,
+    "totalTestCases": 1,
+    "executionTimeMs": 15,
+    "correctnessScore": 100,
+    "aiReview": {
+      "timeComplexity": "O(N)",
+      "spaceComplexity": "O(1)",
+      "optimizationSuggestions": [
+        "Ensure proper input validation checks for empty arrays or null values.",
+        "Avoid redundant object creations within loop iterations to conserve heap allocations."
+      ],
+      "codeSmells": [
+        "None detected."
+      ],
+      "refactoredCode": "// Refactored code successfully optimized."
+    }
   }
 ]

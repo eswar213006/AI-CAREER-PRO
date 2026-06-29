@@ -194,5 +194,397 @@
         "points": 80
       }
     ]
+  },
+  {
+    "_id": "1781381901895_gjfge16",
+    "createdAt": "2026-06-13T20:18:21.895Z",
+    "updatedAt": "2026-06-13T20:22:21.036Z",
+    "userId": "1781381901883_y3qukkj",
+    "subjects": [
+      {
+        "subjectName": "Java & OOPs",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 15
+      },
+      {
+        "subjectName": "DBMS & SQL",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 10
+      },
+      {
+        "subjectName": "Operating Systems",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 5
+      },
+      {
+        "subjectName": "Computer Networks",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 8
+      },
+      {
+        "subjectName": "Quantitative Aptitude",
+        "mcqsTaken": 13,
+        "mcqsCorrect": 9,
+        "level": 69
+      }
+    ],
+    "placementReadinessTrend": [
+      {
+        "date": "2026-06-13",
+        "score": 35
+      }
+    ],
+    "weakTopics": [
+      "DSA",
+      "System Design"
+    ],
+    "roadmap": [
+      {
+        "phase": 1,
+        "title": "Build Foundations",
+        "status": "in-progress",
+        "description": "Review core subjects like Java/OOPs and DBMS cheat sheets."
+      },
+      {
+        "phase": 2,
+        "title": "Resume Optimization",
+        "status": "todo",
+        "description": "Upload and evaluate resume against target job description."
+      },
+      {
+        "phase": 3,
+        "title": "Practice Coding Rounds",
+        "status": "todo",
+        "description": "Solve 5 easy/medium coding problems inside compiler sandbox."
+      },
+      {
+        "phase": 4,
+        "title": "Mock Interviews",
+        "status": "todo",
+        "description": "Complete 1 Technical and 1 Behavioral full mock interview round."
+      }
+    ],
+    "dailyGoals": [
+      {
+        "text": "Take a Mini MCQ Practice Quiz",
+        "completed": false,
+        "points": 10
+      },
+      {
+        "text": "Run and compile code in sandbox",
+        "completed": false,
+        "points": 15
+      }
+    ],
+    "weeklyGoals": [
+      {
+        "text": "Analyze Resume ATS compatibility",
+        "completed": false,
+        "points": 40
+      },
+      {
+        "text": "Complete a full length AI Mock Interview",
+        "completed": false,
+        "points": 80
+      }
+    ]
+  },
+  {
+    "_id": "1781984686359_3bmgdni",
+    "createdAt": "2026-06-20T19:44:46.359Z",
+    "updatedAt": "2026-06-20T20:56:32.375Z",
+    "userId": "1781984686354_c1t3jxw",
+    "subjects": [
+      {
+        "subjectName": "Java & OOPs",
+        "mcqsTaken": 1,
+        "mcqsCorrect": 0,
+        "level": 16
+      },
+      {
+        "subjectName": "DBMS & SQL",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 10
+      },
+      {
+        "subjectName": "Operating Systems",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 5
+      },
+      {
+        "subjectName": "Computer Networks",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 8
+      },
+      {
+        "subjectName": "Quantitative Aptitude",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 20
+      }
+    ],
+    "placementReadinessTrend": [
+      {
+        "date": "2026-06-20",
+        "score": 18
+      }
+    ],
+    "weakTopics": [
+      "DSA",
+      "System Design"
+    ],
+    "roadmap": [
+      {
+        "phase": 1,
+        "title": "Build Foundations",
+        "status": "in-progress",
+        "description": "Review core subjects like Java/OOPs and DBMS cheat sheets."
+      },
+      {
+        "phase": 2,
+        "title": "Resume Optimization",
+        "status": "todo",
+        "description": "Upload and evaluate resume against target job description."
+      },
+      {
+        "phase": 3,
+        "title": "Practice Coding Rounds",
+        "status": "todo",
+        "description": "Solve 5 easy/medium coding problems inside compiler sandbox."
+      },
+      {
+        "phase": 4,
+        "title": "Mock Interviews",
+        "status": "todo",
+        "description": "Complete 1 Technical and 1 Behavioral full mock interview round."
+      }
+    ],
+    "dailyGoals": [
+      {
+        "text": "Take a Mini MCQ Practice Quiz",
+        "completed": false,
+        "points": 10
+      },
+      {
+        "text": "Run and compile code in sandbox",
+        "completed": false,
+        "points": 15
+      }
+    ],
+    "weeklyGoals": [
+      {
+        "text": "Analyze Resume ATS compatibility",
+        "completed": false,
+        "points": 40
+      },
+      {
+        "text": "Complete a full length AI Mock Interview",
+        "completed": false,
+        "points": 80
+      }
+    ]
+  },
+  {
+    "_id": "1781986358007_5paya3x",
+    "createdAt": "2026-06-20T20:12:38.007Z",
+    "updatedAt": "2026-06-20T20:12:38.007Z",
+    "userId": "1781986358003_vjaul28",
+    "subjects": [
+      {
+        "subjectName": "Java & OOPs",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 15
+      },
+      {
+        "subjectName": "DBMS & SQL",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 10
+      },
+      {
+        "subjectName": "Operating Systems",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 5
+      },
+      {
+        "subjectName": "Computer Networks",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 8
+      },
+      {
+        "subjectName": "Quantitative Aptitude",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 20
+      }
+    ],
+    "placementReadinessTrend": [
+      {
+        "date": "2026-06-20",
+        "score": 35
+      }
+    ],
+    "weakTopics": [
+      "DSA",
+      "System Design"
+    ],
+    "roadmap": [
+      {
+        "phase": 1,
+        "title": "Build Foundations",
+        "status": "in-progress",
+        "description": "Review core subjects like Java/OOPs and DBMS cheat sheets."
+      },
+      {
+        "phase": 2,
+        "title": "Resume Optimization",
+        "status": "todo",
+        "description": "Upload and evaluate resume against target job description."
+      },
+      {
+        "phase": 3,
+        "title": "Practice Coding Rounds",
+        "status": "todo",
+        "description": "Solve 5 easy/medium coding problems inside compiler sandbox."
+      },
+      {
+        "phase": 4,
+        "title": "Mock Interviews",
+        "status": "todo",
+        "description": "Complete 1 Technical and 1 Behavioral full mock interview round."
+      }
+    ],
+    "dailyGoals": [
+      {
+        "text": "Take a Mini MCQ Practice Quiz",
+        "completed": false,
+        "points": 10
+      },
+      {
+        "text": "Run and compile code in sandbox",
+        "completed": false,
+        "points": 15
+      }
+    ],
+    "weeklyGoals": [
+      {
+        "text": "Analyze Resume ATS compatibility",
+        "completed": false,
+        "points": 40
+      },
+      {
+        "text": "Complete a full length AI Mock Interview",
+        "completed": false,
+        "points": 80
+      }
+    ]
+  },
+  {
+    "_id": "1782759327059_0txjd48",
+    "createdAt": "2026-06-29T18:55:27.059Z",
+    "updatedAt": "2026-06-29T19:07:50.613Z",
+    "userId": "1782759327053_px0txga",
+    "subjects": [
+      {
+        "subjectName": "Java & OOPs",
+        "mcqsTaken": 5,
+        "mcqsCorrect": 0,
+        "level": 49
+      },
+      {
+        "subjectName": "DBMS & SQL",
+        "mcqsTaken": 1,
+        "mcqsCorrect": 0,
+        "level": 11
+      },
+      {
+        "subjectName": "Operating Systems",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 5
+      },
+      {
+        "subjectName": "Computer Networks",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 8
+      },
+      {
+        "subjectName": "Quantitative Aptitude",
+        "mcqsTaken": 0,
+        "mcqsCorrect": 0,
+        "level": 20
+      }
+    ],
+    "placementReadinessTrend": [
+      {
+        "date": "2026-06-29",
+        "score": 25
+      }
+    ],
+    "weakTopics": [
+      "DSA",
+      "System Design"
+    ],
+    "roadmap": [
+      {
+        "phase": 1,
+        "title": "Build Foundations",
+        "status": "in-progress",
+        "description": "Review core subjects like Java/OOPs and DBMS cheat sheets."
+      },
+      {
+        "phase": 2,
+        "title": "Resume Optimization",
+        "status": "todo",
+        "description": "Upload and evaluate resume against target job description."
+      },
+      {
+        "phase": 3,
+        "title": "Practice Coding Rounds",
+        "status": "todo",
+        "description": "Solve 5 easy/medium coding problems inside compiler sandbox."
+      },
+      {
+        "phase": 4,
+        "title": "Mock Interviews",
+        "status": "todo",
+        "description": "Complete 1 Technical and 1 Behavioral full mock interview round."
+      }
+    ],
+    "dailyGoals": [
+      {
+        "text": "Take a Mini MCQ Practice Quiz",
+        "completed": false,
+        "points": 10
+      },
+      {
+        "text": "Run and compile code in sandbox",
+        "completed": false,
+        "points": 15
+      }
+    ],
+    "weeklyGoals": [
+      {
+        "text": "Analyze Resume ATS compatibility",
+        "completed": false,
+        "points": 40
+      },
+      {
+        "text": "Complete a full length AI Mock Interview",
+        "completed": false,
+        "points": 80
+      }
+    ]
   }
 ]

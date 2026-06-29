@@ -86,5 +86,175 @@
         "completedAt": "2026-06-13T19:31:59.732Z"
       }
     ]
+  },
+  {
+    "_id": "1781381901883_y3qukkj",
+    "createdAt": "2026-06-13T20:18:21.883Z",
+    "updatedAt": "2026-06-13T20:22:21.035Z",
+    "email": "eswartunugutla@gmail.com",
+    "password": "$2a$10$NAuFxNHq650tc6EdxyXe5e.t2agmMul0PDImvHFItDmM0Py7s7WjW",
+    "isVerified": true,
+    "role": "student",
+    "profile": {
+      "name": "eswar",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Fresher",
+      "targetCompanies": []
+    },
+    "stats": {
+      "xp": 100,
+      "currentStreak": 1,
+      "longestStreak": 1,
+      "lastActiveDate": "2026-06-13",
+      "codingChallengesCompleted": 0,
+      "totalInterviewsTaken": 0,
+      "readinessScore": 35,
+      "atsScore": 0
+    },
+    "achievements": [
+      {
+        "id": "welcome",
+        "title": "Welcome aboard!",
+        "description": "Created your AI CareerPrep Pro account successfully.",
+        "unlockedAt": "2026-06-13T20:18:21.882Z",
+        "icon": "🎉"
+      }
+    ],
+    "dailyChallenges": [
+      {
+        "date": "2026-06-13",
+        "challengeId": "first_login",
+        "completed": true,
+        "completedAt": "2026-06-13T20:18:21.882Z"
+      }
+    ]
+  },
+  {
+    "_id": "1781984686354_c1t3jxw",
+    "createdAt": "2026-06-20T19:44:46.354Z",
+    "updatedAt": "2026-06-20T20:58:31.965Z",
+    "email": "ravi@carrental.com",
+    "password": "$2a$10$PcPg65ALGIdbRW./.gbkseJfSaCGl6Y6n3B9Ps2eSWmQ9uO6Bzwwa",
+    "isVerified": true,
+    "role": "student",
+    "profile": {
+      "name": "ravi",
+      "targetRole": "Software Engineer",
+      "experienceLevel": "Fresher",
+      "targetCompanies": [],
+      "resumeUrl": "/uploads/resume-1781985051273-451634881.pdf"
+    },
+    "stats": {
+      "xp": 100,
+      "currentStreak": 1,
+      "longestStreak": 1,
+      "lastActiveDate": "2026-06-20",
+      "codingChallengesCompleted": 0,
+      "totalInterviewsTaken": 0,
+      "readinessScore": 18,
+      "atsScore": 40
+    },
+    "achievements": [
+      {
+        "id": "welcome",
+        "title": "Welcome aboard!",
+        "description": "Created your AI CareerPrep Pro account successfully.",
+        "unlockedAt": "2026-06-20T19:44:46.352Z",
+        "icon": "🎉"
+      }
+    ],
+    "dailyChallenges": [
+      {
+        "date": "2026-06-20",
+        "challengeId": "first_login",
+        "completed": true,
+        "completedAt": "2026-06-20T19:44:46.352Z"
+      }
+    ]
+  },
+  {
+    "_id": "1781986358003_vjaul28",
+    "createdAt": "2026-06-20T20:12:38.003Z",
+    "updatedAt": "2026-06-20T20:49:00.978Z",
+    "email": "eswar1@gmail.com",
+    "password": "$2a$10$vTSfEvJrN5Ijd6hGiAakK.6uwjpdC4Uq4f.PZAmMuHbWcAW9Q9txi",
+    "isVerified": true,
+    "role": "student",
+    "profile": {
+      "name": "eswar",
+      "targetRole": "QA Engineer",
+      "experienceLevel": "Fresher",
+      "targetCompanies": []
+    },
+    "stats": {
+      "xp": 100,
+      "currentStreak": 1,
+      "longestStreak": 1,
+      "lastActiveDate": "2026-06-20",
+      "codingChallengesCompleted": 0,
+      "totalInterviewsTaken": 0,
+      "readinessScore": 35,
+      "atsScore": 0
+    },
+    "achievements": [
+      {
+        "id": "welcome",
+        "title": "Welcome aboard!",
+        "description": "Created your AI CareerPrep Pro account successfully.",
+        "unlockedAt": "2026-06-20T20:12:37.999Z",
+        "icon": "🎉"
+      }
+    ],
+    "dailyChallenges": [
+      {
+        "date": "2026-06-20",
+        "challengeId": "first_login",
+        "completed": true,
+        "completedAt": "2026-06-20T20:12:37.999Z"
+      }
+    ]
+  },
+  {
+    "_id": "1782759327053_px0txga",
+    "createdAt": "2026-06-29T18:55:27.053Z",
+    "updatedAt": "2026-06-29T19:07:50.606Z",
+    "email": "eswar123@gmail.com",
+    "password": "$2a$10$XBzIPhclwSMtZac15OYvP.XRoLc0TC0jM1WvuWxc.IXuHZ.x4447q",
+    "isVerified": true,
+    "role": "student",
+    "profile": {
+      "name": "eswar",
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Fresher",
+      "targetCompanies": [],
+      "resumeUrl": "/uploads/resume-1782759352643-16428557.pdf"
+    },
+    "stats": {
+      "xp": 100,
+      "currentStreak": 1,
+      "longestStreak": 1,
+      "lastActiveDate": "2026-06-29",
+      "codingChallengesCompleted": 0,
+      "totalInterviewsTaken": 0,
+      "readinessScore": 25,
+      "atsScore": 76
+    },
+    "achievements": [
+      {
+        "id": "welcome",
+        "title": "Welcome aboard!",
+        "description": "Created your AI CareerPrep Pro account successfully.",
+        "unlockedAt": "2026-06-29T18:55:27.051Z",
+        "icon": "🎉"
+      }
+    ],
+    "dailyChallenges": [
+      {
+        "date": "2026-06-29",
+        "challengeId": "first_login",
+        "completed": true,
+        "completedAt": "2026-06-29T18:55:27.051Z"
+      }
+    ]
   }
 ]
