@@ -214,5 +214,32 @@
       ],
       "refactoredCode": "public class Solution {\n    // Optimal solution for Container With Most Water\n    public Object solve(Object input) {\n        // Implement optimal algorithm here\n        return null;\n    }\n}"
     }
+  },
+  {
+    "_id": "1782762900268_mlh2rqf",
+    "createdAt": "2026-06-29T19:55:00.268Z",
+    "updatedAt": "2026-06-29T19:55:00.268Z",
+    "userId": "1782759327053_px0txga",
+    "problemId": "first-missing-positive",
+    "title": "First Missing Positive",
+    "code": "public class Solution {\n    public int firstMissingPositive(int[] nums) {\n        int n = nums.length;\n\n        for (int i = 0; i < n; i++) {\n            while (nums[i] >= 1 &&\n                   nums[i] <= n &&\n                   nums[nums[i] - 1] != nums[i]) {\n\n                int correct = nums[i] - 1;\n\n                int temp = nums[i];\n                nums[i] = nums[correct];\n                nums[correct] = temp;\n            }\n        }\n\n        for (int i = 0; i < n; i++) {\n            if (nums[i] != i + 1) {\n                return i + 1;\n            }\n        }\n\n        return n + 1;\n    }\n}",
+    "language": "java",
+    "status": "Accepted",
+    "testCasesPassed": 3,
+    "totalTestCases": 3,
+    "executionTimeMs": 15,
+    "correctnessScore": 100,
+    "aiReview": {
+      "timeComplexity": "O(N)",
+      "spaceComplexity": "O(1)",
+      "optimizationSuggestions": [
+        "Verify edge cases such as empty inputs or negative values.",
+        "Optimize variable names for readability."
+      ],
+      "codeSmells": [
+        "None detected."
+      ],
+      "refactoredCode": "public class Solution {\n    public int firstMissingPositive(int[] nums) {\n        int n = nums.length;\n\n        for (int i = 0; i < n; i++) {\n            while (nums[i] >= 1 &&\n                   nums[i] <= n &&\n                   nums[nums[i] - 1] != nums[i]) {\n\n                int correct = nums[i] - 1;\n\n                int temp = nums[i];\n                nums[i] = nums[correct];\n                nums[correct] = temp;\n            }\n        }\n\n        for (int i = 0; i < n; i++) {\n            if (nums[i] != i + 1) {\n                return i + 1;\n            }\n        }\n\n        return n + 1;\n    }\n}"
+    }
   }
 ]

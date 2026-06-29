@@ -21,9 +21,7 @@ import aptitudeRoutes from './routes/aptitude.routes';
 import mcqRoutes from './routes/mcq.routes';
 import hrRoutes from './routes/hr.routes';
 import companyRoutes from './routes/company.routes';
-
-// ... existing imports ...
-// After existing route mounts
+import aiRoutes from './routes/ai.routes';
 
 
 
@@ -94,7 +92,7 @@ app.use('/api/aptitude', aptitudeRoutes);
 app.use('/api/mcq', mcqRoutes);
 app.use('/api/hr', hrRoutes);
 app.use('/api/company', companyRoutes);
-// adminRoutes not defined – removed to prevent ReferenceError
+app.use('/api/ai', aiRoutes);
 
 // Global exception handling
 app.use(errorHandler);

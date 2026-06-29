@@ -492,14 +492,14 @@
   {
     "_id": "1782759327059_0txjd48",
     "createdAt": "2026-06-29T18:55:27.059Z",
-    "updatedAt": "2026-06-29T19:21:31.816Z",
+    "updatedAt": "2026-06-29T19:55:00.277Z",
     "userId": "1782759327053_px0txga",
     "subjects": [
       {
         "subjectName": "Java & OOPs",
-        "mcqsTaken": 7,
+        "mcqsTaken": 8,
         "mcqsCorrect": 0,
-        "level": 65
+        "level": 73
       },
       {
         "subjectName": "DBMS & SQL",
