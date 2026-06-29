@@ -1,10 +1,7 @@
 import { Request, Response } from 'express';
+import { generateAIResponse } from '../config/ai';
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-/**
- * Builds a mock/fallback AI response when no LLM API key is configured.
- * In production, replace these stubs with real OpenAI / Gemini / Claude calls.
- */
+// ─── Mock Stubs (Fallbacks) ──────────────────────────────────────────────────
 
 const mockReview = (code: string) => ({
   correctness: code.trim().length > 20 ? '✅ Code looks syntactically complete.' : '⚠️ Code appears incomplete.',
@@ -101,9 +98,21 @@ const mockScore = (code: string) => {
 
 export const reviewCode = async (req: Request, res: Response) => {
   try {
-    const { code = '', language = 'java' } = req.body;
-    // TODO: Replace with real LLM call (OpenAI / Gemini / Claude)
-    const result = mockReview(code);
+    const { code = '', language = 'java', problemId = '' } = req.body;
+    const prompt = `You are an expert code reviewer. Review the following student code for the coding problem "${problemId}" in the language "${language}".
+Code to review:
+\`\`\`${language}
+${code}
+\`\`\`
+
+Provide feedback in JSON format containing exactly the following keys:
+- "correctness": markdown string summary of whether the code is correct, including logic checking.
+- "bugs": markdown string highlighting any bugs or edge case failures, or "None detected."
+- "logicIssues": markdown string detailing algorithmic logic flaws, or "None detected."
+- "style": markdown string for clean code, naming conventions, and code style suggestions.
+- "suggestions": markdown string recommending specific improvements or optimization ideas.`;
+
+    const result = await generateAIResponse(prompt, mockReview(code));
     res.json(result);
   } catch (err) {
     res.status(500).json({ message: 'AI review failed.' });
@@ -113,7 +122,18 @@ export const reviewCode = async (req: Request, res: Response) => {
 export const explainCode = async (req: Request, res: Response) => {
   try {
     const { code = '', language = 'java', problemId = '' } = req.body;
-    const result = mockExplain(code, problemId);
+    const prompt = `You are a friendly computer science instructor. Explain the following student code step-by-step for the coding problem "${problemId}" in "${language}".
+Code to explain:
+\`\`\`${language}
+${code}
+\`\`\`
+
+Respond in JSON format containing:
+- "summary": overall high-level summary of how the solution works.
+- "steps": a JSON array of strings, where each string is a sequential step explaining the execution flow of the code.
+- "code": the input code formatted/commented for clarity.`;
+
+    const result = await generateAIResponse(prompt, mockExplain(code, problemId));
     res.json(result);
   } catch {
     res.status(500).json({ message: 'AI explain failed.' });
@@ -122,8 +142,20 @@ export const explainCode = async (req: Request, res: Response) => {
 
 export const compareCode = async (req: Request, res: Response) => {
   try {
-    const { language = 'java' } = req.body;
-    const result = mockCompare(language);
+    const { code = '', language = 'java', problemId = '' } = req.body;
+    const prompt = `Compare the student's solution to the most optimal approach for the problem "${problemId}".
+Student's code:
+\`\`\`${language}
+${code}
+\`\`\`
+
+Respond in JSON format containing:
+- "userComplexity": time/space complexity of the student's code (e.g. O(N^2) / O(1)).
+- "optimalComplexity": time/space complexity of the absolute best solution (e.g. O(N) / O(N)).
+- "differences": detailed comparison of the student's logic vs the optimal algorithm.
+- "optimalCode": a complete, clean, production-ready implementation of the optimal solution in "${language}".`;
+
+    const result = await generateAIResponse(prompt, mockCompare(language));
     res.json(result);
   } catch {
     res.status(500).json({ message: 'AI compare failed.' });
@@ -132,8 +164,19 @@ export const compareCode = async (req: Request, res: Response) => {
 
 export const analyzeComplexity = async (req: Request, res: Response) => {
   try {
-    const { code = '' } = req.body;
-    const result = mockComplexity(code);
+    const { code = '', language = 'java', problemId = '' } = req.body;
+    const prompt = `Perform a strict Big-O complexity analysis on the following code for "${problemId}" in "${language}".
+Code:
+\`\`\`${language}
+${code}
+\`\`\`
+
+Respond in JSON format containing:
+- "time": Big-O time complexity (e.g., O(N log N)).
+- "space": Big-O space complexity (e.g., O(1)).
+- "explanation": step-by-step breakdown of how these complexities are derived, pointing to specific loops/recursion/data structures in the code.`;
+
+    const result = await generateAIResponse(prompt, mockComplexity(code));
     res.json(result);
   } catch {
     res.status(500).json({ message: 'AI complexity analysis failed.' });
@@ -142,8 +185,17 @@ export const analyzeComplexity = async (req: Request, res: Response) => {
 
 export const dryRun = async (req: Request, res: Response) => {
   try {
-    const { input = '' } = req.body;
-    const result = mockDryRun(input);
+    const { code = '', language = 'java', problemId = '', input = '' } = req.body;
+    const prompt = `Simulate a dry run of the following code for "${problemId}" with the input: "${input}".
+Code:
+\`\`\`${language}
+${code}
+\`\`\`
+
+Respond in JSON format containing:
+- "steps": an array of strings, where each string represents a state transition, variable value change, or loop iteration as it executes on the provided input. Keep descriptions concise and easy to follow.`;
+
+    const result = await generateAIResponse(prompt, mockDryRun(input));
     res.json(result);
   } catch {
     res.status(500).json({ message: 'Dry run failed.' });
@@ -152,9 +204,16 @@ export const dryRun = async (req: Request, res: Response) => {
 
 export const getHint = async (req: Request, res: Response) => {
   try {
-    const { hintIndex = 0 } = req.body;
+    const { problemId = '', hintIndex = 0 } = req.body;
     const idx = Math.min(Number(hintIndex), mockHints.length - 1);
-    res.json({ hint: mockHints[idx] });
+    const prompt = `Provide a progressive hint (Hint level ${hintIndex + 1}) for solving the coding problem "${problemId}".
+The hint should guide the student without giving away the complete solution.
+
+Respond in JSON format containing:
+- "hint": the hint message.`;
+
+    const result = await generateAIResponse(prompt, { hint: mockHints[idx] });
+    res.json(result);
   } catch {
     res.status(500).json({ message: 'Hint generation failed.' });
   }
@@ -162,7 +221,15 @@ export const getHint = async (req: Request, res: Response) => {
 
 export const generateTestCases = async (req: Request, res: Response) => {
   try {
-    const result = mockTestCases();
+    const { problemId = '', language = 'java' } = req.body;
+    const prompt = `Generate 5 diverse test cases (including basic, edge cases, large input, and empty/null states) for the problem "${problemId}".
+Respond in JSON format containing:
+- "testCases": an array of objects, where each object has:
+  - "label": name/type of case (e.g. "Edge Case: Negative Target")
+  - "input": description of the test inputs
+  - "expected": description of the expected output`;
+
+    const result = await generateAIResponse(prompt, mockTestCases());
     res.json(result);
   } catch {
     res.status(500).json({ message: 'Test case generation failed.' });
@@ -171,7 +238,12 @@ export const generateTestCases = async (req: Request, res: Response) => {
 
 export const startInterview = async (req: Request, res: Response) => {
   try {
-    const result = mockInterview();
+    const { problemId = '' } = req.body;
+    const prompt = `You are a technical interviewer at a top tech company. Ask the candidate a conceptual or follow-up question related to the problem "${problemId}".
+Respond in JSON format containing:
+- "question": the question.`;
+
+    const result = await generateAIResponse(prompt, mockInterview());
     res.json(result);
   } catch {
     res.status(500).json({ message: 'Interview start failed.' });
@@ -180,8 +252,16 @@ export const startInterview = async (req: Request, res: Response) => {
 
 export const evaluateInterview = async (req: Request, res: Response) => {
   try {
-    const { answer = '' } = req.body;
-    const result = mockInterviewEvaluate(answer);
+    const { problemId = '', question = '', answer = '' } = req.body;
+    const prompt = `As a technical interviewer, evaluate the candidate's response.
+Question asked: "${question}"
+Candidate's response: "${answer}"
+Coding Problem: "${problemId}"
+
+Respond in JSON format containing:
+- "feedback": clear feedback detailing what was correct, any missing pieces, and what they could have explained better. Use markdown for readability.`;
+
+    const result = await generateAIResponse(prompt, mockInterviewEvaluate(answer));
     res.json(result);
   } catch {
     res.status(500).json({ message: 'Interview evaluation failed.' });
@@ -192,27 +272,37 @@ export const chat = async (req: Request, res: Response) => {
   try {
     const { message = '', problemId = '', code = '', language = 'java', history = [] } = req.body;
 
-    // Build a context-aware mock reply
-    const lowerMsg = message.toLowerCase();
-    let reply = '';
+    const chatHistoryText = history.map((msg: any) => `${msg.role === 'user' ? 'Student' : 'AI'}: ${msg.text}`).join('\n');
+    const prompt = `You are a helpful AI programming assistant inside a Coding Sandbox. You are guiding a student on the problem "${problemId}".
+Their current code:
+\`\`\`${language}
+${code}
+\`\`\`
 
+Conversation history:
+${chatHistoryText}
+
+Student's new message: "${message}"
+
+Respond in JSON format containing:
+- "reply": your response (formatted nicely using markdown). Keep explanations clear, crisp, and educational. Use code blocks if you need to demonstrate patterns.`;
+
+    const lowerMsg = message.toLowerCase();
+    const fallback = mockReview(code);
+    let mockReply = `🤖 I'm here to help with "${problemId}"! Your current code is written in ${language}. Let me know if you need code review, complexity analysis, or tips.`;
+    
     if (lowerMsg.includes('time complexity') || lowerMsg.includes('big o')) {
-      reply = '⏱️ The time complexity depends on your algorithm. If you use nested loops it\'s O(N²). Using a HashMap reduces it to O(N). Look at how many iterations your code performs relative to input size N.';
+      mockReply = '⏱️ The time complexity depends on your algorithm. If you use nested loops it\'s O(N²). Using a HashMap reduces it to O(N). Look at how many iterations your code performs relative to input size N.';
     } else if (lowerMsg.includes('space') || lowerMsg.includes('memory')) {
-      reply = '💾 Space complexity is determined by extra memory used. A HashMap uses O(N) extra space. If you use only a few variables, it\'s O(1).';
+      mockReply = '💾 Space complexity is determined by extra memory used. A HashMap uses O(N) extra space. If you use only a few variables, it\'s O(1).';
     } else if (lowerMsg.includes('hint') || lowerMsg.includes('help')) {
-      reply = '💡 Hint: Try thinking about what you need to find. For each element, ask "Does its complement exist in what I\'ve already seen?" A HashMap lets you answer that in O(1).';
+      mockReply = '💡 Hint: Try thinking about what you need to find. For each element, ask "Does its complement exist in what I\'ve already seen?" A HashMap lets you answer that in O(1).';
     } else if (lowerMsg.includes('explain') || lowerMsg.includes('how')) {
-      reply = `📖 For "${problemId}", the key insight is:\n1. Iterate through each element\n2. Check if (target - element) has been seen before\n3. If yes → return indices\n4. If no → store element with its index\n\nThis avoids the O(N²) brute force.`;
-    } else if (lowerMsg.includes('optimal') || lowerMsg.includes('best')) {
-      reply = '🚀 The optimal solution uses a HashMap for O(N) time and O(N) space. It makes a single pass through the array, checking and storing complements as it goes.';
-    } else if (lowerMsg.includes('error') || lowerMsg.includes('bug') || lowerMsg.includes('wrong')) {
-      reply = '🐛 Common bugs to check:\n• Off-by-one errors in loop bounds\n• Not handling empty input\n• Returning wrong index types\n• Using = instead of == for comparison\n• Integer overflow for large inputs';
-    } else {
-      reply = `🤖 Great question about "${problemId}"! I understand you're asking: "${message}"\n\nHere's my analysis:\nYour code structure looks correct for a ${language} solution. Focus on:\n1. Edge cases (empty input, single element)\n2. Return type correctness\n3. Loop termination conditions\n\nWould you like me to elaborate on any specific part?`;
+      mockReply = `📖 For "${problemId}", the key insight is:\n1. Iterate through each element\n2. Check if (target - element) has been seen before\n3. If yes → return indices\n4. If no → store element with its index\n\nThis avoids the O(N²) brute force.`;
     }
 
-    res.json({ reply });
+    const result = await generateAIResponse(prompt, { reply: mockReply });
+    res.json(result);
   } catch {
     res.status(500).json({ message: 'Chat failed.' });
   }
@@ -220,8 +310,23 @@ export const chat = async (req: Request, res: Response) => {
 
 export const scoreCode = async (req: Request, res: Response) => {
   try {
-    const { code = '' } = req.body;
-    const result = mockScore(code);
+    const { code = '', language = 'java', problemId = '' } = req.body;
+    const prompt = `Grade the following code for "${problemId}" in "${language}" on a scale from 0 to 100.
+Code:
+\`\`\`${language}
+${code}
+\`\`\`
+
+Respond in JSON format containing:
+- "total": integer score out of 100.
+- "breakdown": an object containing sub-scores (0 to 25) for:
+  - "correctness"
+  - "efficiency"
+  - "readability"
+  - "bestPractices"
+- "feedback": qualitative feedback detailing strengths and areas for improvement.`;
+
+    const result = await generateAIResponse(prompt, mockScore(code));
     res.json(result);
   } catch {
     res.status(500).json({ message: 'Scoring failed.' });
