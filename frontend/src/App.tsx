@@ -38,6 +38,7 @@ import { ContestHub } from './pages/ContestHub';
 import { RecruiterPortal } from './pages/RecruiterPortal';
 import { LeaderboardAchievements } from './pages/LeaderboardAchievements';
 import { PreferencesSettings } from './pages/PreferencesSettings';
+import { CommunityDiscussion } from './pages/CommunityDiscussion';
 
 // Protected Route Guard
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
