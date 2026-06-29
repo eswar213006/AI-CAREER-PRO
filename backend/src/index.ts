@@ -23,6 +23,17 @@ import hrRoutes from './routes/hr.routes';
 import companyRoutes from './routes/company.routes';
 import aiRoutes from './routes/ai.routes';
 
+// New Route Controllers
+import companyPrepRoutes from './controllers/companyPrep.controller';
+import readinessRoutes from './controllers/readiness.controller';
+import mentorRoutes from './controllers/mentor.controller';
+import studyPlannerRoutes from './controllers/studyPlanner.controller';
+import jdMatcherRoutes from './controllers/jdMatcher.controller';
+import linkedinRoutes from './controllers/linkedin.controller';
+import projectGenRoutes from './controllers/projectGen.controller';
+import notesRoutes from './controllers/notes.controller';
+import hrMockRoutes from './controllers/hrMock.controller';
+
 
 
 const app = express();
@@ -93,6 +104,17 @@ app.use('/api/mcq', mcqRoutes);
 app.use('/api/hr', hrRoutes);
 app.use('/api/company', companyRoutes);
 app.use('/api/ai', aiRoutes);
+
+// New Modular Route Mounts
+app.use('/api/company-prep', companyPrepRoutes);
+app.use('/api/readiness', readinessRoutes);
+app.use('/api/mentor', mentorRoutes);
+app.use('/api/study-planner', studyPlannerRoutes);
+app.use('/api/jd-matcher', jdMatcherRoutes);
+app.use('/api/linkedin', linkedinRoutes);
+app.use('/api/project-gen', projectGenRoutes);
+app.use('/api/notes', notesRoutes);
+app.use('/api/hr-mock', hrMockRoutes);
 
 // Global exception handling
 app.use(errorHandler);

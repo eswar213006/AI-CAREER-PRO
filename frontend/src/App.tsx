@@ -20,6 +20,25 @@ import { PrepHub } from './pages/PrepHub';
 import { AdminPanel } from './pages/AdminPanel';
 import { ForgotPassword } from './pages/ForgotPassword';
 
+// 20 Modules - New Pages
+import { CompanyPrep } from './pages/CompanyPrep';
+import { PlacementReadiness } from './pages/PlacementReadiness';
+import { AICareerMentor } from './pages/AICareerMentor';
+import { StudyPlanner } from './pages/StudyPlanner';
+import { ATSResumeBuilder } from './pages/ATSResumeBuilder';
+import { JDMatcher } from './pages/JDMatcher';
+import { LinkedInOptimizer } from './pages/LinkedInOptimizer';
+import { ProjectGenerator } from './pages/ProjectGenerator';
+import { AIStudyNotes } from './pages/AIStudyNotes';
+import { FlashcardsPractice } from './pages/FlashcardsPractice';
+import { DailyChallenges } from './pages/DailyChallenges';
+import { DetailedAnalytics } from './pages/DetailedAnalytics';
+import { MockHRInterview } from './pages/MockHRInterview';
+import { ContestHub } from './pages/ContestHub';
+import { RecruiterPortal } from './pages/RecruiterPortal';
+import { LeaderboardAchievements } from './pages/LeaderboardAchievements';
+import { PreferencesSettings } from './pages/PreferencesSettings';
+
 // Protected Route Guard
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated, loading } = useSelector((state: RootState) => state.auth);
@@ -52,11 +71,32 @@ const DashboardLayout: React.FC = () => {
   // Map pathnames to beautiful Navbar headers
   const getHeaderTitle = (pathname: string) => {
     if (pathname === '/dashboard') return 'Candidate Dashboard';
-    if (pathname === '/resume') return 'ATS Resume Evaluation';
-    if (pathname === '/interview') return 'AI Mock Configuration';
-    if (pathname.startsWith('/interview/active')) return 'Active Mock Simulator';
+    if (pathname === '/readiness') return 'AI Placement Readiness Score';
+    if (pathname === '/analytics') return 'Detailed Performance Analytics';
     if (pathname === '/coding') return 'V8 Sandbox Compiler';
-    if (pathname === '/prep-hub') return 'Placement Preparation Hub';
+    if (pathname === '/resume-builder') return 'ATS Resume Builder';
+    if (pathname === '/jd-matcher') return 'ATS Resume vs Job Description';
+    if (pathname === '/linkedin-optimizer') return 'LinkedIn Profile Optimizer';
+    if (pathname === '/notes') return 'AI Topic Notes & Mindmaps';
+    if (pathname === '/project-gen') return 'AI Project Blueprints';
+    
+    if (pathname === '/mentor') return 'AI Career Mentor Advisor';
+    if (pathname === '/study-planner') return 'AI Study Planner Schedule';
+    if (pathname === '/company-prep') return 'Company Specific Prep Portal';
+    if (pathname === '/challenges') return 'Daily Streak Challenges';
+    if (pathname === '/flashcards') return 'Flip Flashcards Quiz';
+    if (pathname === '/prep-hub') return 'Placement Practice Hub';
+    
+    if (pathname === '/interview') return 'AI Mock Coding Configuration';
+    if (pathname.startsWith('/interview/active')) return 'Active Mock Simulator';
+    if (pathname === '/hr-interview') return 'Behavioral Mock HR Simulator';
+    
+    if (pathname === '/contest-hub') return 'Competitive Coding Contest Calendar';
+    if (pathname === '/leaderboard') return 'Leaderboard Achievements';
+    if (pathname === '/community') return 'Forums Discussion Board';
+    
+    if (pathname === '/recruiter-portal') return 'Recruiter Sourcing Workspace';
+    if (pathname === '/settings') return 'System Configuration Settings';
     if (pathname === '/admin') return 'Admin System Logs';
     return 'AI CareerPrep Pro';
   };
@@ -72,12 +112,34 @@ const DashboardLayout: React.FC = () => {
         <main className="flex-1 overflow-y-auto px-8 py-6 pb-16">
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/resume" element={<ResumeAnalyzer />} />
+            <Route path="/readiness" element={<PlacementReadiness />} />
+            <Route path="/analytics" element={<DetailedAnalytics />} />
+            <Route path="/coding" element={<CodingSandbox />} />
+            <Route path="/resume-builder" element={<ATSResumeBuilder />} />
+            <Route path="/jd-matcher" element={<JDMatcher />} />
+            <Route path="/linkedin-optimizer" element={<LinkedInOptimizer />} />
+            <Route path="/notes" element={<AIStudyNotes />} />
+            <Route path="/project-gen" element={<ProjectGenerator />} />
+            
+            <Route path="/mentor" element={<AICareerMentor />} />
+            <Route path="/study-planner" element={<StudyPlanner />} />
+            <Route path="/company-prep" element={<CompanyPrep />} />
+            <Route path="/challenges" element={<DailyChallenges />} />
+            <Route path="/flashcards" element={<FlashcardsPractice />} />
+            <Route path="/prep-hub" element={<PrepHub />} />
+            
             <Route path="/interview" element={<InterviewSetup />} />
             <Route path="/interview/active" element={<MockInterview />} />
-            <Route path="/coding" element={<CodingSandbox />} />
-            <Route path="/prep-hub" element={<PrepHub />} />
+            <Route path="/hr-interview" element={<MockHRInterview />} />
+            
+            <Route path="/contest-hub" element={<ContestHub />} />
+            <Route path="/leaderboard" element={<LeaderboardAchievements />} />
+            <Route path="/community" element={<CommunityDiscussion />} />
+            
+            <Route path="/recruiter-portal" element={<RecruiterPortal />} />
+            <Route path="/settings" element={<PreferencesSettings />} />
             <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/resume" element={<ResumeAnalyzer />} />
           </Routes>
         </main>
       </div>
@@ -93,7 +155,6 @@ export const App: React.FC = () => {
     const checkSession = async () => {
       dispatch(authStart());
       try {
-        // Fetch current profile to check if refresh session exists
         const response = await api.get('/auth/profile');
         const token = localStorage.getItem('accessToken') || '';
         dispatch(authSuccess({ user: response.data.user, token }));
